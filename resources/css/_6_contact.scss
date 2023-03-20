@@ -1,0 +1,124 @@
+/* Contact section - Section 6 */
+
+.section-6 {
+  background: $clr-primary-10;
+  padding-bottom: 4.5rem;
+
+  .section-6-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 1152px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .section-6-text {
+      padding-top: 3rem;
+
+      h1 {
+        margin-bottom: 1.5rem;
+      }
+
+      p {
+        margin-bottom: 3rem;
+        line-height: 1.75;
+        text-align: justify;
+
+        .section-6-span {
+          text-decoration: underline;
+          color: rgb(157, 23, 198);
+          font-weight: bolder;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .section-6-form {
+      background: $clr-white;
+      box-shadow: $light-shadow;
+      transition: $transition;
+
+      &:hover {
+        box-shadow: $dark-shadow;
+      }
+
+      h3 {
+        padding-left: 2.5rem;
+        padding-top: 3.5rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+form {
+  .form-group {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin-bottom: 1.5rem;
+
+    .form-text-intro {
+      margin-bottom: 0.3rem;
+      margin-top: 1rem;
+      font-weight: bolder;
+    }
+
+    .form-control {
+      display: inline-block;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid $clr-primary-5;
+
+      &:focus {
+        background-color: rgb(247, 239, 247);
+        outline: none;
+        border: 1px solid $clr-primary-5;
+      }
+
+      &::placeholder {
+        font-family: $ff-primary;
+        color: $clr-grey-5;
+      }
+    }
+
+    textarea {
+      height: 150px;
+    }
+  }
+
+  .btn-section-6 {
+    margin-left: 2.5rem;
+    margin-bottom: 3.5rem;
+
+    &:hover {
+      color: $clr-white;
+      scale: 1.1;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .section-6 .section-6-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    // padding-left: 0;
+    // padding-right: 0;
+  }
+
+  .section-6-flex {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: calc(50% - 3rem);
+  }
+
+  .section-6-form {
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  .section-6 .section-6-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
