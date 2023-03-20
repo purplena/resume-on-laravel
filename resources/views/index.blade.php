@@ -25,7 +25,7 @@
                 challenged in order to grow and further improve my developer skills.
             </p>
             <a href="#projects" class="btn btn-about-1">Projects</a>
-            <a href="#contact" class="btn btn-about-2">Contact</a>
+            <a href="#skills" class="btn btn-about-2">Skills</a>
         </div>
     </section>
 
@@ -35,7 +35,7 @@
             <article class="section-2-text section-2">
                 <h2>A bit about me</h2>
                 <p>
-                    Starting a career in web development has always been my dream. First
+                    Working in web development has always been my dream. First
                     my curiosity made me discover the world of digital illustration and
                     design. It was a logical path taking into account that I liked
                     drawing myself. I invite you to check my works.
@@ -69,7 +69,7 @@
                     <i class="fa-regular fa-comments about-section-icon"></i>
                     <p>English - C1</p>
                     <p>French - B1</p>
-                    <p>Russe - native</p>
+                    <p>Russian - native</p>
                 </div>
                 <div class="div-section-2">
                     <h4>FIND ME</h4>
@@ -109,44 +109,6 @@
         </div>
         </article>
         </div>
-    </section>
-
-    <!-- Watercolor gallery ----Section 3 -->
-    <section class="section-3" id="artworks">
-        <h2>my art works</h2>
-        <div class="section-3-container">
-            <!-- single item -->
-            <article class="article-watercolor">
-                <img src="./images/img1.png" class="gallery-img" alt="image of flower_watercolor" />
-            </article>
-            <!-- end of single item -->
-            <!-- single item -->
-            <article class="article-watercolor">
-                <img src="./images/img2.png" class="gallery-img" alt="image of flower_watercolor" />
-            </article>
-            <!-- end of single item -->
-            <!-- single item -->
-            <article class="article-watercolor">
-                <img src="./images/img3.png" class="gallery-img" alt="image of flower_watercolor" />
-            </article>
-            <!-- end of single item -->
-            <!-- single item -->
-            <article class="article-watercolor">
-                <img src="./images/img4.png" class="gallery-img" alt="image of flower_watercolor" />
-            </article>
-            <!-- end of single item -->
-            <!-- single item -->
-            <article class="article-watercolor">
-                <img src="./images/img5.png" class="gallery-img" alt="image of flower_watercolor" />
-            </article>
-            <!-- end of single item -->
-            <!-- single item -->
-            <article class="article-watercolor">
-                <img src="./images/img6.png" class="gallery-img" alt="image of flower_watercolor" />
-            </article>
-            <!-- end of single item -->
-        </div>
-        <a href="/gallery" class="btn btn-section-3">see more</a>
     </section>
 
     <!-- Skills Section ----Section 4 -->
@@ -293,37 +255,5 @@
             <a href="https://www.tasks.purplena.dev/" target="_blank" class="btn">visit me</a>
         </article>
         <!-- end of single item -->
-    </section>
-
-    <!-- Contact Section - Section 6 -->
-    <section class="section-6" id="contact">
-        <div class="section-6-container">
-            <div class="section-6-text section-6-flex">
-                <h1>Let's work together</h1>
-                <p>
-                    Whether you are looking to make a website for your company, build
-                    your brand identity, or want to discuss your web strategy, I am here
-                    to help you. Use this form or email me at
-                    <span class="section-6-span">elena.molano14@gmail.com</span>
-                </p>
-            </div>
-            <div class="section-6-form section-6-flex">
-                <h3>contact me</h3>
-                <form>
-                    <div class="form-group">
-                        <!-- inputs -->
-                        <p class="form-text-intro">Name</p>
-                        <input type="text" placeholder="Your name" class="form-control" name="name" />
-                        <p class="form-text-intro">Email</p>
-                        <input type="email" placeholder="How can I contact you?" class="form-control"
-                            name="email" />
-                        <p class="form-text-intro">I need help with...</p>
-                        <textarea name="message" placeholder="How can I help you?" class="form-control" rows="5"></textarea>
-                    </div>
-                    <!-- button -->
-                    <button type="submit" class="btn-section-6 btn">send</button>
-                </form>
-            </div>
-        </div>
     </section>
 </x-layout>

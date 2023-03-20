@@ -26,6 +26,7 @@ const scrollLinks = document.querySelectorAll(".scroll-link");
 
 scrollLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
+        return;
         // prevent default element behaviour (here: go to anchor)
         e.preventDefault();
 
@@ -50,6 +51,7 @@ scrollLinks.forEach((link) => {
 const navLogo = document.getElementById("nav-logo");
 
 navLogo.addEventListener("click", (e) => {
+    return;
     window.scrollTo({
         left: 0,
         top: 0,

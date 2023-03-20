@@ -35,6 +35,5 @@
             </article>
             <!-- end of single item -->
         </div>
-        <a href="/">Come back</a>
     </section>
 </x-layout>

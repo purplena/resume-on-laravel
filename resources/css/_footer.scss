@@ -3,24 +3,24 @@
 /* ====================== */
 
 .footer-container {
-  padding-top: 5rem;
-  padding-bottom: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .footer-text {
-  text-align: center;
-  font-weight: 700;
-  color: $clr-primary-2;
+    text-align: center;
+    font-weight: 700;
+    color: $clr-primary-2;
 }
 
 .social-icons-container {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  margin-top: 1rem;
-  margin-bottom: 1.25rem;
-  img {
-    display: block;
-    width: 32px;
-  }
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+    img {
+        display: block;
+        width: 32px;
+    }
 }
