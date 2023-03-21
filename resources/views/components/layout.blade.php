@@ -14,11 +14,11 @@
 
 <body>
 
-    @include('/components.navbar')
+    <x-navbar />
 
     {{ $slot }}
 
-    @include('components.footer')
+    <x-footer />
 
     <script src="./js/app.js"></script>
 </body>
