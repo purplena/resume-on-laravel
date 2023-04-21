@@ -1,67 +1,67 @@
 /* Watercolor section - Section 3 */
 
 .section-3 {
-  max-width: 1152px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  text-align: center;
-
-  h2 {
-    margin-top: 4rem;
+    max-width: 1152px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
     text-align: center;
-    font-size: 1.5rem;
-  }
 
-  .section-3-container {
-    .article-watercolor {
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-
-      &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border: 2px solid rgb(215, 156, 233);
-        box-sizing: border-box;
-        top: 0;
-        left: 0;
-        transition: $transition;
-        opacity: 0;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        top: 10px;
-        left: 10px;
-      }
+    h2 {
+        margin-top: 4rem;
+        text-align: center;
+        font-size: 1.5rem;
     }
-  }
-  .btn-section-3 {
-    margin-bottom: 2.5rem;
-  }
+
+    .section-3-container {
+        .article-watercolor {
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border: 2px solid rgb(215, 156, 233);
+                box-sizing: border-box;
+                top: 0;
+                left: 0;
+                transition: $transition;
+                opacity: 0;
+            }
+
+            &:hover::before {
+                opacity: 1;
+                top: 10px;
+                left: 10px;
+            }
+        }
+    }
+    .btn-section-3 {
+        margin-bottom: 2.5rem;
+    }
 }
 
 // Media quiries
 @media screen and (min-width: 768px) {
-  .section-3-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
+    .section-3-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 
-  .article-watercolor {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: calc(50% - 3rem);
-  }
+    .article-watercolor {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: calc(50% - 3rem);
+    }
 }
 
 @media screen and (min-width: 992px) {
-  .article-watercolor {
-    flex-basis: calc(33.33% - 3rem);
-  }
+    .article-watercolor {
+        flex-basis: calc(33.33% - 3rem);
+    }
 }

@@ -31,3 +31,6 @@ Route::post('sessions', [SessionsController::class, 'store']);
 Route::post('logout', [SessionsController::class, 'destroy']);
 
 Route::get('admin', [AdminController::class, 'index'])->middleware('can:admin');
+Route::get('admin/photos/upload', [AdminController::class, 'create'])->middleware('can:admin');
+Route::post('admin/photos', [AdminController::class, 'store'])->middleware('can:admin');
+Route::delete('admin/photos/{photo}', [AdminController::class, 'destroy'])->middleware('can:admin');
