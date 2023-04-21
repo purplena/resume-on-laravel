@@ -11,21 +11,21 @@
             </div>
             <!-- end of nav header -->
             <ul class="nav-links" id="nav-links">
-                <!-- single link -->
+                <li>
+                    @auth
+                        <a href="/admin" class="nav-link scroll-link">{{ auth()->user()->name }}</a>
+                    @endauth
+                </li>
                 <li>
                     <a href="/" class="nav-link scroll-link">home</a>
                 </li>
-                <!-- end og single link -->
-                <!-- single link -->
                 <li>
                     <a href="/gallery" class="nav-link scroll-link">gallery</a>
                 </li>
-                <!-- end og single link -->
-                <!-- single link -->
                 <li>
                     <a href="/contact" class="nav-link scroll-link">contact</a>
                 </li>
-                <!-- end of single link -->
+
             </ul>
             <!-- end of nav links -->
         </div>
