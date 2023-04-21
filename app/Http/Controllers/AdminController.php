@@ -29,10 +29,10 @@ class AdminController extends Controller
             'path' => ['required', 'image'],
         ]);
 
-        $attributes['user_id'] = auth()->id();
-        $attributes['path'] = request()->file('path')->store('path');
-
-        Photo::create($attributes);
+        Photo::create([
+            'user_id' => auth()->id(),
+            'path' => request()->file('path')->store('path')
+        ]);
 
         return redirect('/')->with('success', 'You uploaded a new photo!');
     }
