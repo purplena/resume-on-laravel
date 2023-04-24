@@ -25,7 +25,7 @@
                         <textarea name="message" placeholder="How can I help you?" class="form-control" rows="5"></textarea>
                     </div>
                     <!-- button -->
-                    <button type="submit" class="btn-section-6 btn">send</button>
+                    <button type="submit" class="classic-button">send</button>
                 </form>
             </div>
         </div>
