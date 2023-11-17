@@ -1,5 +1,5 @@
 <x-layout>
-    <section class="px-6 py-8">
+    <section class="login-section">
         <main class="max-w-lg mx-auto mt-10 bg-gray-100 border border-gray-200 rounded-xl p-6">
             <h1 class="text-center font-bold text-xl">Log in!</h1>
             <form method="POST" action="/sessions" class="mt-10">
