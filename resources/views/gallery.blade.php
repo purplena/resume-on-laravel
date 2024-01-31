@@ -1,6 +1,6 @@
 @props(['photos'])
 
-<x-layout>
+<x-page-layout>
     <!-- Watercolor gallery ----Section 3 -->
     <section class="section-3" id="artworks">
         <h2>my art works</h2>
@@ -14,4 +14,4 @@
         </div>
 
     </section>
-</x-layout>
+</x-page-layout>

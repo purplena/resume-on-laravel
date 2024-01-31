@@ -1,4 +1,4 @@
-<x-layout>
+<x-page-layout>
 
     <!-- Section 1 Hero section -->
     <section class="about-section">
@@ -10,7 +10,10 @@
         <div class="about-container section-1">
             <h1>Hi, I'm Lena</h1>
             <p>
-                I am a junior web developper.
+                @include('components/language_switcher')
+                {{ __('home.welcome') }}
+                <br />
+                I am a junior web developper full-stack.
                 <br />
                 <br />
                 My favorite color is purple. That's how the name of my website
@@ -35,6 +38,7 @@
             <article class="section-2-text section-2">
                 <h2>A bit about me</h2>
                 <p>
+
                     Working in web development has always been my dream. First
                     my curiosity made me discover the world of digital illustration and
                     design. It was a logical path taking into account that I liked
@@ -256,4 +260,4 @@
         </article>
         <!-- end of single item -->
     </section>
-</x-layout>
+</x-page-layout>

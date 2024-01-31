@@ -1,4 +1,4 @@
-<x-layout>
+<x-page-layout>
     <!-- Contact Section - Section 6 -->
     <section class="section-6" id="contact" style="margin-top: 62px;">
         <div class="section-6-container">
@@ -30,4 +30,4 @@
             </div>
         </div>
     </section>
-</x-layout>
+</x-page-layout>

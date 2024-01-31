@@ -1,13 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminController;
-
-
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SessionsController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +18,20 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+Route::get('/language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
+});
+
+Route::fallback(function () {
+    return view('pages/error-page');
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
-
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-
 Route::get('login', [SessionsController::class, 'login']);
 Route::post('sessions', [SessionsController::class, 'store']);
 Route::post('logout', [SessionsController::class, 'destroy']);
