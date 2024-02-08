@@ -1,4 +1,4 @@
-<x-layout>
+<x-page-layout>
 
     <!-- Section 1 Hero section -->
     <section class="about-section">
@@ -10,19 +10,23 @@
         <div class="about-container section-1">
             <h1>Hi, I'm Lena</h1>
             <p>
-                I am a junior web developper.
-                <br />
-                <br />
-                My favorite color is purple. That's how the name of my website
-                appeared.
-                <br />
-                <br />
-                I started learnig programming in September 2022 and here is my first
-                full-scale project.
-                <br />
-                <br />
-                I am looking forward to working in your team and I am eager to be
-                challenged in order to grow and further improve my developer skills.
+            <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+            @include('components/language_switcher')
+            {{ __('home.welcome') }}
+            <br />
+            I am a junior web developper full-stack.
+            <br />
+            <br />
+            My favorite color is purple. That's how the name of my website
+            appeared.
+            <br />
+            <br />
+            I started learnig programming in September 2022 and here is my first
+            full-scale project.
+            <br />
+            <br />
+            I am looking forward to working in your team and I am eager to be
+            challenged in order to grow and further improve my developer skills.
             </p>
             <a href="#projects" class="btn btn-about-1">Projects</a>
             <a href="#skills" class="btn btn-about-2">Skills</a>
@@ -35,6 +39,7 @@
             <article class="section-2-text section-2">
                 <h2>A bit about me</h2>
                 <p>
+
                     Working in web development has always been my dream. First
                     my curiosity made me discover the world of digital illustration and
                     design. It was a logical path taking into account that I liked
@@ -256,4 +261,4 @@
         </article>
         <!-- end of single item -->
     </section>
-</x-layout>
+</x-page-layout>
