@@ -13,16 +13,30 @@
             </div>
             <div class="section-6-form section-6-flex">
                 <h3>contact me</h3>
-                <form>
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                <form method="POST" action="{{ route('contact.us.store') }}" id="contactUSForm">
+                    {{ csrf_field() }}
                     <div class="form-group">
-                        <!-- inputs -->
-                        <p class="form-text-intro">Name</p>
+                        @error('name')
+                            <div class="alert alert-danger text-red-500">{{ $message }}</div>
+                        @enderror
+                        <label class="form-text-intro">Name</label>
                         <input type="text" placeholder="Your name" class="form-control" name="name" />
-                        <p class="form-text-intro">Email</p>
+                        @error('email')
+                            <p class="text-red-500 bottom-2">{{ $message }}</p>
+                        @enderror
+                        <label class="form-text-intro">Email</label>
                         <input type="email" placeholder="How can I contact you?" class="form-control"
                             name="email" />
-                        <p class="form-text-intro">I need help with...</p>
-                        <textarea name="message" placeholder="How can I help you?" class="form-control" rows="5"></textarea>
+                        @error('message')
+                            <div class="alert alert-danger text-red-500">{{ $message }}</div>
+                        @enderror
+                        <label class="form-text-intro">I need help with...</label>
+                        <textarea type="text" name="message" placeholder="How can I help you?" class="form-control" rows="5"></textarea>
                     </div>
                     <!-- button -->
                     <button type="submit" class="classic-button">send</button>
