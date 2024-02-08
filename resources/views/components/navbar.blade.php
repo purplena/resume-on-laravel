@@ -13,7 +13,7 @@
             <ul class="nav-links" id="nav-links">
                 <li>
                     @auth
-                        <a href="/admin" class="nav-link scroll-link">{{ auth()->user()->name }}</a>
+                        <a href="{{ route('admin') }}" class="nav-link scroll-link">{{ auth()->user()->name }}</a>
                     @endauth
                 </li>
                 <li>
