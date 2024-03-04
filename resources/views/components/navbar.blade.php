@@ -4,7 +4,9 @@
         <div class="nav-center">
             <div class="nav-header">
                 <div class="flex flex-rox gap-4 justify-center items-center">
-                    <i id="nav-logo" class="fa-solid fa-house text-[20px]" style="color: #a855f7;"></i>
+                    <a href="/">
+                        <i id="nav-logo" class="fa-solid fa-house text-[20px]" style="color: #a855f7;"></i>
+                    </a>
                     @include('components/language_switcher')
                 </div>
                 <button type="button" class="nav-toggle" id="nav-toggle">

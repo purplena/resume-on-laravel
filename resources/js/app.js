@@ -57,3 +57,24 @@ navLogo.addEventListener("click", (e) => {
         behavior: "smooth",
     });
 });
+
+// Language switcher
+const languageSwitchDiv = document.getElementById("language-switch");
+const hiddenLanguageDivs = document.querySelectorAll(".hidden-language");
+
+languageSwitchDiv.addEventListener("click", (e) => {
+    hiddenLanguageDivs.forEach((div) => {
+        div.classList.toggle("hidden");
+    });
+});
+
+document.addEventListener("click", function (event) {
+    if (
+        event.target !== languageSwitchDiv &&
+        !languageSwitchDiv.contains(event.target)
+    ) {
+        hiddenLanguageDivs.forEach((div) => {
+            div.classList.add("hidden");
+        });
+    }
+});
