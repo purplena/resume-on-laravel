@@ -8,4 +8,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    css: {
+        postCss: {
+            plugins: {
+                tailwindcss: {},
+                autoprefixer: {},
+            },
+        },
+    },
 });

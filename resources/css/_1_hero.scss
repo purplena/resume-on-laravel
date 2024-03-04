@@ -3,70 +3,70 @@
 /* ====================== */
 
 .about-section {
-  margin-bottom: 3rem;
-  margin-top: 62px;
+    margin-bottom: 3rem;
+    margin-top: 62px;
 
-  .hero-img-container {
-    .hero-img {
-      max-height: 100vh;
-      max-width: 100vw;
-      object-fit: cover;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 62px;
-      padding: 0 1rem;
-    }
-  }
-
-  .about-container {
-    max-width: 100vw;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 4rem 1rem;
-
-    h1 {
-      padding-bottom: 1.25rem;
-      font-size: 2rem;
+    .hero-img-container {
+        .hero-img {
+            max-height: 100vh;
+            max-width: 100vw;
+            object-fit: contain;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 62px;
+            padding: 0 1rem;
+        }
     }
 
-    p {
-      padding-bottom: 2.5rem;
-      text-align: justify;
+    .about-container {
+        max-width: 100vw;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 4rem 1rem;
+
+        h1 {
+            padding-bottom: 1.25rem;
+            font-size: 2rem;
+        }
+
+        p {
+            padding-bottom: 2.5rem;
+            text-align: justify;
+        }
     }
-  }
 }
 
 .btn-about-1,
 .btn-about-2 {
-  margin-right: 1.25rem;
+    margin-right: 1.25rem;
 }
 
 // Media queries
 @media screen and (min-width: 768px) {
-  .about-section {
-    display: flex;
-    max-width: 1152px;
-    /* justify-content: space-between; */
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-  }
+    .about-section {
+        display: flex;
+        max-width: 1152px;
+        /* justify-content: space-between; */
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+    }
 
-  .section-1 {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: calc(50% - 3rem);
-  }
+    .section-1 {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: calc(50% - 3rem);
+    }
 
-  .about-container {
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    align-self: center;
-    /* max-width: 50%; */
-  }
+    .about-container {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        align-self: center;
+        /* max-width: 50%; */
+    }
 
-  .about-container p {
-    max-width: 90%;
-  }
+    .about-container p {
+        max-width: 90%;
+    }
 }

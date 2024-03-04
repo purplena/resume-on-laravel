@@ -1,3 +1,4 @@
+import "../css/main.scss";
 import "./bootstrap";
 
 const c = console.log.bind(document);
@@ -49,9 +50,7 @@ scrollLinks.forEach((link) => {
 
 // ********** smooth scroll on home logo (back to top) ************
 const navLogo = document.getElementById("nav-logo");
-
 navLogo.addEventListener("click", (e) => {
-    return;
     window.scrollTo({
         left: 0,
         top: 0,
