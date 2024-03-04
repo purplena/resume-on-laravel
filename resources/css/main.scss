@@ -9,7 +9,6 @@
 @import "3_watercolor";
 @import "4_skills";
 @import "5_projects";
-@import "6_contact";
 @import "7_admin";
 @import "footer";
 
@@ -48,7 +47,6 @@ h4 {
     letter-spacing: $spacing;
     text-transform: capitalize;
     line-height: 1.25;
-    margin-bottom: 0.75rem;
     color: $clr-primary-5;
 }
 

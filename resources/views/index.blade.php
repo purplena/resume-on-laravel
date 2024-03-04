@@ -10,23 +10,21 @@
         <div class="about-container section-1">
             <h1>Hi, I'm Lena</h1>
             <p>
-            <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
-            @include('components/language_switcher')
-            {{ __('home.welcome') }}
-            <br />
-            I am a junior web developper full-stack.
-            <br />
-            <br />
-            My favorite color is purple. That's how the name of my website
-            appeared.
-            <br />
-            <br />
-            I started learnig programming in September 2022 and here is my first
-            full-scale project.
-            <br />
-            <br />
-            I am looking forward to working in your team and I am eager to be
-            challenged in order to grow and further improve my developer skills.
+                {{ __('home.welcome') }}
+                <br />
+                I am a junior web developper full-stack.
+                <br />
+                <br />
+                My favorite color is purple. That's how the name of my website
+                appeared.
+                <br />
+                <br />
+                I started learnig programming in September 2022 and here is my first
+                full-scale project.
+                <br />
+                <br />
+                I am looking forward to working in your team and I am eager to be
+                challenged in order to grow and further improve my developer skills.
             </p>
             <a href="#projects" class="btn btn-about-1">Projects</a>
             <a href="#skills" class="btn btn-about-2">Skills</a>

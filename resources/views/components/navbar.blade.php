@@ -3,13 +3,17 @@
     <nav class="navbar">
         <div class="nav-center">
             <div class="nav-header">
-                <img src="./images/logo1.png" alt="logo" class="nav-logo" id="nav-logo" />
+                <div class="flex flex-rox gap-4 justify-center items-center">
+                    <i id="nav-logo" class="fa-solid fa-house text-[20px]" style="color: #a855f7;"></i>
+                    @include('components/language_switcher')
+                </div>
                 <button type="button" class="nav-toggle" id="nav-toggle">
                     <i class="fas fa-bars menu-closed"></i>
                     <i class="fa-solid fa-x menu-open"></i>
                 </button>
             </div>
             <!-- end of nav header -->
+
             <ul class="nav-links" id="nav-links">
                 <li>
                     @auth
