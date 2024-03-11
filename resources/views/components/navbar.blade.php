@@ -1,21 +1,13 @@
 <header id="home">
-    <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar bg-main-500 rounded-3xl px-6 py-4" id="navbar">
         <div class="nav-center">
-            <div class="nav-header">
-                <div class="flex flex-rox gap-4 justify-center items-center">
-                    <a href="/">
-                        <i id="nav-logo" class="fa-solid fa-house text-[20px]" style="color: #a855f7;"></i>
-                    </a>
-                    @include('components/language_switcher')
-                </div>
+            <div class="nav-header flex flex-row justify-between">
+                @include('components/language_switcher')
                 <button type="button" class="nav-toggle" id="nav-toggle">
                     <i class="fas fa-bars menu-closed"></i>
                     <i class="fa-solid fa-x menu-open"></i>
                 </button>
             </div>
-            <!-- end of nav header -->
-
             <ul class="nav-links" id="nav-links">
                 <li>
                     @auth
@@ -23,18 +15,20 @@
                     @endauth
                 </li>
                 <li>
-                    <a href="/" class="nav-link scroll-link">home</a>
+                    <a href="{{ route('home') }}"
+                        class="nav-link scroll-link {{ request()->routeIs('home') ? 'text-egg' : '' }}">home</a>
                 </li>
                 <li>
-                    <a href="/gallery" class="nav-link scroll-link">gallery</a>
+                    <a href="{{ route('gallery') }}"
+                        class="nav-link scroll-link {{ request()->routeIs('gallery') ? 'text-egg' : '' }}">gallery</a>
                 </li>
                 <li>
-                    <a href="/contact" class="nav-link scroll-link">contact</a>
+                    <a href="{{ route('contact') }}"
+                        class="nav-link scroll-link {{ request()->routeIs('contact') ? 'text-egg' : '' }}">contact</a>
                 </li>
-
             </ul>
-            <!-- end of nav links -->
         </div>
     </nav>
-    <!-- End of Navbar -->
+
+
 </header>
