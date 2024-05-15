@@ -1,14 +1,11 @@
 import "../css/main.scss";
 import "./bootstrap";
+// Swiper
+import Swiper from "swiper/bundle";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-// ********** set date ************
-// select span
-var date = document.getElementById("date");
-if (date) {
-    date.innerHTML = new Date().getFullYear();
-}
-
-// ********** nav toggle ************
 // select button and links
 const navBtn = document.getElementById("nav-toggle");
 const links = document.getElementById("nav-links");
@@ -27,12 +24,7 @@ document.addEventListener("click", function (event) {
     }
 });
 
-// Swiper
-import Swiper from "swiper/bundle";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
+//Swiper
 let swiper = new Swiper(".mySwiper", {
     slidesPerView: 2,
     loop: true,
@@ -62,3 +54,66 @@ function updateSwiperConfig() {
 updateSwiperConfig();
 // Event listener for window resize
 window.addEventListener("resize", updateSwiperConfig);
+
+document
+    .getElementById("contactUSForm")
+    .addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        console.log("here");
+
+        let formData = new FormData(this); // Create a FormData object
+        console.log(formData.get("email"));
+
+        fetch("contact-us", {
+            method: "POST",
+            body: formData,
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    // Check if the response was successful
+                    return response.json().then((errors) => {
+                        console.error("Validation Errors:", errors);
+                        // Handle the errors appropriately
+                    });
+                }
+                return response.json(); // Process the successful response
+            })
+            .catch((error) => console.error("Fetch Error:", error));
+        // .then((response) => {
+        //     console.log(response);
+        //     if (!response.ok) {
+        //         // Check if the response was successful
+        //         throw new Error("Network response was not ok");
+        //     }
+        //     return response.json(); // Parse the response as JSON
+        // })
+        // .then((data) => {
+        //     if ("errors" in data) {
+        //         // Check if there are validation errors
+        //         // Display validation errors
+        //         Object.entries(data.errors).forEach(([key, values]) => {
+        //             // Assuming you have a way to target the input field associated with the error
+        //             document
+        //                 .querySelector(`#${key}`)
+        //                 .classList.add("is-invalid"); // Add your custom error styling
+        //             document
+        //                 .querySelector(`#${key}`)
+        //                 .insertAdjacentHTML(
+        //                     "afterend",
+        //                     `<div class="invalid-feedback">${values[0]}</div>`
+        //                 ); // Display the error message
+        //         });
+        //     } else {
+        //         // Handle success case
+        //         alert("Success!");
+        //         // Optionally clear the form after success
+        //         this.reset();
+        //     }
+        // })
+        // .catch((error) => {
+        //     console.error(
+        //         "There has been a problem with your fetch operation:",
+        //         error
+        //     );
+        // });
+    });
