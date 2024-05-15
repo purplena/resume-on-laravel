@@ -64,9 +64,22 @@ document
         let formData = new FormData(this); // Create a FormData object
         console.log(formData.get("email"));
 
+        const object = {};
+        formData.forEach((value, key) => {
+            object[key] = value;
+        });
+        const json = JSON.stringify(object);
+
         fetch("contact-us", {
             method: "POST",
-            body: formData,
+            body: json,
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document.querySelector(
+                    'meta[name="csrf-token"]'
+                ),
+            },
+            credentials: "same-origin",
         })
             .then((response) => {
                 if (!response.ok) {
