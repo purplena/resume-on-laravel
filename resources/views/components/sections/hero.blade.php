@@ -1,28 +1,26 @@
 <section class="mb-12 px-4 max-w-maxScreenWidth sm:flex sm:items-end sm:mx-auto sm:px-0">
     <div>
-        <img src="./images/photo-of-me-purple-small.png" alt="image of Lena" class="max-h-heroImage" />
+        <img src="{{ asset('storage/photo-of-me-purple-small.png') }}" alt="image of Lena" class="max-h-heroImage" />
     </div>
     <div>
-        <h1 class="text-h1 mb-4 mt-4 sm:mt-0">Hi, I'm Lena</h1>
+        <h1 class="text-h1 mb-4 mt-4 sm:mt-0">{{ __('hero.welcome') }}</h1>
         <div class="flex flex-col gap-2 mb-4">
             <p>
-                {{ __('home.welcome') }}
-                I am a junior full-stack web developper.
+                {{ __('hero.p1') }}
             </p>
             <p>
-                My favorite color is purple. That's how the name of my website
-                appeared.
+                {{ __('hero.p2') }}
             </p>
             <p>
-                I started learnig programming in September 2022 and I have never stopped since then.
+                {{ __('hero.p3') }}
             </p>
             <p>
-                Let's work together?
+                {{ __('hero.p4') }}
             </p>
         </div>
         <div class="flex flex-row gap-4">
-            <x-button-href text="projects" />
-            <x-button-href text="skills" />
+            <x-button-href text="{{ __('button.projects') }}" />
+            <x-button-href text="{{ __('button.skills') }}" />
         </div>
     </div>
 </section>

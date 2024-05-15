@@ -1,3 +1,9 @@
 {
-    "home.welcome": "Welcome to our website"
+    "hero.welcome": "Hi, I'm Lena",
+    "hero.p1": "I am a junior full-stack web developper",
+    "hero.p2": "My favorite color is purple. That's how the name of my website appeared.",
+    "hero.p3": "I started learning programming in September 2022 and I have never stopped since then.",
+    "hero.p4": "Let's work together?",
+    "button.projects": "projects",
+    "button.skills": "skills"
 }

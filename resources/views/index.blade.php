@@ -4,9 +4,12 @@
         <x-sections.hero />
         <!-- Section 2 About section -->
         <x-sections.about />
+        {{-- Section 3 Projects --}}
+        <x-sections.projects />
+
 
         <!-- Projects Section - Section 5 -->
-        <section class="section-5 mb-12 px-4 py-12" id="projects">
+        {{-- <section class="section-5 mb-12 px-4 py-12" id="projects">
             <h2 class="text-h3 mb-4">My projects</h2>
             <!-- single item -->
             <article class="project-1-container">
@@ -43,6 +46,6 @@
                 <a href="https://www.tasks.purplena.dev/" target="_blank" class="btn">visit me</a>
             </article>
             <!-- end of single item -->
-        </section>
+        </section> --}}
     </div>
 </x-page-layout>

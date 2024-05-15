@@ -1,4 +1,4 @@
-<section class="bg-main-200 rounded-3xl mb-12 px-4 py-12">
+<section class="bg-main-200 rounded-3xl px-4 py-12">
     <div class="max-w-maxScreenWidth mx-auto">
         <div class="flex flex-row justify-between">
             <h2 class="text-h3 mb-4">A bit about me</h2>

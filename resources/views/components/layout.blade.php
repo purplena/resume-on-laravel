@@ -24,7 +24,6 @@
     {{-- <x-flash /> --}}
 
     {{-- <x-footer /> --}}
-
     <script src="./js/app.js"></script>
     @push('scripts')
         <script src="./js/app.js"></script>
