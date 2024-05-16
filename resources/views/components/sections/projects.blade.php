@@ -17,30 +17,5 @@
                 <div class="swiper-button-next"></div>
             </div>
         </div>
-
-
-        {{-- YouTube tuto --}}
-        {{-- <div class="slide-container">
-            <div class="slide-content">
-                <div class="card-wrapper">
-                    <div class="card">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="{{ asset('storage/projects/vending-machine.png') }}" alt=""
-                                    class="card-img grayscale ">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="name">David Dell</h2>
-                            <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni,
-                                natus!
-                            </p>
-                            <button class="button">View More</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
     </div>
 </section>

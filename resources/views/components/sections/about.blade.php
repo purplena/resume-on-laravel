@@ -1,46 +1,60 @@
 <section class="bg-main-200 rounded-3xl px-4 py-12">
     <div class="max-w-maxScreenWidth mx-auto">
-        <div class="flex flex-row justify-between">
-            <h2 class="text-h3 mb-4">A bit about me</h2>
-            <p class="text-right">
-                <span class="text-main-700 font-bold">Curiosity</span> is my tool<br>
-                <span class="text-main-700 font-bold">New knowledge</span> is my passion
-            </p>
+        <div class="flex flex-row justify-between mb-4">
+            <h2 class="text-h3 ">{{ __('about') }}</h2>
+            <div class="text-right">
+                @if (App::isLocale('en'))
+                    <p><span class="text-main-700 font-bold">Curiosity</span> is my tool</p>
+                    <p><span class="text-main-700 font-bold">New knowledge</span> is my passion</p>
+                @elseif (App::isLocale('fr'))
+                    <p>J'ai toujours près de moi mes cinq fidèles amis</p>
+                    <p>C'est à eux que je dois tout ce que j'ai appris</p>
+                    <p>Leurs
+                        noms sont <span class="text-main-700 font-bold">Quand</span>, <span
+                            class="text-main-700 font-bold">Où</span>, <span class="text-main-700 font-bold">Quoi</span>,
+                        <span class="text-main-700 font-bold">Comment</span> et <span
+                            class="text-main-700 font-bold">Qui</span>
+                    </p>
+                @endif
+            </div>
         </div>
         <div class="bg-main-400 h-[1px] mb-4"></div>
         <div class="flex flex-col gap-2 md:grid md:grid-cols-3">
-            <x-sections.components.about-section header="education" icon="fa-solid fa-graduation-cap about-section-icon">
+            <x-sections.components.about-section header="{{ __('about.education') }}"
+                icon="fa-solid fa-graduation-cap about-section-icon">
                 <p class="text-center">
-                    <span class="font-bold text-[16px]">Masters of International Relations</span></br>
-                    National Research Nuclear University MEPhI</br>
-                    Year of graduation: 2015</br>
-                    Location: Moscow, Russia
+                    <span class="font-bold text-[16px]">{{ __('about.degree.1') }}</span></br>
+                    {{ __('about.education.university.1') }}</br>
+                    {{ __('about.graduation.year') }}: 2015</br>
+                    {{ __('about.location.1') }}
                 </p>
                 <p class="text-center">
-                    <span class="font-bold text-[16px]">Web and Mobile Development</span></br>
-                    École Supérieure des Métiers créatifs et numériques</br>
-                    Year of graduation: 2024</br>
-                    Location: Perpignan, France
+                    <span class="font-bold text-[16px]">{{ __('about.degree.2') }}</span></br>
+                    {{ __('about.education.university.2') }}</br>
+                    {{ __('about.graduation.year') }}: 2024</br>
+                    {{ __('about.location.2') }}
                 </p>
             </x-sections.components.about-section>
 
-            <x-sections.components.about-section header="work experience"
+            <x-sections.components.about-section header="{{ __('about.work') }}"
                 icon="fa-solid fa-briefcase about-section-icon">
-                <p class="text-center">
-                    <span class="font-bold text-[16px]">Sales Capability, PepsiCo</span></br>
-                    Huge professional boost</br>
-                    Deep knowledge of FMCG business</br>
-                    Excellent organizational and communication skills</br>
-                    2013-2019
-                </p>
-                <p class="text-center">
-                    <span class="font-bold text-[16px]">Freelance, Web Development</span></br>
-                    Constant work on my technical skills</br>
-                    2023-2024
-                </p>
+                <div>
+                    <p class="text-center font-bold text-[16px]">Sales Capability, PepsiCo</p>
+                    <p class="text-center">{{ __('about.work.pepsi.1') }}</p>
+                    <p class="text-center">{{ __('about.work.pepsi.2') }}</p>
+                    <p class="text-center">{{ __('about.work.pepsi.3') }}</p>
+                    <p class="text-center">2013-2019</p>
+                </div>
+
+                <div>
+                    <p class="text-center font-bold text-[16px]">{{ __('about.work.web.1') }}</p>
+                    <p class="text-center">{{ __('about.work.web.2') }}</p>
+                    <p class="text-center">2023++</p>
+                </div>
             </x-sections.components.about-section>
 
-            <x-sections.components.about-section header="IT Skills" icon="fa-solid fa-code about-section-icon">
+            <x-sections.components.about-section header="{{ __('about.ITskills') }}"
+                icon="fa-solid fa-code about-section-icon">
                 <div class="flex flex-col items-center">
                     <p class="font-bold text-[16px]">
                         Full-Stack
