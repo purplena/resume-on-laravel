@@ -1,6 +1,6 @@
 import "../css/main.scss";
 import "./bootstrap";
-import { swiper } from "./swiper";
+import swiper from "./swiper";
 
 // ********** set date ************
 // select span
@@ -27,3 +27,5 @@ document.addEventListener("click", function (event) {
         navBtn.classList.remove("open");
     }
 });
+
+swiper();
