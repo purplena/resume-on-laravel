@@ -4,6 +4,17 @@
     "hero.p2": "My favorite color is purple. That's how the name of my website appeared.",
     "hero.p3": "I started learning programming in September 2022 and I have never stopped since then.",
     "hero.p4": "Let's work together?",
+    "contact.h2": "Let's Work Together",
+    "contact.p1": "Whether you are looking to make a website for your company, build your brand identity, or want to discuss your web strategy, I am here to help you.",
+    "contact.p2": "Use this form or email me at",
+    "contact.contact.me": "Contact Me",
+    "contact.label.name": "Name",
+    "contact.label.email": "Email",
+    "contact.label.message": "How can I help you?",
+    "contact.input.name": "Your name",
+    "contact.input.email": "Your email",
+    "contact.input.message": "Your message",
     "button.projects": "projects",
-    "button.skills": "skills"
+    "button.skills": "skills",
+    "button.send": "send"
 }

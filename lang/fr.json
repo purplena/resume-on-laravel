@@ -4,6 +4,17 @@
     "hero.p2": "Ma couleur préférée est le purple. C'est ainsi qu'est apparu le nom de mon site Internet.",
     "hero.p3": "J'ai commencé à apprendre la programmation en septembre 2022 et je n'ai jamais arrêté depuis.",
     "hero.p4": "Travaillons ensemble?",
+    "contact.h2": "Travaillons ensemble",
+    "contact.p1": "Voulez-vous créer un site web pour votre entreprise, construire votre identité en ligne ou discuter votre stratégie web, je suis là pour vous aider.",
+    "contact.p2": "Utilisez ce formulaire ou envoyez-moi un email à",
+    "contact.contact.me": "Contactez moi",
+    "contact.label.name": "Nom",
+    "contact.label.email": "Email",
+    "contact.label.message": "Comment puis-je vous aider?",
+    "contact.input.name": "Votre nom",
+    "contact.input.email": "Votre adresse email",
+    "contact.input.message": "Votre message",
     "button.projects": "projets",
-    "button.skills": "compétences"
+    "button.skills": "compétences",
+    "button.send": "envoyer"
 }

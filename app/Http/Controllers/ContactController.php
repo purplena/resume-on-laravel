@@ -4,53 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
-    public function index()
-    {
-        return view('contact');
-    }
-
     public function store(Request $request)
     {
-        try {
-            $request->validate([
-                'name' => 'required',
-                'email' => 'required|email',
-                'message' => 'required|max:500',
-            ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required|max:300',
+        ]);
 
-            Contact::create($request->all());
-
-            return redirect()
-                ->back()
-                ->with([
-                    'success' => 'Thank you for contacting me See ya!',
-                ]);
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            // Return a JSON response with the validation errors
-            // dd($e->validator->failed());
-            // dd($e->errors());
-
-            return response()->json([
-                'errors' => $e->errors(),
-            ], 422);
-        }
-    }
-
+        //To discuss with you
         // $request->validate([
         //     'name' => 'required',
         //     'email' => 'required|email',
         //     'message' => 'required|max:500',
         // ]);
 
-        // Contact::create($request->all());
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'error' => $validator->errors()], 422);
+        }
 
-        // return redirect()
-        //     ->back()
-        //     ->with([
-        //         'success' => 'Thank you for contacting me! See ya!',
-        //     ]);
-    // }
+        Contact::create($request->all());
+
+        return response()->json(['success' => true, 'message' => __('custom.contact-form-success')], 200);
+    }
 }

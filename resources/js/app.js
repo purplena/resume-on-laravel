@@ -55,78 +55,54 @@ updateSwiperConfig();
 // Event listener for window resize
 window.addEventListener("resize", updateSwiperConfig);
 
-document
-    .getElementById("contactUSForm")
-    .addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent the default form submission
-        console.log("here");
+const contactForm = document.getElementById("contactUSForm");
+const inputs = [
+    document.getElementById("name"),
+    document.getElementById("email"),
+    document.getElementById("message"),
+];
 
-        let formData = new FormData(this); // Create a FormData object
-        console.log(formData.get("email"));
-
-        const object = {};
-        formData.forEach((value, key) => {
-            object[key] = value;
-        });
-        const json = JSON.stringify(object);
-
-        fetch("contact-us", {
-            method: "POST",
-            body: json,
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document.querySelector(
-                    'meta[name="csrf-token"]'
-                ),
-            },
-            credentials: "same-origin",
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    // Check if the response was successful
-                    return response.json().then((errors) => {
-                        console.error("Validation Errors:", errors);
-                        // Handle the errors appropriately
-                    });
-                }
-                return response.json(); // Process the successful response
-            })
-            .catch((error) => console.error("Fetch Error:", error));
-        // .then((response) => {
-        //     console.log(response);
-        //     if (!response.ok) {
-        //         // Check if the response was successful
-        //         throw new Error("Network response was not ok");
-        //     }
-        //     return response.json(); // Parse the response as JSON
-        // })
-        // .then((data) => {
-        //     if ("errors" in data) {
-        //         // Check if there are validation errors
-        //         // Display validation errors
-        //         Object.entries(data.errors).forEach(([key, values]) => {
-        //             // Assuming you have a way to target the input field associated with the error
-        //             document
-        //                 .querySelector(`#${key}`)
-        //                 .classList.add("is-invalid"); // Add your custom error styling
-        //             document
-        //                 .querySelector(`#${key}`)
-        //                 .insertAdjacentHTML(
-        //                     "afterend",
-        //                     `<div class="invalid-feedback">${values[0]}</div>`
-        //                 ); // Display the error message
-        //         });
-        //     } else {
-        //         // Handle success case
-        //         alert("Success!");
-        //         // Optionally clear the form after success
-        //         this.reset();
-        //     }
-        // })
-        // .catch((error) => {
-        //     console.error(
-        //         "There has been a problem with your fetch operation:",
-        //         error
-        //     );
-        // });
+contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    Array.from(document.querySelectorAll("[data-inputName]")).forEach(
+        (errorDiv) => {
+            errorDiv.innerHTML = "";
+            errorDiv.classList.remove("text-red-500");
+        }
+    );
+    inputs.forEach((input) => {
+        input.classList.remove("ring-rose-500");
     });
+
+    const formData = new FormData(this);
+
+    axios
+        .post("/contact-us", formData)
+        .then((response) => {
+            if (response.status === 200 && response.data.success) {
+                console.log(response.data);
+                const successDiv = document.getElementById("success-message");
+                successDiv.innerHTML = `<span class="alert alert-success">${response.data.message}</span>`;
+                inputs.forEach((input) => {
+                    input.value = "";
+                });
+            }
+        })
+        .catch((error) => {
+            if (error.response && error.response.data) {
+                Object.entries(error.response.data.error).forEach(
+                    ([key, message]) => {
+                        const errorDiv = document.querySelector(
+                            `[data-inputName="${key}"]`
+                        );
+                        const targetInput = document.getElementById(`${key}`);
+                        errorDiv.innerHTML = `<span class="text-red-500">${message}</span>`;
+                        errorDiv.classList.add("text-red-500");
+                        targetInput.classList.add("ring-rose-500");
+                    }
+                );
+            } else {
+                console.error("Error response is missing:", error);
+            }
+        });
+});

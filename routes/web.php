@@ -31,7 +31,6 @@ Route::fallback(function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
-Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('contact-us', [ContactController::class, 'store'])->name('contact.us.store');
 Route::get('login', [SessionsController::class, 'login']);
 Route::post('sessions', [SessionsController::class, 'store']);
