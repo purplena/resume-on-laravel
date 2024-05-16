@@ -1,3 +1,25 @@
 {
-    "home.welcome": "Bienvenue sur notre site !"
+    "hero.welcome": "Salut, je m'appelle Lena",
+    "hero.p1": "Je suis une développeuse web junior full-stack",
+    "hero.p2": "Ma couleur préférée est le purple. C'est ainsi qu'est apparu le nom de mon site Internet.",
+    "hero.p3": "J'ai commencé à apprendre la programmation en septembre 2022 et je n'ai jamais arrêté depuis.",
+    "hero.p4": "Travaillons ensemble?",
+    "about": "Qui suis-je?",
+    "about.education": "éducation",
+    "about.degree.1": "Relations Internationales (Master)",
+    "about.education.university.1": "Université Nationale de Recherche Nucléaire MEPhI",
+    "about.graduation.year": "Année d'obtention du diplôme",
+    "about.location.1": "Moscou, Russie",
+    "about.degree.2": "Développement Web et Mobile",
+    "about.education.university.2": "École Supérieure des Métiers créatifs et numériques l'IDEM",
+    "about.location.2": "Perpignan, France",
+    "about.work": "expérience professionnelle",
+    "about.work.pepsi.1": "Expérience professionnelle incroyable",
+    "about.work.pepsi.2": "Connaissance approfondie du FMCG business",
+    "about.work.pepsi.3": "Excellentes compétences organisationnelles et de communication",
+    "about.work.web.1": "Freelance, Développement Web",
+    "about.work.web.2": "Travail constant sur mes compétences techniques",
+    "about.ITskills": "Compétences informatiques",
+    "button.projects": "projets",
+    "button.skills": "compétences"
 }

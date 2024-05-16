@@ -4,10 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap");
 @import "config";
 @import "navbar";
-@import "1_hero";
-@import "2_about";
 @import "3_watercolor";
-@import "4_skills";
 @import "5_projects";
 @import "7_admin";
 @import "footer";
@@ -20,7 +17,6 @@
 
 /* Global styles */
 img:not(.nav-logo) {
-    width: 100%;
     display: block;
 }
 

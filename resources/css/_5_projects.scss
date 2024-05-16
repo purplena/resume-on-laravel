@@ -1,110 +1,91 @@
 /* Projects section - Section 5 */
 
 .section-5 {
-    max-width: 100vw;
-    margin-left: auto;
-    margin-right: auto;
-    background: $clr-primary-10;
-    padding-bottom: 5rem;
+    img.grayscale:hover {
+        filter: none;
+        -webkit-filter: grayscale(0%);
+    }
 
-    h1 {
-        padding-top: 4rem;
-        margin-bottom: 2rem;
+    .swiper-container-main {
+        max-width: 1180px;
+        padding-left: 4rem;
+        padding-right: 4rem;
+        width: 100%;
+    }
+
+    .swiper-container-secondary {
+        width: 100%;
+        height: 350px;
+        position: relative;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        background-image: none;
+        background-repeat: no-repeat;
+        background-color: theme("colors.main-500");
+        background-size: 100% auto;
+        background-position: center;
+        padding: 1.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .swiper-button-next {
+        right: -4rem;
+    }
+
+    .swiper-button-prev {
+        left: -4rem;
+    }
+    .swiper-button-prev::before,
+    .swiper-button-next::before {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: #fff;
+    }
+
+    .swiper-button-prev::before {
+        content: "\f060";
+    }
+
+    .swiper-button-next::before {
+        content: "\f061";
+    }
+
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        display: none;
+    }
+
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+        background-color: theme("colors.main-700");
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+        padding-bottom: 2rem;
+    }
+
+    .swiper-slide {
+        border-radius: 1.5rem;
         text-align: center;
-    }
-
-    .project-1-container {
-        background: rgb(242, 242, 242);
-        text-align: center;
-        max-width: 1152px;
-        padding: 3rem 2rem;
-        margin-left: auto;
-        margin-right: auto;
-        padding-bottom: 1rem;
-
-        .project-text {
-            h3 {
-                margin-bottom: 2rem;
-            }
-
-            p {
-                // padding-left: 3rem;
-                // padding-right: 3rem;
-                padding-bottom: 1rem;
-                line-height: 2;
-                text-align: justify;
-            }
-
-            .btn-section-5 {
-                margin-bottom: 2rem;
-
-                &:hover {
-                    transform: scale(1.1);
-                }
-            }
-        }
-
-        a {
-            display: inline-block;
-            position: relative;
-            margin-bottom: 2rem;
-            transition: $transition;
-
-            &:hover img {
-                opacity: 0.5;
-                transform: scale(1.03);
-            }
-
-            &:hover .project-icon {
-                opacity: 1;
-            }
-
-            img {
-                width: 200px;
-                object-fit: contain;
-                transition: $transition;
-                transition: $transition;
-            }
-
-            .project-icon {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 2rem;
-                color: $clr-primary-5;
-                opacity: 0;
-                transition: $transition;
-            }
-        }
-    }
-
-    .projects-image-container {
-    }
-}
-
-@media screen and (min-width: 500px) {
-    .projects-image-container {
-        display: flex;
-        gap: 1rem;
+        /* Center slide text vertically */
+        display: flex !important;
+        align-items: center;
         justify-content: center;
     }
-}
 
-@media screen and (min-width: 900px) {
-    .section-5 .project-1-container {
-        // padding: 4rem;
-        // padding-bottom: 3rem;
-        // gap: 3rem;
+    .swiper-pagination {
+        bottom: 10px;
     }
 
-    .project-text h3 {
-        padding-left: 0;
-    }
-
-    .project-1-flex-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 3rem;
+    .swiper-pagination-bullet {
+        background-color: theme("colors.main-500");
     }
 }
