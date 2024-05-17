@@ -1,6 +1,7 @@
 import "../css/main.scss";
 import "./bootstrap";
 import swiper from "./swiper";
+import "./smoothScroll";
 import "./contactFormValidation";
 
 swiper();

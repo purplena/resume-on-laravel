@@ -5,10 +5,6 @@
             <p>
                 {{ __('contact.p1') }}
             </p>
-            <p>
-                {{ __('contact.p2') }}
-                <span class="text-main-600 font-bold hover:text-main-700">elena.molano14@gmail.com</span>
-            </p>
         </div>
         <div class="w-full md:w-1/2  bg-egg drop-shadow-sm hover:drop-shadow-lg px-8 py-6 rounded-3xl">
             <h2 class="text-h3">{{ __('contact.contact.me') }}</h2>
@@ -55,6 +51,9 @@
             </form>
             <div id="overlay"
                 class="hidden absolute inset-0 bg-black bg-opacity-10 transition-opacity duration-300 ease-in-out rounded-3xl">
+                <div class="flex justify-center items-center h-full ">
+                    <span class="loader"></span>
+                </div>
             </div>
         </div>
 </section>

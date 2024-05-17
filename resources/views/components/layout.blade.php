@@ -16,7 +16,11 @@
 </head>
 
 <body class="h-full">
+    <button id="backToTopBtn" class="hidden fixed top-20 left-1/2 z-10" style="transform: translateX(-50%, -50%);">
+        <i class="fa-solid fa-chevron-up text-[32px]" id="chevronUpIcon"></i>
+    </button>
     {{ $slot }}
+
     <script src="./js/app.js"></script>
     @push('scripts')
         <script src="./js/app.js"></script>

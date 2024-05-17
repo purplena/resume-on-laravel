@@ -15,7 +15,7 @@
                     @endauth
                 </li>
                 <li>
-                    <a href="{{ route('home') }}"
+                    <a href="{{ route('home') }}" id="scrollToHomeBtn"
                         class="nav-link scroll-link {{ request()->routeIs('home') ? 'text-egg' : '' }}">home</a>
                 </li>
                 <li>
