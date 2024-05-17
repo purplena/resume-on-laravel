@@ -32,5 +32,6 @@
     "contact.input.message": "Votre message",
     "button.projects": "projets",
     "button.skills": "compétences",
-    "button.send": "envoyer"
+    "button.send": "envoyer",
+    "contact-form-success": "Merci de m'avoir contacté!"
 }
