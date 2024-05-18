@@ -16,8 +16,8 @@
 </head>
 
 <body class="h-full">
-    <button id="backToTopBtn" class="hidden fixed top-20 left-1/2 z-10" style="transform: translateX(-50%, -50%);">
-        <i class="fa-solid fa-chevron-up text-[32px]" id="chevronUpIcon"></i>
+    <button id="back-to-top-btn" class="hidden fixed top-20 left-1/2 z-10" style="transform: translate(-50%, -50%);">
+        <i class="fa-solid fa-chevron-up text-[32px] p-5" id="chevron-up-icon"></i>
     </button>
     {{ $slot }}
 

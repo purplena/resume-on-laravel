@@ -1,9 +1,6 @@
-const homeSection = document.getElementById("home");
-const contactSection = document.getElementById("contact");
-const projectsSection = document.getElementById("projects");
-const scrollToContactBtn = document.getElementById("scrollToContactBtn");
-const scrollToProjectsBtn = document.getElementById("scrollToProjectsBtn");
-const backToTopArrow = document.getElementById("backToTopBtn");
+const scrollToContactBtn = document.getElementById("scroll-to-contact-btn");
+const scrollToProjectsBtn = document.getElementById("scroll-to-projects-btn");
+const backToTopArrow = document.getElementById("back-to-top-btn");
 
 function smoothScroll(button, section, offsetValue) {
     const targetPosition = section.offsetTop - offsetValue;
@@ -17,8 +14,6 @@ function smoothScroll(button, section, offsetValue) {
 
 function checkScrollPosition() {
     const scrollPos = window.scrollY || document.documentElement.scrollTop;
-    console.log(backToTopArrow.classList.contains("hidden"));
-
     if (scrollPos >= 300 && backToTopArrow.classList.contains("hidden")) {
         backToTopArrow.classList.remove("hidden");
     } else if (
@@ -33,6 +28,6 @@ function checkScrollPosition() {
 checkScrollPosition();
 window.addEventListener("scroll", checkScrollPosition);
 
-smoothScroll(backToTopArrow, homeSection, 68);
-smoothScroll(scrollToContactBtn, contactSection, 75);
-smoothScroll(scrollToProjectsBtn, projectsSection, 50);
+smoothScroll(backToTopArrow, document.getElementById("home"), 68);
+smoothScroll(scrollToContactBtn, document.getElementById("contact"), 68);
+smoothScroll(scrollToProjectsBtn, document.getElementById("projects"), 68);

@@ -16,10 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteErrorMessages(document.querySelectorAll("[data-inputName]"));
         deleteRedErrorRing(inputs);
         successDiv.innerHTML = "";
-        const formData = new FormData(this);
 
         axios
-            .post("/contact-us", formData)
+            .post("/contact-us", new FormData(this))
             .then((response) => {
                 if (response.status === 200 && response.data.success) {
                     successDiv.innerHTML = `<span class="alert alert-success">${response.data.message}</span>`;

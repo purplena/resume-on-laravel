@@ -1,4 +1,4 @@
-<section class="w-full bg-main-200 rounded-3xl px-4 py-12 mt-navbarMargin" id="contact">
+<section class="w-full bg-main-200 rounded-3xl px-4 py-12" id="contact">
     <div class="md:flex md:gap-x-8 max-w-5xl mr-auto ml-auto">
         <div class="w-full md:w-1/2 flex flex-col gap-2 mb-4 md:mb-0">
             <h1 class="text-h1 mb-4">{{ __('contact.h2') }}</h1>
