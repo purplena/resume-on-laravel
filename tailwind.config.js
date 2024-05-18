@@ -21,6 +21,8 @@ export default {
                 heroImage: "400px",
             },
             colors: {
+                white: "#fefefe",
+                black: "#222",
                 egg: "#FDF8EE",
                 "main-100": "#efecf2",
                 "main-200": "#e0dae5",

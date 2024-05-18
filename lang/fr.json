@@ -20,6 +20,17 @@
     "about.work.web.1": "Freelance, Développement Web",
     "about.work.web.2": "Travail constant sur mes compétences techniques",
     "about.ITskills": "Compétences informatiques",
+    "contact.h2": "Travaillons ensemble",
+    "contact.p1": "Voulez-vous créer un site web pour votre entreprise, construire votre identité en ligne ou discuter votre stratégie web? Je suis là pour vous aider!",
+    "contact.contact.me": "Contactez moi",
+    "contact.label.name": "Nom",
+    "contact.label.email": "Email",
+    "contact.label.message": "Comment puis-je vous aider?",
+    "contact.input.name": "Votre nom",
+    "contact.input.email": "Votre adresse email",
+    "contact.input.message": "Votre message",
     "button.projects": "projets",
-    "button.skills": "compétences"
+    "button.contact": "me contacter",
+    "button.send": "envoyer",
+    "contact-form-success": "Merci de m'avoir contacté!"
 }

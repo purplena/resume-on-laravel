@@ -2,30 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContactRequest;
 use App\Models\Contact;
-use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function index()
+    public function store(StoreContactRequest $request)
     {
-        return view('contact');
-    }
+        Contact::create($request->only(['name', 'email', 'message']));
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'message' => 'required|max:500',
-        ]);
-
-        Contact::create($request->all());
-
-        return redirect()
-            ->back()
-            ->with([
-                'success' => 'Thank you for contacting me! See ya!',
-            ]);
+        return response()->json(['success' => true, 'message' => __('contact-form-success')], 200);
     }
 }

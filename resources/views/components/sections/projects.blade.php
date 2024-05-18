@@ -1,4 +1,4 @@
-<section class="mb-12 px-4 py-12 section-5">
+<section class="px-4 py-12 section-5" id="projects">
     <div class="max-w-maxScreenWidth mx-auto">
         <h2 class="text-h3 mb-4">My projects</h2>
         <div class="swiper-container-main">

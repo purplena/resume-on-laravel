@@ -22,10 +22,6 @@
                     <a href="{{ route('gallery') }}"
                         class="nav-link scroll-link {{ request()->routeIs('gallery') ? 'text-egg' : '' }}">gallery</a>
                 </li>
-                <li>
-                    <a href="{{ route('contact') }}"
-                        class="nav-link scroll-link {{ request()->routeIs('contact') ? 'text-egg' : '' }}">contact</a>
-                </li>
             </ul>
         </div>
     </nav>

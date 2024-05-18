@@ -22,53 +22,57 @@
         <div class="flex flex-col gap-2 md:grid md:grid-cols-3">
             <x-sections.components.about-section header="{{ __('about.education') }}"
                 icon="fa-solid fa-graduation-cap about-section-icon">
-                <p class="text-center">
-                    <span class="font-bold text-[16px]">{{ __('about.degree.1') }}</span></br>
-                    {{ __('about.education.university.1') }}</br>
-                    {{ __('about.graduation.year') }}: 2015</br>
-                    {{ __('about.location.1') }}
-                </p>
-                <p class="text-center">
-                    <span class="font-bold text-[16px]">{{ __('about.degree.2') }}</span></br>
-                    {{ __('about.education.university.2') }}</br>
-                    {{ __('about.graduation.year') }}: 2024</br>
-                    {{ __('about.location.2') }}
-                </p>
+                <div>
+                    <p class="text-center leading-5"><span
+                            class="font-bold text-[16px]">{{ __('about.degree.1') }}</span></p>
+                    <p class="text-center leading-5">{{ __('about.education.university.1') }}</p>
+                    <p class="text-center leading-5">{{ __('about.graduation.year') }}: 2015</p>
+                    <p class="text-center leading-5">{{ __('about.location.1') }}</p>
+                </div>
+
+                <div>
+                    <p class="text-center leading-5"><span
+                            class="font-bold text-[16px]">{{ __('about.degree.1') }}</span></p>
+                    <p class="text-center leading-5">{{ __('about.education.university.1') }}</p>
+                    <p class="text-center leading-5">{{ __('about.graduation.year') }}: 2015</p>
+                    <p class="text-center leading-5">{{ __('about.location.2') }}</p>
+                </div>
+
             </x-sections.components.about-section>
 
             <x-sections.components.about-section header="{{ __('about.work') }}"
                 icon="fa-solid fa-briefcase about-section-icon">
                 <div>
-                    <p class="text-center font-bold text-[16px]">Sales Capability, PepsiCo</p>
-                    <p class="text-center">{{ __('about.work.pepsi.1') }}</p>
-                    <p class="text-center">{{ __('about.work.pepsi.2') }}</p>
-                    <p class="text-center">{{ __('about.work.pepsi.3') }}</p>
-                    <p class="text-center">2013-2019</p>
+                    <p class="text-center font-bold text-[16px] leading-5">Sales Capability, PepsiCo</p>
+                    <p class="text-center leading-5">{{ __('about.work.pepsi.1') }}</p>
+                    <p class="text-center leading-5">{{ __('about.work.pepsi.2') }}</p>
+                    <p class="text-center leading-5">{{ __('about.work.pepsi.3') }}</p>
+                    <p class="text-center leading-5">2013-2019</p>
                 </div>
 
                 <div>
-                    <p class="text-center font-bold text-[16px]">{{ __('about.work.web.1') }}</p>
-                    <p class="text-center">{{ __('about.work.web.2') }}</p>
-                    <p class="text-center">2023++</p>
+                    <p class="text-center font-bold text-[16px] leading-5">{{ __('about.work.web.1') }}</p>
+                    <p class="text-center leading-5">{{ __('about.work.web.2') }}</p>
+                    <p class="text-center leading-5">2023++</p>
                 </div>
             </x-sections.components.about-section>
 
             <x-sections.components.about-section header="{{ __('about.ITskills') }}"
                 icon="fa-solid fa-code about-section-icon">
                 <div class="flex flex-col items-center">
-                    <p class="font-bold text-[16px]">
+                    <p class="font-bold text-[16px] leading-5">
                         Full-Stack
                     </p>
-                    <p>HTML/CSS/SASS</p>
-                    <p>Bootstrap/Tailwind/MUI</p>
-                    <p>Javascript</p>
-                    <p>React.js</p>
-                    <p>PHP & OOP</p>
-                    <p>Laravel</p>
-                    <p>Symfony</p>
-                    <p>MySQL</p>
-                    <p>Github & Git Version Control</p>
-                    <p>Figma</p>
+                    <p class="leading-5">HTML/CSS/SASS</p>
+                    <p class="leading-5">Bootstrap/Tailwind/MUI</p>
+                    <p class="leading-5">Javascript</p>
+                    <p class="leading-5">React.js</p>
+                    <p class="leading-5">PHP & OOP</p>
+                    <p class="leading-5">Laravel</p>
+                    <p class="leading-5">Symfony</p>
+                    <p class="leading-5">MySQL</p>
+                    <p class="leading-5">Github & Git Version Control</p>
+                    <p class="leading-5">Figma</p>
                 </div>
             </x-sections.components.about-section>
         </div>
