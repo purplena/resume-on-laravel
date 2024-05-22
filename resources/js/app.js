@@ -4,30 +4,36 @@ import swiper from "./swiper";
 import "./smoothScroll";
 import "./contactFormValidation";
 
-swiper();
-
 // ********** set date ************
-// select span
 var date = document.getElementById("date");
 if (date) {
     date.innerHTML = new Date().getFullYear();
 }
 
 // ********** nav toggle ************
-// select button and links
-const navBtn = document.getElementById("nav-toggle");
-const links = document.getElementById("nav-links");
 const navbarEl = document.getElementById("navbar");
+const navToggle = document.querySelector(".nav-toggle");
+const linksContainer = document.querySelector(".links-container");
+const links = document.querySelector(".links");
 
-navBtn.addEventListener("click", () => {
-    links.classList.toggle("show-links");
-    navBtn.classList.toggle("open");
-});
-
-//close menu on click outside
-document.addEventListener("click", function (event) {
-    if (event.target !== navbarEl && !navbarEl.contains(event.target)) {
-        links.classList.remove("show-links");
-        navBtn.classList.remove("open");
+navToggle.addEventListener("click", function () {
+    const containerHeight = linksContainer.getBoundingClientRect().height;
+    const linksHeight = links.getBoundingClientRect().height;
+    if (containerHeight === 0) {
+        linksContainer.style.height = `${linksHeight}px`;
+        navToggle.classList.add("open");
+    } else {
+        linksContainer.style.height = 0;
+        navToggle.classList.remove("open");
     }
 });
+
+// ********** close menu on click outside ************
+document.addEventListener("click", function (event) {
+    if (event.target !== navbarEl && !navbarEl.contains(event.target)) {
+        linksContainer.style.height = 0;
+        navToggle.classList.remove("open");
+    }
+});
+
+swiper();

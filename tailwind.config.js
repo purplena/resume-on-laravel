@@ -12,7 +12,7 @@ export default {
         },
         extend: {
             spacing: {
-                navbarMargin: "68px",
+                navbarMargin: "60px",
             },
             maxWidth: {
                 maxScreenWidth: "1024px",

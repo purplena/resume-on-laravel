@@ -1,9 +1,22 @@
 const scrollToContactBtn = document.getElementById("scroll-to-contact-btn");
 const scrollToProjectsBtn = document.getElementById("scroll-to-projects-btn");
 const backToTopArrow = document.getElementById("back-to-top-btn");
+const navbar = document.getElementById("navbar");
 
-function smoothScroll(button, section, offsetValue) {
-    const targetPosition = section.offsetTop - offsetValue;
+const navbarHeight = document
+    .getElementById("navbar")
+    .getBoundingClientRect().height;
+const gapTopWindowNavbarInPxl = window
+    .getComputedStyle(navbar)
+    .getPropertyValue("top");
+
+const gapTopWindowNavbarInt = parseInt(
+    gapTopWindowNavbarInPxl.substring(0, gapTopWindowNavbarInPxl.length - 2)
+);
+const gapFromTop = navbarHeight + gapTopWindowNavbarInt;
+
+function smoothScroll(button, section) {
+    const targetPosition = section.offsetTop - gapFromTop;
     button.addEventListener("click", function () {
         window.scrollTo({
             top: targetPosition,
@@ -28,6 +41,6 @@ function checkScrollPosition() {
 checkScrollPosition();
 window.addEventListener("scroll", checkScrollPosition);
 
-smoothScroll(backToTopArrow, document.getElementById("home"), 68);
-smoothScroll(scrollToContactBtn, document.getElementById("contact"), 68);
-smoothScroll(scrollToProjectsBtn, document.getElementById("projects"), 68);
+smoothScroll(backToTopArrow, document.getElementById("home"));
+smoothScroll(scrollToContactBtn, document.getElementById("contact"));
+smoothScroll(scrollToProjectsBtn, document.getElementById("projects"));

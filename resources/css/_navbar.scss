@@ -1,6 +1,6 @@
 .navbar {
     position: fixed;
-    top: 0.5rem;
+    top: 8px;
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 2rem);
@@ -52,18 +52,31 @@
         color: theme("colors.egg");
     }
 
-    .nav-links {
-        display: none;
+    .links {
+        display: flex;
+        flex-direction: column;
     }
 
-    .show-links {
-        display: block;
+    .links-container {
+        height: 0;
+        overflow: hidden;
+        transition: all 0.3s linear;
     }
 
     @media screen and (min-width: 768px) {
         // hide toggle button
         .nav-toggle {
             display: none;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .links-container {
+            height: auto !important;
         }
 
         .nav-center {
