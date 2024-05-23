@@ -1,4 +1,4 @@
-<section class="mb-12 px-4 max-w-maxScreenWidth sm:flex sm:items-center sm:mx-auto" id="home">
+<section class="mb-12 pt-12 px-4 max-w-maxScreenWidth sm:flex sm:items-center sm:mx-auto" id="home">
     <div>
         <img src="{{ asset('storage/photo-of-me-purple-small.png') }}" alt="image of Lena" class="max-h-heroImage" />
     </div>

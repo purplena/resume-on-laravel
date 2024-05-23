@@ -28,7 +28,15 @@ function checkScrollPosition() {
 
 // Show/hide the button based on scroll position
 checkScrollPosition();
-window.addEventListener("scroll", checkScrollPosition);
+
+// ********** paralax ************
+const js = document.getElementById("js");
+window.addEventListener("scroll", function () {
+    checkScrollPosition();
+
+    const value = window.scrollY;
+    js.style.left = value * 0.5 + "px";
+});
 
 smoothScroll(backToTopArrow, document.getElementById("home"));
 smoothScroll(
