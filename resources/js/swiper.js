@@ -4,8 +4,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function () {
-    let swiper = new Swiper(".mySwiper", {
+let swiper;
+
+export default function initSwiper() {
+    swiper = new Swiper(".mySwiper", {
         slidesPerView: 2,
         loop: true,
         spaceBetween: 30,
@@ -19,19 +21,19 @@ export default function () {
             prevEl: ".swiper-button-prev",
         },
     });
-
-    updateSwiperConfig(swiper);
-    // Event listener for window resize
-    window.addEventListener("resize", updateSwiperConfig);
 }
 
-// Update Swiper config based on window size
-function updateSwiperConfig(swiper) {
-    if (window.innerWidth <= 768) {
-        swiper.params.slidesPerView = 1;
-        swiper.update();
-    } else {
-        swiper.params.slidesPerView = 2;
-        swiper.update();
-    }
+// update Swiper config based on window size
+function updateSwiperConfig() {
+    const newSize = window.innerWidth <= 768 ? 1 : 2;
+    // Destroy the current swiper instance
+    swiper.destroy(true, true);
+    // Re-initialize swiper with the new configuration
+    initSwiper();
+    // Adjust slidesPerView based on the new window size
+    swiper.params.slidesPerView = newSize;
+    swiper.update();
 }
+
+initSwiper();
+window.addEventListener("resize", updateSwiperConfig);

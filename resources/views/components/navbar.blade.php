@@ -8,21 +8,26 @@
                     <i class="fa-solid fa-x menu-open"></i>
                 </button>
             </div>
-            <ul class="nav-links" id="nav-links">
-                <li>
-                    @auth
-                        <a href="{{ route('admin') }}" class="nav-link scroll-link">{{ auth()->user()->name }}</a>
-                    @endauth
-                </li>
-                <li>
-                    <a href="{{ route('home') }}"
-                        class="nav-link scroll-link {{ request()->routeIs('home') ? 'text-egg' : '' }}">home</a>
-                </li>
-                <li>
-                    <a href="{{ route('gallery') }}"
-                        class="nav-link scroll-link {{ request()->routeIs('gallery') ? 'text-egg' : '' }}">gallery</a>
-                </li>
-            </ul>
+            <div class="links-container">
+                <ul class="links" id="nav-links">
+                    <li>
+                        @auth
+                            <a href="{{ route('admin') }}" class="nav-link scroll-link">{{ auth()->user()->name }}</a>
+                        @endauth
+                    </li>
+                    <li>
+                        <a href="{{ route('home') }}"
+                            class="nav-link scroll-link {{ request()->routeIs('home') ? 'text-egg' : '' }}">home</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('gallery') }}"
+                            class="nav-link scroll-link {{ request()->routeIs('gallery') ? 'text-egg' : '' }}">gallery</a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-link scroll-link">Blog</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 

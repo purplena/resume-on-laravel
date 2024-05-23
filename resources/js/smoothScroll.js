@@ -1,9 +1,11 @@
-const scrollToContactBtn = document.getElementById("scroll-to-contact-btn");
-const scrollToProjectsBtn = document.getElementById("scroll-to-projects-btn");
 const backToTopArrow = document.getElementById("back-to-top-btn");
+const navbarHeight = document
+    .getElementById("navbar")
+    .getBoundingClientRect().height;
+const navbarOffsetTop = navbar.offsetTop;
 
-function smoothScroll(button, section, offsetValue) {
-    const targetPosition = section.offsetTop - offsetValue;
+function smoothScroll(button, section) {
+    const targetPosition = section.offsetTop - (navbarHeight + navbarOffsetTop);
     button.addEventListener("click", function () {
         window.scrollTo({
             top: targetPosition,
@@ -28,6 +30,12 @@ function checkScrollPosition() {
 checkScrollPosition();
 window.addEventListener("scroll", checkScrollPosition);
 
-smoothScroll(backToTopArrow, document.getElementById("home"), 68);
-smoothScroll(scrollToContactBtn, document.getElementById("contact"), 68);
-smoothScroll(scrollToProjectsBtn, document.getElementById("projects"), 68);
+smoothScroll(backToTopArrow, document.getElementById("home"));
+smoothScroll(
+    document.getElementById("scroll-to-contact-btn"),
+    document.getElementById("contact")
+);
+smoothScroll(
+    document.getElementById("scroll-to-projects-btn"),
+    document.getElementById("projects")
+);
