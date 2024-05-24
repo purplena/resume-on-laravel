@@ -38,5 +38,6 @@
                     id="scroll-to-contact-btn">{{ __('button.contact') }}</button>
             </div>
         </div>
+
     </div>
 </section>
