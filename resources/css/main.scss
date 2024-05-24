@@ -72,3 +72,13 @@ h4 {
 .login-section {
     margin-top: 8rem;
 }
+
+.parallax-section {
+    height: calc(90vh - theme("spacing.navbarMargin"));
+}
+
+@media screen and (min-width: 668px) {
+    .parallax-section {
+        height: calc(100vh - theme("spacing.navbarMargin"));
+    }
+}
