@@ -33,9 +33,6 @@ checkScrollPosition();
 const js = document.getElementById("js");
 window.addEventListener("scroll", function () {
     checkScrollPosition();
-
-    const value = window.scrollY;
-    js.style.left = value * 0.5 + "px";
 });
 
 smoothScroll(backToTopArrow, document.getElementById("home"));
