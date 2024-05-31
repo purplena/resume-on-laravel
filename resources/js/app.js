@@ -36,19 +36,29 @@ document.addEventListener("click", function (event) {
     }
 });
 
-const js = document.getElementById("js");
-const parallaxSection = document.getElementById("parallax");
+// const js = document.getElementById("js");
+// const parallaxSection = document.getElementById("parallax");
 
-parallaxSection.addEventListener("mousemove", function (event) {
-    const rect = parallaxSection.getBoundingClientRect();
-    const x = event.clientX - rect.left; // x position within the element.
-    const y = event.clientY - rect.top; // y position within the element.
+// parallaxSection.addEventListener("mousemove", function (event) {
+//     const rect = parallaxSection.getBoundingClientRect();
+//     const x = event.clientX - rect.left; // x position within the element.
+//     const y = event.clientY - rect.top; // y position within the element.
 
-    // Calculate the percentage of the screen covered by the mouse.
-    const percentX = (x / rect.width) * 100;
-    const percentY = (y / rect.height) * 100;
+//     // Calculate the percentage of the screen covered by the mouse.
+//     const percentX = (x / rect.width) * 100;
+//     const percentY = (y / rect.height) * 100;
 
-    js.style.transform = `translate(${percentX}%, ${percentY}%)`;
+//     js.style.transform = `translate(${percentX}%, ${percentY}%)`;
+// });
+
+window.addEventListener("load", function () {
+    // Select the element you want to animate
+    var element = document.querySelector("#wordpress");
+
+    // Add the animation with a delay of 5 seconds
+    setTimeout(function () {
+        element.style.animationPlayState = "running";
+    }, 5000); // 5000 milliseconds = 5 seconds
 });
 
 swiper();

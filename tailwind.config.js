@@ -2,6 +2,13 @@
 export default {
     content: ["./resources/views/**/*.blade.php", "./resources/js/**/*.js"],
     theme: {
+        screens: {
+            xs: "400px",
+            sm: "640px",
+            md: "768px",
+            lg: "1024px",
+            xl: "1280px",
+        },
         fontSize: {
             h1: "2rem",
             h2: "1.75rem",

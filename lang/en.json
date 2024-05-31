@@ -1,5 +1,5 @@
 {
-    "hero.welcome": "Hi, I'm Lena",
+    "hero.welcome": "I'm Lena",
     "hero.p1": "I am a junior full-stack web developper",
     "hero.p2": "My favorite color is purple. That's how the name of my website appeared.",
     "hero.p3": "I started learning programming in September 2022 and I have never stopped since then.",
@@ -30,7 +30,7 @@
     "contact.input.email": "Your email",
     "contact.input.message": "Your message",
     "button.projects": "projects",
-    "button.contact": "contact me",
+    "button.contact": "contact",
     "button.send": "send",
     "contact-form-success": "Thank you for contacting me! See ya!"
 }
