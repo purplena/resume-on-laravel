@@ -144,9 +144,15 @@ h4 {
     }
 }
 
-.hero-buttons-container {
+.transform-translate-50-left {
     left: 50%;
     transform: translateX(-50%);
+}
+
+.transform-translate-50-left-top {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 // .projects-button {
@@ -229,7 +235,7 @@ h4 {
         box-shadow: 0 0 0 0 rgba(var(--R), var(--G), var(--B), 1);
     }
     70% {
-        box-shadow: 0 0 0 200px rgba(var(--R), var(--G), var(--B), 0);
+        box-shadow: 0 0 0 100px rgba(var(--R), var(--G), var(--B), 0);
     }
     100% {
         box-shadow: 0 0 0 0 rgba(var(--R), var(--G), var(--B), 0);

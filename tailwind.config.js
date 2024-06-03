@@ -23,9 +23,8 @@ export default {
             },
             maxWidth: {
                 maxScreenWidth: "1024px",
-            },
-            maxHeight: {
-                heroImage: "400px",
+                heroImage: "300px",
+                heroParagraph: "600px",
             },
             colors: {
                 white: "#fefefe",
