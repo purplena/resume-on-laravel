@@ -2,14 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap");
-@import "config";
-@import "navbar";
-@import "loader";
-@import "chevronUpAnimation";
-@import "3_watercolor";
-@import "5_projects";
-@import "7_admin";
-@import "footer";
+@import "swiper";
+@import "animations";
 
 * {
     margin: 0;
@@ -17,13 +11,19 @@
     box-sizing: border-box;
 }
 
-/* Global styles */
-img:not(.nav-logo) {
-    display: block;
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: theme("fontFamily.headers");
+    color: theme("colors.main-900");
+    letter-spacing: 0.25rem;
+    text-transform: capitalize;
 }
 
 body {
-    font-family: $ff-primary;
+    font-family: theme("fontFamily.body");
     background: theme("colors.white");
     color: theme("colors.black");
     line-height: 1.25;
@@ -33,280 +33,7 @@ body {
 ul {
     list-style-type: none;
 }
+
 a {
     text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    font-family: $ff-header;
-    letter-spacing: $spacing;
-    text-transform: capitalize;
-    color: theme("colors.main-900");
-}
-
-.btn {
-    text-transform: uppercase;
-    // background: $clr-primary-5;
-    color: theme("colors.white");
-    padding: 0.7rem 1.25rem;
-    display: inline-block;
-    transition: $transition;
-    font-size: 0.875rem;
-    font-family: $ff-primary;
-    font-weight: 400;
-    border: 2px solid transparent;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    width: 112px;
-    text-align: center;
-
-    &:hover {
-        background: $clr-primary-7;
-        scale: 1.1;
-    }
-}
-
-.login-section {
-    margin-top: 8rem;
-}
-
-.parallax-section {
-    height: calc(90vh - theme("spacing.navbarMargin"));
-}
-
-@media screen and (min-width: 668px) {
-    .parallax-section {
-        height: calc(100vh - theme("spacing.navbarMargin"));
-    }
-}
-
-#js {
-    animation: wiggle 2s linear infinite;
-}
-
-#bootstrap {
-    animation: wiggle 5s linear infinite;
-}
-
-#css {
-    animation: animation2 2s ease-in-out infinite;
-}
-
-#wordpress {
-    animation-name: rotate;
-    animation-duration: 5s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-play-state: paused;
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes wiggle {
-    0%,
-    7% {
-        transform: rotateZ(0);
-    }
-    15% {
-        transform: rotateZ(-15deg);
-    }
-    20% {
-        transform: rotateZ(10deg);
-    }
-    25% {
-        transform: rotateZ(-10deg);
-    }
-    30% {
-        transform: rotateZ(6deg);
-    }
-    35% {
-        transform: rotateZ(-4deg);
-    }
-    40%,
-    100% {
-        transform: rotateZ(0);
-    }
-}
-
-@keyframes animation2 {
-    50% {
-        transform: translateY(20px);
-    }
-}
-
-.transform-translate-50-left {
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.transform-translate-50-left-top {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-// .projects-button {
-//     text-transform: uppercase;
-//     padding: 13px 50px 13px;
-//     outline: 0;
-//     border: 1px solid theme("colors.main-500");
-//     border-radius: 1.5rem;
-//     color: theme("colors.white");
-//     cursor: pointer;
-//     position: relative;
-//     background-color: rgba(0, 0, 0, 0);
-// }
-
-// .projects-button::after {
-//     content: "";
-//     background-color: theme("colors.main-500");
-//     border: 1px solid theme("colors.main-500");
-//     width: 100%;
-//     z-index: -1;
-//     position: absolute;
-//     height: 100%;
-//     top: 7px;
-//     left: 7px;
-//     transition: 0.2s;
-//     border-radius: 1.5rem;
-// }
-
-// .projects-button:hover::after {
-//     top: 0px;
-//     left: 0px;
-// }
-
-@keyframes circle {
-    0% {
-        width: 150px;
-        height: 150px;
-    }
-    50% {
-        width: 550px;
-        height: 550px;
-    }
-    100% {
-        width: 150px;
-        height: 150px;
-    }
-}
-.circle {
-    // margin: 0 auto;
-    width: 150px;
-    height: 150px;
-    border: 10px solid theme("colors.main-200");
-    border-radius: 50%;
-    position: absolute;
-    z-index: -5;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.one {
-    animation: circle 6s infinite ease-in-out;
-}
-.two {
-    animation: circle 8s infinite ease-in-out;
-}
-// .three {
-//     animation: circle 4s infinite ease-in-out;
-// }
-
-.pulse-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -10;
-}
-
-@keyframes simple-pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(var(--R), var(--G), var(--B), 1);
-    }
-    70% {
-        box-shadow: 0 0 0 100px rgba(var(--R), var(--G), var(--B), 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(var(--R), var(--G), var(--B), 0);
-    }
-}
-
-.pulse {
-    position: relative;
-    border: 0;
-    height: 190px;
-    width: 190px;
-    background: rgba(var(--R), var(--G), var(--B), 1);
-    border-radius: 50%;
-    cursor: pointer;
-
-    // &:hover,
-    // &:focus {
-    //     animation-duration: 5s !important;
-    // }
-
-    /* Makes the tappable area bigger */
-    &::before {
-        content: "";
-        position: absolute;
-        top: -16px;
-        right: -16px;
-        bottom: -16px;
-        left: -16px;
-    }
-
-    &::-moz-focus-inner {
-        border: 0;
-        padding: 0;
-    }
-
-    /* Effect 1 */
-    // &.double {
-    //     --R: 50;
-    //     --G: 150;
-    //     --B: 255;
-
-    //     animation: double-pulse 1.5s linear infinite;
-    // }
-
-    /* Effect 2 */
-    &.simple {
-        //       --R: 253;
-        // --G: 248;
-        // --B: 238;
-        --R: 224;
-        --G: 218;
-        --B: 229;
-
-        animation: simple-pulse 3s linear infinite;
-    }
-
-    /* Effect 3 */
-    // &.smoky {
-    //     --R: 80;
-    //     --G: 225;
-    //     --B: 145;
-
-    //     background: rgba(var(--R), var(--G), var(--B), 1);
-    //     animation: simple-smoky-pulse 1.5s linear infinite;
-    // }
-
-    /* Effect 4 */
-    // &.back {
-    //     --R: 255;
-    //     --G: 139; //157
-    //     --B: 61; // 92
-    //     animation: pulse-back 1.5s linear infinite;
-    // }
 }
