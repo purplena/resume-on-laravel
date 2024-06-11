@@ -11,7 +11,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- SCSS & JavaScript -->
     @vite(['resources/css/main.scss', 'resources/js/app.js'])
-    @stack('scripts')
+    <!-- @stack('scripts') -->
     <title>Elena Molano</title>
 </head>
 
@@ -23,11 +23,6 @@
     </div>
 
     {{ $slot }}
-
-    <script src="./js/app.js"></script>
-    @push('scripts')
-        <script src="./js/app.js"></script>
-    @endpush
 </body>
 
 </html>

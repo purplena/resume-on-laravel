@@ -1,17 +1,8 @@
-/* Projects section - Section 5 */
-
-.section-5 {
-    img.grayscale:hover {
-        filter: none;
-        -webkit-filter: grayscale(0%);
-    }
-
-    .swiper-container-main {
-        max-width: 1180px;
-        padding-left: 4rem;
-        padding-right: 4rem;
-        width: 100%;
-    }
+.swiper-container-main {
+    // max-width: 1180px;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    width: 100%;
 
     .swiper-container-secondary {
         width: 100%;
@@ -75,7 +66,6 @@
     .swiper-slide {
         border-radius: 1.5rem;
         text-align: center;
-        /* Center slide text vertically */
         display: flex !important;
         align-items: center;
         justify-content: center;
@@ -87,59 +77,5 @@
 
     .swiper-pagination-bullet {
         background-color: theme("colors.main-500");
-    }
-
-    .image-content {
-        row-gap: 5px;
-        position: relative;
-    }
-
-    .overlay {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        left: 0;
-        right: 0;
-        background: red;
-        border-radius: 25px 25px 0 25px;
-    }
-
-    .overlay::before,
-    .overlay::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: -40px;
-        height: 40px;
-        width: 40px;
-        background-color: red;
-    }
-
-    .overlay::after {
-        border-radius: 0 25px 0 0;
-        background-color: pink;
-    }
-    .button {
-        margin: 14px;
-    }
-
-    .card-image .card-img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 4px solid red;
-    }
-
-    .name {
-        font-size: 18px;
-        font-weight: 500;
-        color: #333;
-    }
-
-    .description {
-        font-size: 14px;
-        color: #707070;
-        text-align: center;
     }
 }
