@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('admin', function (User $user) {
             return $user->username === 'admin';
         });
-        view()->composer('components.language_switcher', function ($view) {
+        view()->composer('components.sections.components.language-switcher', function ($view) {
             $view->with('current_locale', app()->getLocale());
             $view->with('available_locales', config('app.available_locales'));
         });

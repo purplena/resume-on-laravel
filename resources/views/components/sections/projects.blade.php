@@ -15,15 +15,15 @@
             </div>
     
             {{-- Swiper --}}
-            <div class="swiper-container-main md:col-span-2">
-                <div class="swiper-container-secondary">
-                    <div class="swiper mySwiper">
+            <div class="swiper-container-main md:col-span-2 px-16">
+                <div class="h-[350px] relative">
+                    <div class="swiper mySwiper w-full h-full !pb-8">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide slide_1 bg-main-400 ">Slide 1</div>
-                            <div class="swiper-slide slide_2 bg-egg ">Slide 2</div>
-                            <div class="swiper-slide slide_3 bg-main-300 ">Slide 3</div>
-                            <div class="swiper-slide slide_4 bg-pink-active">Slide 4</div>
-                            <div class="swiper-slide slide_5 bg-pink-pastel ">Slide 5</div>
+                            <div class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-main-400 ">Slide 1</div>
+                            <div class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-egg ">Slide 2</div>
+                            <div class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-main-300 ">Slide 3</div>
+                            <div class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-pink-active">Slide 4</div>
+                            <div class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-pink-pastel ">Slide 5</div>
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>

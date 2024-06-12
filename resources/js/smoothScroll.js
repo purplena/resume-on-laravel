@@ -1,11 +1,12 @@
 const backToTopArrow = document.getElementById("back-to-top-btn");
-const navbarHeight = document
-    .getElementById("navbar")
-    .getBoundingClientRect().height;
+const navbar = document.getElementById("navbar");
+const navbarHeight = navbar.getBoundingClientRect().height;
 const navbarOffsetTop = navbar.offsetTop;
 
 function smoothScroll(button, section) {
     const targetPosition = section.offsetTop - (navbarHeight + navbarOffsetTop);
+    if (!button) return;
+
     button.addEventListener("click", function () {
         window.scrollTo({
             top: targetPosition,
@@ -27,20 +28,17 @@ function checkScrollPosition() {
 }
 
 // Show/hide the button based on scroll position
-checkScrollPosition();
+window.addEventListener("scroll", checkScrollPosition);
 
-// ********** paralax ************
-const js = document.getElementById("js");
-window.addEventListener("scroll", function () {
-    checkScrollPosition();
-});
+function ifElementExists(selectorButton, selectorSection) {
+    const button = document.getElementById(selectorButton);
+    const section = document.getElementById(selectorSection);
 
-smoothScroll(backToTopArrow, document.getElementById("home"));
-smoothScroll(
-    document.getElementById("scroll-to-contact-btn"),
-    document.getElementById("contact")
-);
-smoothScroll(
-    document.getElementById("scroll-to-projects-btn"),
-    document.getElementById("projects")
-);
+    if (button && section) {
+        smoothScroll(button, section);
+    }
+}
+
+ifElementExists("back-to-top-btn", "home");
+ifElementExists("scroll-to-contact-btn", "contact");
+ifElementExists("scroll-to-projects-btn", "projects");
