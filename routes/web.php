@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
@@ -31,6 +32,7 @@ Route::fallback(function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');;
 Route::post('contact-us', [ContactController::class, 'store'])->name('contact.us.store');
 Route::get('login', [SessionsController::class, 'login']);
 Route::post('sessions', [SessionsController::class, 'store']);

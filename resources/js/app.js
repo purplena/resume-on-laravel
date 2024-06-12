@@ -1,8 +1,8 @@
 import "../css/main.scss";
-import "./bootstrap";
+import "./bootstrap.js";
 import swiper from "./swiper.js";
-import "./smoothScroll";
-import "./contactFormValidation";
+import "./smoothScroll.js";
+import "./contactFormValidation.js";
 
 // ********** set date ************
 var date = document.getElementById("date");

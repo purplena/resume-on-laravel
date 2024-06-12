@@ -9,6 +9,8 @@ const overlay = document.getElementById("overlay");
 const btn = document.querySelector("#submitButton");
 
 document.addEventListener("DOMContentLoaded", function () {
+    if (!contactForm) return;
+
     contactForm.addEventListener("submit", function (event) {
         event.preventDefault();
         btn.disabled = true;

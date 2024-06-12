@@ -6,7 +6,8 @@
             </div>
             <img src="{{ url('/images/photo-bg-empty.png') }}" alt="image of Lena" class="w-[100%] max-w-heroImage" />
             <div class="w-full flex flex-row justify-center gap-4 absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                <x-sections.components.social-icon-links />
+                <x-sections.components.social-icon-links href="https://github.com/purplena" icon="fa-github" />
+                <x-sections.components.social-icon-links href="https://www.linkedin.com/in/elena-khramova-4a800b84/" icon="fa-linkedin" />
             </div>
         </div>
         <div class="flex flex-col">
