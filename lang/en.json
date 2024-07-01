@@ -32,5 +32,9 @@
     "button.projects": "projects",
     "button.contact": "contact",
     "button.send": "send",
-    "contact-form-success": "Thank you for contacting me! See ya!"
+    "contact-form-success": "Thank you for contacting me! See ya!",
+    "form.label.email": "E-mail",
+    "form.input.email": "Your email",
+    "form.label.password": "Password",
+    "form.input.password": "Your password"
 }
