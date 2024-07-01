@@ -17,6 +17,10 @@ class AdminController extends Controller
         );
     }
 
+    public function photos() {
+        return view ('admin.photos');
+    }
+
     public function create()
     {
         return view('admin.create');

@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('admin', function (User $user) {
-            return $user->username === 'admin';
+            return $user->name === 'admin';
         });
         view()->composer('components.sections.components.language-switcher', function ($view) {
             $view->with('current_locale', app()->getLocale());
