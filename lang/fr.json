@@ -27,10 +27,14 @@
     "contact.label.email": "Email",
     "contact.label.message": "Comment puis-je vous aider?",
     "contact.input.name": "Votre nom",
-    "contact.input.email": "Votre adresse email",
+    "contact.input.email": "Votre adresse mail",
     "contact.input.message": "Votre message",
     "button.projects": "projets",
     "button.contact": "contacter",
     "button.send": "envoyer",
-    "contact-form-success": "Merci de m'avoir contacté!"
+    "contact-form-success": "Merci de m'avoir contacté!",
+    "form.label.email": "E-mail",
+    "form.input.email": "Votre adresse mail",
+    "form.label.password": "Mot de passe",
+    "form.input.password": "Votre mot de passe"
 }

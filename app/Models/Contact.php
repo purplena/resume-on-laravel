@@ -18,7 +18,7 @@ class Contact extends Model
         parent::boot();
 
         static::created(function ($item) {
-            $adminEmail = env('ADMIN_EMAIL');
+            $adminEmail = config('admin.email');
             Mail::to($adminEmail)->send(new ContactMail($item));
         });
     }
