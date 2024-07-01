@@ -1,7 +1,7 @@
 @props(['photos'])
 
 <x-layout>
-    <section class="section-admin">
+    <section class="section-admin mt-navbarMargin py-12 px-4">
         <h2>
             Welcome to your Dashboard
         </h2>

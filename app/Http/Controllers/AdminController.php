@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Validation\Rule;
 use App\Models\Photo;
 
 class AdminController extends Controller
@@ -15,6 +14,11 @@ class AdminController extends Controller
                 'photos' => Photo::latest()->paginate(20)
             ]
         );
+    }
+
+    public function photos()
+    {
+        return view('admin.photos');
     }
 
     public function create()

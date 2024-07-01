@@ -15,14 +15,19 @@
     <title>Elena Molano</title>
 </head>
 
-<body class="h-full">
+<body class="h-full relative overflow-x-hidden">
     <div class="flex justify-center">
         <button id="back-to-top-btn" class="hidden fixed top-[40px] p-5" style="z-index: 5;">
             <i class="fa-solid fa-chevron-up text-[32px]" id="chevron-up-icon"></i>
         </button>
     </div>
+    <x-navbar />
 
     {{ $slot }}
+
+    <x-footer />
+
+    <x-sections.components.flashed-session />
 </body>
 
 </html>

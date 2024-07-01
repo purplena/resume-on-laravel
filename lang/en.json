@@ -23,14 +23,19 @@
     "contact.h2": "Let's Work Together",
     "contact.p1": "Whether you are looking to make a website for your company, build your brand identity, or want to discuss your web strategy, I am here to help you.",
     "contact.contact.me": "Contact Me",
-    "contact.label.name": "Name",
-    "contact.label.email": "Email",
-    "contact.label.message": "How can I help you?",
-    "contact.input.name": "Your name",
-    "contact.input.email": "Your email",
-    "contact.input.message": "Your message",
+
     "button.projects": "projects",
     "button.contact": "contact",
     "button.send": "send",
-    "contact-form-success": "Thank you for contacting me! See ya!"
+    "contact-form-success": "Thank you for contacting me! See ya!",
+    "form.label.email": "Email",
+    "form.input.email": "Your email",
+    "form.label.password": "Password",
+    "form.input.password": "Your password",
+    "form.label.name": "Name",
+    "form.input.name": "Your name",
+    "form.label.message": "How can I help you?",
+    "form.input.message": "Your message",
+    "auth.login.success": "Welcome back!",
+    "auth.logout.success": "See you soon!"
 }

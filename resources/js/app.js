@@ -3,6 +3,7 @@ import "./bootstrap.js";
 import swiper from "./swiper.js";
 import "./smoothScroll.js";
 import "./contactFormValidation.js";
+import "./loginFormValidation.js";
 
 // ********** set date ************
 var date = document.getElementById("date");
@@ -17,6 +18,7 @@ const linksContainer = document.querySelector(".links-container");
 const links = document.querySelector(".links");
 const iconBars = document.querySelector(".fa-bars");
 const iconCross = document.querySelector(".fa-x");
+const flashMessage = document.getElementById("flash-message");
 
 navToggle.addEventListener("click", function () {
     const containerHeight = linksContainer.getBoundingClientRect().height;
@@ -38,5 +40,13 @@ document.addEventListener("click", function (event) {
         linksContainer.style.height = 0;
         iconCross.classList.add("hidden");
         iconBars.classList.remove("hidden");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (flashMessage) {
+        setTimeout(function () {
+            flashMessage.style.display = "none";
+        }, 5000);
     }
 });
