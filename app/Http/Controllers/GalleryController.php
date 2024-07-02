@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Photo;
-
 class GalleryController extends Controller
 {
     public function index()

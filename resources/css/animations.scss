@@ -92,3 +92,14 @@
         transform: rotate(360deg);
     }
 }
+
+
+// ********** Flash Message ************
+@keyframes from_right_to_left {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+#flash-message {
+    animation: from_right_to_left 500ms cubic-bezier(.34,.58,0,1); 
+}

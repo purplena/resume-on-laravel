@@ -1,0 +1,18 @@
+{
+    "preset": "psr12",
+    "rules": {
+        "class_attributes_separation": {
+            "elements": {
+                "const": "one",
+                "method": "one",
+                "property": "one",
+                "trait_import": "none",
+                "case": "none"
+            }
+        },
+        "no_extra_blank_lines": {
+            "tokens": ["curly_brace_block"]
+        },
+        "no_empty_statement": true
+    }
+}
