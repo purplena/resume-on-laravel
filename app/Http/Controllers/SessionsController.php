@@ -15,14 +15,13 @@ class SessionsController extends Controller
 
     public function store(StoreUserRequest $request)
     {
- 
         $credentials = $request->validated();
-        
-        
+
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
- 
-            return redirect('/')->with('status', 'Welcome back');;
+
+            return redirect('/')->with('status', __('auth.login.success'));
         }
 
         return response()->json([
@@ -35,6 +34,6 @@ class SessionsController extends Controller
     {
         auth()->logout();
 
-        return redirect('/')->with('status', 'Goodbye!');
+        return redirect('/')->with('status', __('auth.logout.success'));
     }
 }

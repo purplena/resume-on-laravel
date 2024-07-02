@@ -12,9 +12,6 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        //QUESTION
-        // return $request->expectsJson() ? null : route('login');
-        //Here I prefer to redirect to home if a not authenticated user tries to access the forbidden routes
         return $request->expectsJson() ? null : route('home');
     }
 }

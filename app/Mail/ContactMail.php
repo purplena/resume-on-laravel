@@ -4,13 +4,12 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class ContactMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     public $data;
 
@@ -31,8 +30,6 @@ class ContactMail extends Mailable
      */
     public function build()
     {
-
-
         return $this->subject('Contact Form Message')
                     ->to(config('admin.email'))
                     ->view('emails.contact')->with(['data' => $this->data]);

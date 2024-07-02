@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Validation\Rule;
 use App\Models\Photo;
 
 class AdminController extends Controller
@@ -17,8 +16,9 @@ class AdminController extends Controller
         );
     }
 
-    public function photos() {
-        return view ('admin.photos');
+    public function photos()
+    {
+        return view('admin.photos');
     }
 
     public function create()

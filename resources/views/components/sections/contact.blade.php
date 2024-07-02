@@ -12,36 +12,9 @@
             <form method="POST" class="mt-4 relative" action="{{ route('contact.us.store') }}" id="contactUSForm">
                 @csrf
                 <div class="flex flex-col gap-2">
-                    <div class="sm:col-span-4">
-                        <label for="name"
-                            class="block text-sm font-bold leading-6 text-gray-900">{{ __('contact.label.name') }}</label>
-                        <div data-inputName="name"></div>
-                        <div class="mt-2">
-                            <input type="text" name="name" id="name"
-                                class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 focus:ring-1 focus:ring-inset focus:ring-purple-600 placeholder:text-gray-400 placeholder:text-[14px]"
-                                placeholder="{{ __('contact.input.name') }}" value="{{ old('name') }}">
-                        </div>
-                    </div>
-                    <div class="sm:col-span-4">
-                        <label for="email"
-                            class="block text-sm font-bold leading-6 text-gray-900">{{ __('contact.label.email') }}</label>
-                        <div data-inputName="email"></div>
-                        <div class="mt-2">
-                            <input type="email" name="email" id="email"
-                                class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-1 ring-gray-300 focus:ring-1 focus:ring-inset focus:ring-purple-600 placeholder:text-gray-400 placeholder:text-[14px]"
-                                placeholder="{{ __('contact.input.email') }}" value="{{ old('email') }}">
-                        </div>
-                    </div>
-                    <div class="col-span-full">
-                        <label for="message"
-                            class="block text-sm font-bold leading-6 text-gray-900">{{ __('contact.label.message') }}</label>
-                        <div data-inputName="message"></div>
-                        <div class="mt-2">
-                            <textarea id="message" type="text" name="message" rows=3
-                                class="block w-full rounded border-0 py-1.5 text-gray-900 ring-1 ring-gray-300 focus:ring-purple-600  placeholder:text-gray-400 placeholder:text-[14px] "
-                                placeholder="{{ __('contact.input.message') }}" style="resize: none;">{{ old('message') }}</textarea>
-                        </div>
-                    </div>
+                    <x-sections.form.label-input inputName="name" type="text" />
+                    <x-sections.form.label-input inputName="email" type="email" />
+                    <x-sections.form.label-textarea inputName="message" />
                 </div>
                 <div class="flex justify-end mt-4">
                     <button

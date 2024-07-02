@@ -15,20 +15,19 @@
     <title>Elena Molano</title>
 </head>
 
-<body class="h-full relative">
+<body class="h-full relative overflow-x-hidden">
     <div class="flex justify-center">
         <button id="back-to-top-btn" class="hidden fixed top-[40px] p-5" style="z-index: 5;">
             <i class="fa-solid fa-chevron-up text-[32px]" id="chevron-up-icon"></i>
         </button>
     </div>
+    <x-navbar />
 
     {{ $slot }}
 
-    @if (session('status'))
-    <div class="absolute bottom-0 right-0">
-        {{ session('status') }}
-    </div>
-    @endif
+    <x-footer />
+
+    <x-sections.components.flashed-session />
 </body>
 
 </html>
