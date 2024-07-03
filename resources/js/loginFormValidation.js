@@ -20,7 +20,6 @@ loginForm?.addEventListener("submit", function (event) {
         .post("/sessions", new FormData(this))
         .then((response) => {
             if (response.status === 200) {
-                setSuccessCookie();
                 window.location.href = "/";
                 deleteInputValues(inputs);
             }
@@ -36,9 +35,3 @@ loginForm?.addEventListener("submit", function (event) {
             }
         });
 });
-
-function setSuccessCookie() {
-    const fiveSecondsFromNow = new Date();
-    fiveSecondsFromNow.setSeconds(fiveSecondsFromNow.getSeconds() + 35);
-    document.cookie = `status=success; expires=${fiveSecondsFromNow.toUTCString()}; path=/`;
-}
