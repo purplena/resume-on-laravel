@@ -35,6 +35,11 @@
     "form.input.name": "Votre nom",
     "form.label.message": "Comment puis-je vous aider?",
     "form.input.message": "Votre message",
+    "auth.session.login": "Me connecter",
+    "auth.session.logout": "Déconnexion",
     "auth.login.success": "Je suis contente de te voir!",
-    "auth.logout.success": "À bientôt!"
+    "auth.logout.success": "À bientôt!",
+    "admin.welcome": "Bienvenue sur ton tableau de bord",
+    "admin.h2.manage.illustrations": "gérer les illustrations",
+    "admin.button.manage.illustrations": "voir plus"
 }

@@ -42,8 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('admin', [AdminController::class, 'index'])->name('admin');
         Route::get('photos', [AdminController::class, 'photos'])->name('photos');
         Route::post('logout', [SessionsController::class, 'destroy'])->withoutMiddleware(['auth']);
-        Route::get('admin/photos/upload', [AdminController::class, 'create']);
-        Route::post('admin/photos', [AdminController::class, 'store']);
+        Route::get('/admin/illustrations', [AdminController::class, 'illustrations'])->name('illustrations');
+        Route::post('/admin/illustrations/store', [AdminController::class, 'store'])->name('illustrations.store');
         Route::delete('admin/photos/{photo}', [AdminController::class, 'destroy']);
     });
 });

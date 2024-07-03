@@ -23,7 +23,6 @@
     "contact.h2": "Let's Work Together",
     "contact.p1": "Whether you are looking to make a website for your company, build your brand identity, or want to discuss your web strategy, I am here to help you.",
     "contact.contact.me": "Contact Me",
-
     "button.projects": "projects",
     "button.contact": "contact",
     "button.send": "send",
@@ -36,6 +35,11 @@
     "form.input.name": "Your name",
     "form.label.message": "How can I help you?",
     "form.input.message": "Your message",
+    "auth.session.login": "Log in",
+    "auth.session.logout": "Log out",
     "auth.login.success": "Welcome back!",
-    "auth.logout.success": "See you soon!"
+    "auth.logout.success": "See you soon!",
+    "admin.welcome": "Welcome to your Dashboard",
+    "admin.h2.manage.illustrations": "manage illustrations",
+    "admin.button.manage.illustrations": "see more"
 }
