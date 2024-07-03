@@ -33,24 +33,17 @@ Route::fallback(function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-
 Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.us.store');
 Route::get('/login', [SessionsController::class, 'login'])->name('login');
 Route::post('/sessions', [SessionsController::class, 'store'])->name('session.store');
-
-
-//QUESTION
-//Is it better my approach with personolised middlewear IsAdmin
-// Or I use Gate approach from AppServiceProvider with can directive?
-// Route::get('admin', [AdminController::class, 'index'])->middleware('can:admin')->name('admin');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::middleware('can:admin')->group(function () {
         Route::get('admin', [AdminController::class, 'index'])->name('admin');
         Route::get('photos', [AdminController::class, 'photos'])->name('photos');
         Route::post('logout', [SessionsController::class, 'destroy'])->withoutMiddleware(['auth']);
-        Route::get('admin/photos/upload', [AdminController::class, 'create'])->middleware('can:admin');
-        Route::post('admin/photos', [AdminController::class, 'store'])->middleware('can:admin');
-        Route::delete('admin/photos/{photo}', [AdminController::class, 'destroy'])->middleware('can:admin');
+        Route::get('admin/photos/upload', [AdminController::class, 'create']);
+        Route::post('admin/photos', [AdminController::class, 'store']);
+        Route::delete('admin/photos/{photo}', [AdminController::class, 'destroy']);
     });
 });

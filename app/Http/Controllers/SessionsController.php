@@ -20,8 +20,9 @@ class SessionsController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            $request->session()->flash('status', __('auth.login.success'));
 
-            return redirect('/')->with('status', __('auth.login.success'));
+            return response()->json([], HttpResponse::HTTP_OK);
         }
 
         return response()->json([
