@@ -10,15 +10,14 @@ class AdminController extends Controller
     {
         return view(
             'admin.index',
-            [
-                'photos' => Photo::latest()->paginate(20)
-            ]
         );
     }
 
-    public function photos()
+    public function illustrations()
     {
-        return view('admin.photos');
+        return view('admin.illustrations', [
+            'photos' => Photo::latest()->paginate(20)
+        ]);
     }
 
     public function create()
@@ -28,17 +27,18 @@ class AdminController extends Controller
 
     public function store()
     {
-        $attributes = request()->validate([
+        request()->validate([
             'title' => 'required',
             'path' => ['required', 'image'],
         ]);
 
         Photo::create([
             'user_id' => auth()->id(),
+            'title' => request()->input('title'),
             'path' => request()->file('path')->store('path')
         ]);
 
-        return redirect('/')->with('success', 'You uploaded a new photo!');
+        return redirect('/admin')->with('success', 'You uploaded a new photo!');
     }
 
     public function destroy(Photo $photo)
