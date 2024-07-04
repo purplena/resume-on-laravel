@@ -11,23 +11,23 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <!-- SCSS & JavaScript -->
     @vite(['resources/css/main.scss', 'resources/js/app.js'])
-    <!-- @stack('scripts') -->
+    @stack('scripts')
     <title>Elena Molano</title>
 </head>
 
-<body class="h-full relative overflow-x-hidden">
+<body class="h-full">
     <div class="flex justify-center">
         <button id="back-to-top-btn" class="hidden fixed top-[40px] p-5" style="z-index: 5;">
             <i class="fa-solid fa-chevron-up text-[32px]" id="chevron-up-icon"></i>
         </button>
     </div>
-    <x-navbar />
 
     {{ $slot }}
 
-    <x-footer />
-
-    <x-sections.components.flashed-session />
+    <script src="./js/app.js"></script>
+    @push('scripts')
+        <script src="./js/app.js"></script>
+    @endpush
 </body>
 
 </html>

@@ -1,9 +1,8 @@
 import "../css/main.scss";
-import "./bootstrap.js";
-import swiper from "./swiper.js";
-import "./smoothScroll.js";
-import "./contactFormValidation.js";
-import "./loginFormValidation.js";
+import "./bootstrap";
+import swiper from "./swiper";
+import "./smoothScroll";
+import "./contactFormValidation";
 
 // ********** set date ************
 var date = document.getElementById("date");
@@ -16,21 +15,16 @@ const navbarEl = document.getElementById("navbar");
 const navToggle = document.querySelector(".nav-toggle");
 const linksContainer = document.querySelector(".links-container");
 const links = document.querySelector(".links");
-const iconBars = document.querySelector(".fa-bars");
-const iconCross = document.querySelector(".fa-x");
-const flashMessage = document.getElementById("flash-message");
 
 navToggle.addEventListener("click", function () {
     const containerHeight = linksContainer.getBoundingClientRect().height;
     const linksHeight = links.getBoundingClientRect().height;
     if (containerHeight === 0) {
         linksContainer.style.height = `${linksHeight}px`;
-        iconBars.classList.add("hidden");
-        iconCross.classList.remove("hidden");
+        navToggle.classList.add("open");
     } else {
         linksContainer.style.height = 0;
-        iconCross.classList.add("hidden");
-        iconBars.classList.remove("hidden");
+        navToggle.classList.remove("open");
     }
 });
 
@@ -38,15 +32,23 @@ navToggle.addEventListener("click", function () {
 document.addEventListener("click", function (event) {
     if (event.target !== navbarEl && !navbarEl.contains(event.target)) {
         linksContainer.style.height = 0;
-        iconCross.classList.add("hidden");
-        iconBars.classList.remove("hidden");
+        navToggle.classList.remove("open");
     }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    if (flashMessage) {
-        setTimeout(function () {
-            flashMessage.style.display = "none";
-        }, 5000);
-    }
+const js = document.getElementById("js");
+const parallaxSection = document.getElementById("parallax");
+
+parallaxSection.addEventListener("mousemove", function (event) {
+    const rect = parallaxSection.getBoundingClientRect();
+    const x = event.clientX - rect.left; // x position within the element.
+    const y = event.clientY - rect.top; // y position within the element.
+
+    // Calculate the percentage of the screen covered by the mouse.
+    const percentX = (x / rect.width) * 100;
+    const percentY = (y / rect.height) * 100;
+
+    js.style.transform = `translate(${percentX}%, ${percentY}%)`;
 });
+
+swiper();
