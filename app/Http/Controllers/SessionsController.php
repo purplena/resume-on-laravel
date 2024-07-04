@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Validation\ValidationException;
+use App\Http\Requests\StoreUserRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Response as HttpResponse;
 
 class SessionsController extends Controller
 {
@@ -12,30 +13,28 @@ class SessionsController extends Controller
         return view('sessions.login');
     }
 
-    public function store()
+    public function store(StoreUserRequest $request)
     {
-        $attributes = request()->validate(
-            [
-                'email' => ['required', 'email'],
-                'password' => ['required']
-            ]
-        );
+        $credentials = $request->validated();
 
-        if (!auth()->attempt($attributes)) {
-            throw ValidationException::withMessages([
-                'email' => 'Your provided credentials could not be verified'
-            ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            $request->session()->flash('status', __('auth.login.success'));
+
+            return response()->json([], HttpResponse::HTTP_OK);
         }
 
-        session()->regenerate();
-
-        return redirect('/')->with('success', 'Welcome back');
+        return response()->json([
+            'status' => false,
+            'message' => __('auth.failed'),
+        ], HttpResponse::HTTP_BAD_REQUEST);
     }
 
     public function destroy()
     {
         auth()->logout();
 
-        return redirect('/')->with('success', 'Goodbye!');
+        return redirect('/')->with('status', __('auth.logout.success'));
     }
 }
