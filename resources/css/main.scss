@@ -2,14 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap");
-@import "config";
-@import "navbar";
-@import "loader";
-@import "chevronUpAnimation";
-@import "3_watercolor";
-@import "5_projects";
-@import "7_admin";
-@import "footer";
+@import "swiper";
+@import "animations";
 
 * {
     margin: 0;
@@ -17,13 +11,19 @@
     box-sizing: border-box;
 }
 
-/* Global styles */
-img:not(.nav-logo) {
-    display: block;
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: theme("fontFamily.headers");
+    color: theme("colors.main-900");
+    letter-spacing: 0.25rem;
+    text-transform: capitalize;
 }
 
 body {
-    font-family: $ff-primary;
+    font-family: theme("fontFamily.body");
     background: theme("colors.white");
     color: theme("colors.black");
     line-height: 1.25;
@@ -33,52 +33,7 @@ body {
 ul {
     list-style-type: none;
 }
+
 a {
     text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    font-family: $ff-header;
-    letter-spacing: $spacing;
-    text-transform: capitalize;
-    color: theme("colors.main-900");
-}
-
-.btn {
-    text-transform: uppercase;
-    // background: $clr-primary-5;
-    color: theme("colors.white");
-    padding: 0.7rem 1.25rem;
-    display: inline-block;
-    transition: $transition;
-    font-size: 0.875rem;
-    font-family: $ff-primary;
-    font-weight: 400;
-    border: 2px solid transparent;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    width: 112px;
-    text-align: center;
-
-    &:hover {
-        background: $clr-primary-7;
-        scale: 1.1;
-    }
-}
-
-.login-section {
-    margin-top: 8rem;
-}
-
-.parallax-section {
-    height: calc(90vh - theme("spacing.navbarMargin"));
-}
-
-@media screen and (min-width: 668px) {
-    .parallax-section {
-        height: calc(100vh - theme("spacing.navbarMargin"));
-    }
 }
