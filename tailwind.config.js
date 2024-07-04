@@ -2,13 +2,6 @@
 export default {
     content: ["./resources/views/**/*.blade.php", "./resources/js/**/*.js"],
     theme: {
-        screens: {
-            xs: "400px",
-            sm: "540px",
-            md: "768px",
-            lg: "1024px",
-            xl: "1280px",
-        },
         fontSize: {
             h1: "2rem",
             h2: "1.75rem",
@@ -16,26 +9,16 @@ export default {
             h4: "1.25rem",
             h5: "1rem",
             h6: "0.875rem",
-            xs: "0.75rem" /* 12px */,
-            sm: "0.875rem" /* 14px */,
-            base: "1rem" /* 16px */,
-            lg: "1.125rem" /* 18px */,
-            xl: "1.25rem" /* 20px */,
-            "2xl": "1.5rem" /* 24px */,
-            "3xl": "1.875rem" /* 30px */,
-        },
-        fontFamily: {
-            headers: ["Bebas Neue", "Roboto", "sans-serif"],
-            body: ["Roboto", "sans-serif"],
         },
         extend: {
             spacing: {
-                navbarMargin: "68px",
+                navbarMargin: "60px",
             },
             maxWidth: {
                 maxScreenWidth: "1024px",
-                heroImage: "300px",
-                heroParagraph: "600px",
+            },
+            maxHeight: {
+                heroImage: "400px",
             },
             colors: {
                 white: "#fefefe",
@@ -53,18 +36,6 @@ export default {
                 "pink-active": "#D197C3",
                 "pink-pastel": "#FDE9FF",
                 "peach-pastel": "#E5957E",
-            },
-            transitionProperty: {
-                all: "all",
-            },
-            transitionDuration: {
-                300: "0.3s",
-            },
-            transitionTimingFunction: {
-                in: "ease-in",
-                out: "ease-out",
-                "in-out": "ease-in-out",
-                linear: "linear",
             },
         },
     },
