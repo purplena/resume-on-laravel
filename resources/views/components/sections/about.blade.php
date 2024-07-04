@@ -1,7 +1,7 @@
 <section class="bg-main-200 rounded-3xl px-4 py-12">
     <div class="max-w-maxScreenWidth mx-auto">
         <div class="flex flex-row justify-between mb-4">
-            <h2 class="text-h3 ">{{ __('about') }}</h2>
+            <h2 class="text-h3">{{ __('about') }}</h2>
             <div class="text-right">
                 @if (App::isLocale('en'))
                     <p><span class="text-main-700 font-bold">Curiosity</span> is my tool</p>

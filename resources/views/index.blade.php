@@ -1,4 +1,4 @@
-<x-page-layout>
+<x-layout>
     <div class="mt-navbarMargin">
         <x-sections.parallax />
         <x-sections.hero />
@@ -6,4 +6,4 @@
         <x-sections.projects />
         <x-sections.contact />
     </div>
-</x-page-layout>
+</x-layout>
