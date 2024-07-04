@@ -41,5 +41,7 @@
     "auth.logout.success": "See you soon!",
     "admin.welcome": "Welcome to your Dashboard",
     "admin.h2.manage.illustrations": "manage illustrations",
-    "admin.button.manage.illustrations": "see more"
+    "admin.button.manage.illustrations": "see more",
+    "admin.illustrations.h1": "manage your illustrations",
+    "admin.illustrations.h2.add": "add a new illustration"
 }

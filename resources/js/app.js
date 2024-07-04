@@ -4,6 +4,7 @@ import swiper from "./swiper.js";
 import "./smoothScroll.js";
 import "./contactFormValidation.js";
 import "./loginFormValidation.js";
+import { imagePreview } from "./imagePreview.js";
 
 // ********** set date ************
 var date = document.getElementById("date");
@@ -43,10 +44,35 @@ document.addEventListener("click", function (event) {
     }
 });
 
+// ********** Flash Session Message  ************
 document.addEventListener("DOMContentLoaded", function () {
     if (flashMessage) {
         setTimeout(function () {
             flashMessage.style.display = "none";
         }, 5000);
     }
+});
+
+// ********** Upload Image with Drag and Drop ************
+const dragAndDropArea = document.getElementById("dragAndDropArea");
+
+dragAndDropArea.addEventListener("dragover", function (event) {
+    event.preventDefault();
+});
+
+dragAndDropArea.addEventListener("drop", function (event) {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    imagePreview(file);
+
+    const input = document.getElementById("path");
+    const dataTransfer = new DataTransfer();
+    dataTransfer.items.add(file);
+    input.files = dataTransfer.files;
+});
+
+// ********** Upload Image with Classic Form Submission ************
+document.getElementById("path").addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    imagePreview(file);
 });

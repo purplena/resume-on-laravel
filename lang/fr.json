@@ -38,8 +38,9 @@
     "auth.session.login": "Me connecter",
     "auth.session.logout": "Déconnexion",
     "auth.login.success": "Je suis contente de te voir!",
-    "auth.logout.success": "À bientôt!",
     "admin.welcome": "Bienvenue sur ton tableau de bord",
     "admin.h2.manage.illustrations": "gérer les illustrations",
-    "admin.button.manage.illustrations": "voir plus"
+    "admin.button.manage.illustrations": "voir plus",
+    "admin.illustrations.h1": "gérer tes illustrations",
+    "admin.illustrations.h2.add": "ajouter une nouvelle illustration"
 }
