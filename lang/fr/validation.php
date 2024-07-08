@@ -181,6 +181,7 @@ return [
 
     'attributes' => [
         'name' => 'nom',
+        "path" => 'illustration'
     ],
 
 ];

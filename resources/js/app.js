@@ -56,11 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
 // ********** Upload Image with Drag and Drop ************
 const dragAndDropArea = document.getElementById("dragAndDropArea");
 
-dragAndDropArea.addEventListener("dragover", function (event) {
+dragAndDropArea?.addEventListener("dragover", function (event) {
     event.preventDefault();
 });
 
-dragAndDropArea.addEventListener("drop", function (event) {
+dragAndDropArea?.addEventListener("drop", function (event) {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
     imagePreview(file);
@@ -72,7 +72,27 @@ dragAndDropArea.addEventListener("drop", function (event) {
 });
 
 // ********** Upload Image with Classic Form Submission ************
-document.getElementById("path").addEventListener("change", function (e) {
+document.getElementById("path")?.addEventListener("change", function (e) {
     const file = e.target.files[0];
     imagePreview(file);
 });
+
+document
+    .getElementById("addCategoryBtn")
+    ?.addEventListener("click", function () {
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("addCategoryBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+        modal.style.display = "block";
+
+        span.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    });

@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Photo;
+use App\Http\Requests\StoreIllustrationRequest;
+use App\Models\Illustration;
 
 class AdminController extends Controller
 {
@@ -16,7 +17,7 @@ class AdminController extends Controller
     public function illustrations()
     {
         return view('admin.illustrations', [
-            'photos' => Photo::latest()->paginate(20)
+            'photos' => Illustration::latest()->paginate(20)
         ]);
     }
 
@@ -25,14 +26,11 @@ class AdminController extends Controller
         return view('admin.create');
     }
 
-    public function store()
+    public function store(StoreIllustrationRequest $request)
     {
-        request()->validate([
-            'title' => 'required',
-            'path' => ['required', 'image'],
-        ]);
+        $request->validated();
 
-        Photo::create([
+        Illustration::create([
             'user_id' => auth()->id(),
             'title' => request()->input('title'),
             'path' => request()->file('path')->store('path')
@@ -41,7 +39,7 @@ class AdminController extends Controller
         return redirect('/admin')->with('success', 'You uploaded a new photo!');
     }
 
-    public function destroy(Photo $photo)
+    public function destroy(Illustration $photo)
     {
         $photo->delete();
 
