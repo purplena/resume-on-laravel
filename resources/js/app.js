@@ -44,7 +44,9 @@ document.addEventListener("click", function (event) {
     }
 });
 
+// ********** DOMContentLoaded ************
 // ********** Flash Session Message  ************
+// ********** Admin Section: edit et detete toggle  ************
 document.addEventListener("DOMContentLoaded", function () {
     if (flashMessage) {
         setTimeout(function () {

@@ -44,6 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('logout', [SessionsController::class, 'destroy'])->withoutMiddleware(['auth']);
         Route::get('/admin/illustrations', [AdminController::class, 'illustrations'])->name('illustrations');
         Route::post('/admin/illustrations/store', [AdminController::class, 'store'])->name('illustrations.store');
-        Route::delete('admin/photos/{photo}', [AdminController::class, 'destroy']);
+        Route::delete('admin/illustrations/delete/{illustration}', [AdminController::class, 'destroy'])->name('illustration.destroy');
+        Route::delete('admin/illustrations/destroyAll', [AdminController::class, 'destroyAll'])->name('illustrations.destroyAll');
+        Route::delete('admin/illustrations/destroySelected', [AdminController::class, 'destroySelected'])->name('illustrations.destroySelected');
     });
 });

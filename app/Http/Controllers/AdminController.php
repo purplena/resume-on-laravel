@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreIllustrationRequest;
 use App\Models\Illustration;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -17,7 +18,7 @@ class AdminController extends Controller
     public function illustrations()
     {
         return view('admin.illustrations', [
-            'photos' => Illustration::latest()->paginate(20)
+            'illustrations' => Illustration::latest()->paginate(20)
         ]);
     }
 
@@ -36,13 +37,29 @@ class AdminController extends Controller
             'path' => request()->file('path')->store('path')
         ]);
 
-        return redirect('/admin')->with('success', 'You uploaded a new photo!');
+        return redirect('/admin/illustrations')->with('status', 'You uploaded a new photo!');
     }
 
-    public function destroy(Illustration $photo)
+    public function destroy(Illustration $illustration)
     {
-        $photo->delete();
+        $illustration->delete();
 
-        return back()->with('success', 'Photo has been deleted!');
+        return redirect('/admin/illustrations')->with('status', 'Photo has been deleted!');
+    }
+
+    public function destroyAll()
+    {
+        $illustrations = auth()->user()->illustrations;
+        $illustrations->each->delete();
+
+        return back()->with('status', 'You deleted all photos!');
+    }
+
+    public function destroySelected(Request $request)
+    {
+        $ids = $request->input('selected_illustrations');
+        Illustration::whereIn('id', $ids)->delete();
+
+        return redirect()->back()->with('success', 'Photos deleted successfully.');
     }
 }
