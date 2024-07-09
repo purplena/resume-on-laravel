@@ -41,12 +41,20 @@
     "form.label.illustration.upload": "Télécharge un fichier",
     "form.label.illustration.drag": "ou fais un glisser-déposer",
     "form.label.illustration.formats": "PNG, JPG, WEBP",
+    "form.checkbox.illustrations.delete": "supprimer", 
     "auth.session.login": "Me connecter",
     "auth.session.logout": "Déconnexion",
     "auth.login.success": "Je suis contente de te voir!",
     "admin.welcome": "Bienvenue sur ton tableau de bord",
     "admin.h2.manage.illustrations": "gérer les illustrations",
     "admin.button.manage.illustrations": "voir plus",
+    "admin.illustrations.h2.table": "toutes les illustrations",
     "admin.illustrations.h1": "gérer tes illustrations",
-    "admin.illustrations.h2.add": "ajouter une nouvelle illustration"
+    "admin.illustrations.h2.add": "ajouter une nouvelle illustration",
+    "status.illustration.uploaded": "Tu as téléchargé une nouvelle illustration",
+    "status.illustration.delete": "Tu as supprimé une illustration",
+    "status.illustration.delete.failed": "Sélectionne au moins une illustration",
+    "status.illustration.delete.selected": "Tu as supprimé avec succès",
+    "status.illustration.sg": "illustration",
+    "status.illustration.pl": "illustration"
 }

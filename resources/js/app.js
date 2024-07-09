@@ -5,6 +5,8 @@ import "./smoothScroll.js";
 import "./contactFormValidation.js";
 import "./loginFormValidation.js";
 import { imagePreview } from "./imagePreview.js";
+import "./deleteIllustration.js";
+import "./selectIllustrationCheckbox.js";
 
 // ********** set date ************
 var date = document.getElementById("date");
@@ -20,6 +22,7 @@ const links = document.querySelector(".links");
 const iconBars = document.querySelector(".fa-bars");
 const iconCross = document.querySelector(".fa-x");
 const flashMessage = document.getElementById("flash-message");
+const axiosFlashMessage = document.getElementById("axios-flash-message");
 
 navToggle.addEventListener("click", function () {
     const containerHeight = linksContainer.getBoundingClientRect().height;
@@ -46,11 +49,16 @@ document.addEventListener("click", function (event) {
 
 // ********** DOMContentLoaded ************
 // ********** Flash Session Message  ************
-// ********** Admin Section: edit et detete toggle  ************
 document.addEventListener("DOMContentLoaded", function () {
     if (flashMessage) {
         setTimeout(function () {
             flashMessage.style.display = "none";
+        }, 5000);
+    }
+
+    if (axiosFlashMessage) {
+        setTimeout(function () {
+            axiosFlashMessage.classList.add("hidden");
         }, 5000);
     }
 });
@@ -78,23 +86,3 @@ document.getElementById("path")?.addEventListener("change", function (e) {
     const file = e.target.files[0];
     imagePreview(file);
 });
-
-document
-    .getElementById("addCategoryBtn")
-    ?.addEventListener("click", function () {
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("addCategoryBtn");
-        var span = document.getElementsByClassName("close")[0];
-
-        modal.style.display = "block";
-
-        span.onclick = function () {
-            modal.style.display = "none";
-        };
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        };
-    });

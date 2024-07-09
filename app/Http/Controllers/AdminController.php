@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreIllustrationRequest;
 use App\Models\Illustration;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response as HttpResponse;
 
 class AdminController extends Controller
 {
@@ -22,12 +23,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return view('admin.create');
-    }
-
-    public function store(StoreIllustrationRequest $request)
+    public function storeIllustration(StoreIllustrationRequest $request)
     {
         $request->validated();
 
@@ -37,17 +33,17 @@ class AdminController extends Controller
             'path' => request()->file('path')->store('path')
         ]);
 
-        return redirect('/admin/illustrations')->with('status', 'You uploaded a new photo!');
+        return redirect('/admin/illustrations')->with('status', __('status.illustration.uploaded'));
     }
 
-    public function destroy(Illustration $illustration)
+    public function destroyIllustration(Illustration $illustration)
     {
         $illustration->delete();
 
-        return redirect('/admin/illustrations')->with('status', 'Photo has been deleted!');
+        return response()->json(['status' => __('status.illustration.delete')], HttpResponse::HTTP_OK);
     }
 
-    public function destroyAll()
+    public function destroyAllIllustrations()
     {
         $illustrations = auth()->user()->illustrations;
         $illustrations->each->delete();
@@ -55,11 +51,23 @@ class AdminController extends Controller
         return back()->with('status', 'You deleted all photos!');
     }
 
-    public function destroySelected(Request $request)
+    public function deleteSelectedIllustrations(Request $request)
     {
         $ids = $request->input('selected_illustrations');
-        Illustration::whereIn('id', $ids)->delete();
 
-        return redirect()->back()->with('success', 'Photos deleted successfully.');
+        if (!$ids) {
+            return redirect('/admin/illustrations')->with('status', __('status.illustration.delete.failed'));
+        }
+
+        $deletedCount = Illustration::whereIn('id', $ids)->delete();
+
+        if($deletedCount > 1) {
+            $message = __('status.illustration.delete.selected') . " " . $deletedCount. " " . __('status.illustration.pl');
+        } else {
+            $message =  __('status.illustration.delete.selected') . " 1 " . __('status.illustration.sg');
+        }
+
+
+        return redirect('/admin/illustrations')->with('status', $message);
     }
 }

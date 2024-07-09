@@ -28,6 +28,7 @@
     <x-footer />
 
     <x-sections.components.flashed-session />
+    <x-sections.components.axios-status-message />
 </body>
 
 </html>

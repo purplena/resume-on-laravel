@@ -41,13 +41,21 @@
     "form.label.illustration.upload": "Upload a file",
     "form.label.illustration.drag": "or drag and drop",
     "form.label.illustration.formats": "PNG, JPG, WEBP",
+    "form.checkbox.illustrations.delete": "delete", 
     "auth.session.login": "Log in",
     "auth.session.logout": "Log out",
     "auth.login.success": "Welcome back!",
     "auth.logout.success": "See you soon!",
     "admin.welcome": "Welcome to your Dashboard",
     "admin.h2.manage.illustrations": "manage illustrations",
+    "admin.illustrations.h2.table": "all illustrations",
     "admin.button.manage.illustrations": "see more",
     "admin.illustrations.h1": "manage your illustrations",
-    "admin.illustrations.h2.add": "add a new illustration"
+    "admin.illustrations.h2.add": "add a new illustration",
+    "status.illustration.uploaded": "You uploaded a new illustration",
+    "status.illustration.delete": "You deleted an illustration",
+    "status.illustration.delete.failed": "Please select at least one illustration",
+    "status.illustration.delete.selected": "You successfully deleted",
+    "status.illustration.sg": "illustration",
+    "status.illustration.pl": "illustrations"
 }
