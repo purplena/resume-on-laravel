@@ -7,6 +7,7 @@ import "./loginFormValidation.js";
 import { imagePreview } from "./imagePreview.js";
 import "./deleteIllustration.js";
 import "./selectIllustrationCheckbox.js";
+import { toggleVisibility } from "./functions/toggleVisibilityIcons.js";
 
 // ********** set date ************
 var date = document.getElementById("date");
@@ -61,6 +62,24 @@ document.addEventListener("DOMContentLoaded", function () {
             axiosFlashMessage.classList.add("hidden");
         }, 5000);
     }
+
+    function toggleContent() {
+        if (window.innerWidth >= 768) {
+            toggleVisibility("editIllustrationBtn", true);
+            toggleVisibility("editIconElement", false);
+            toggleVisibility("deleteIllustrationBtn", true);
+            toggleVisibility("deleteIconElement", false);
+        } else {
+            toggleVisibility("editIllustrationBtn", false);
+            toggleVisibility("editIconElement", true);
+            toggleVisibility("deleteIllustrationBtn", false);
+            toggleVisibility("deleteIconElement", true);
+        }
+    }
+
+    toggleContent();
+
+    window.addEventListener("resize", toggleContent);
 });
 
 // ********** Upload Image with Drag and Drop ************

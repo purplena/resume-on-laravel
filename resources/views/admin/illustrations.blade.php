@@ -8,7 +8,7 @@
         </h2>
         <x-sections.form.upload-image-form />
 
-        <div class="flex flex-row items-center gap-6 mb-6">
+        <div class="flex flex-row items-center justify-between mb-6">
             <h2 class="text-h3">{{ __('admin.illustrations.h2.table') }}</h2>
 
             <form action="{{ route('illustrations.destroyAll') }}" method="POST">
@@ -18,9 +18,20 @@
                     class="cursor-pointer px-6 py-1 text-center border border-main-800 text-main-800 uppercase rounded-3xl hover:border hover:border-main-800  hover:bg-main-800 hover:text-white drop-shadow-lg">Delete
                     All</button>
             </form>
+
+            <div class="flex flex-row items-center gap-2">
+                <form action="{{ route('illustrations') }}" method="GET">
+                    @csrf
+                    <input type="hidden" name="title" value="{{ request('title') }}">
+                    <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}"
+                        class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 focus:ring-1 focus:ring-inset focus:ring-purple-600 placeholder:text-gray-400 placeholder:text-[14px]">
+                </form>
+                <a class="cursor-pointer px-6 py-1 text-center border border-main-800 text-main-800 uppercase rounded-3xl hover:border hover:border-main-800  hover:bg-main-800 hover:text-white drop-shadow-lg"
+                    href="{{ route('illustrations') }}">Clear</a>
+            </div>
         </div>
 
-        <form action="{{ route('illustrations.deleteSelected') }}" method="POST">
+        <form action="{{ route('illustrations.deleteSelected') }}" method="POST" class="mb-6">
             @csrf
             @method('DELETE')
 
@@ -46,18 +57,21 @@
 
                             </td>
                             <td class="p-2 md:px-6 md:py-4text-center">
-                                <img class="w-full max-w-[200px] mx-auto"
+                                <img class="w-full min-w-[100px] max-w-[200px] mx-auto"
                                     src="{{ asset('storage/' . $illustration->path) }}" alt="">
                             </td>
                             <td class="p-2 md:px-6 md:py-4">
                                 <div class="flex flex-col gap-2">
                                     <span
-                                        class="cursor-pointer px-6 py-2 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg">
+                                        class="cursor-pointer px-6 py-2 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg hidden editIllustrationBtn">
                                         Edit</span>
+                                    <i class="fa-solid fa-wand-magic-sparkles hidden editIconElement"></i>
                                     <span data-action="delete" data-illustrationId={{ $illustration->id }}
-                                        class="cursor-pointer px-6 py-2 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg">
+                                        class="cursor-pointer px-6 py-2 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg hidden deleteIllustrationBtn">
                                         Delete
                                     </span>
+                                    <i data-action="delete" data-illustrationId={{ $illustration->id }}
+                                        class="fa-solid fa-trash-can hidden deleteIconElement"></i>
                                 </div>
                             </td>
                         </tr>
@@ -65,5 +79,8 @@
                 </tbody>
             </table>
         </form>
+        <div class="flex flex-row justify-center">
+            {{ $illustrations->links() }}
+        </div>
     </section>
 </x-layout>

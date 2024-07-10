@@ -1,4 +1,4 @@
-const deleteBtns = document.querySelectorAll("span[data-action='delete']");
+const deleteBtns = document.querySelectorAll("[data-action='delete']");
 
 deleteBtns.forEach((btn) => {
     btn.addEventListener("click", function (event) {

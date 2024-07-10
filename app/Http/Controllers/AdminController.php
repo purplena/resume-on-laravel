@@ -16,10 +16,19 @@ class AdminController extends Controller
         );
     }
 
-    public function illustrations()
+    public function illustrations(Request $request)
     {
+        $search = $request->input('search');
+
+        if ($search) {
+            $illustrations = Illustration::where('title', 'like', "%{$search}%")->latest()->paginate(3)->withQueryString();
+        } else {
+            $illustrations =  Illustration::latest()->paginate(3);
+        }
+
+
         return view('admin.illustrations', [
-            'illustrations' => Illustration::latest()->paginate(20)
+            'illustrations' => $illustrations
         ]);
     }
 
@@ -70,4 +79,18 @@ class AdminController extends Controller
 
         return redirect('/admin/illustrations')->with('status', $message);
     }
+
+    // public function searchIllustration(Request $request)
+    // {
+    //     $search = $request->get('search');
+    //     $illustrations = Illustration::query();
+
+    //     if ($search) {
+    //         $illustrations->where('title', 'like', "%{$search}%");
+    //     }
+
+    //     $illustrations = $illustrations->paginate(10); // Adjust pagination as needed
+
+    //     return view('admin.illustrations', compact('illustrations'));
+    // }
 }
