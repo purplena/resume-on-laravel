@@ -11,6 +11,12 @@
             </form>
         </div>
 
+        <div>
+            @foreach ($illustrationsThisMonth as $illustartion)
+                <p>{{ $illustartion->created_at }}</p>
+            @endforeach
+        </div>
+
         <div class="border border-main-800 rounded-3xl px-4 py-4 w-[300px]">
             <h2 class="text-center text-h4">{{ __('admin.h2.manage.illustrations') }}</h2>
             <div class="mt-2 mb-2 bg-main-800 h-[1px]"></div>

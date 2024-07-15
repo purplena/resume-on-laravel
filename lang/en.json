@@ -41,7 +41,12 @@
     "form.label.illustration.upload": "Upload a file",
     "form.label.illustration.drag": "or drag and drop",
     "form.label.illustration.formats": "PNG, JPG, WEBP",
-    "form.checkbox.illustrations.delete": "delete", 
+    "form.illustrations.delete": "delete", 
+    "form.illustrations.delete.all": "delete all", 
+    "form.illustrations.edit": "edit",
+    "form.placeholder.search": "Type here...",
+    "form.button.search": "Search",
+    "form.button.search.clear": "Clear",
     "auth.session.login": "Log in",
     "auth.session.logout": "Log out",
     "auth.login.success": "Welcome back!",
@@ -57,5 +62,11 @@
     "status.illustration.delete.failed": "Please select at least one illustration",
     "status.illustration.delete.selected": "You successfully deleted",
     "status.illustration.sg": "illustration",
-    "status.illustration.pl": "illustrations"
+    "status.illustration.pl": "illustrations",
+    "admin.illustrations.h2.delete.all": "Delete All Illustrations",
+    "pagination.showing": "Showing",
+    "pagination.to": "to",
+    "pagination.of": "of",
+    "pagination.results": "illustrations"
+
 }

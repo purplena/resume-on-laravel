@@ -14,8 +14,7 @@ deleteBtns.forEach((btn) => {
         axios
             .delete(`/admin/illustrations/delete/${id}`, formData)
             .then((response) => {
-                btn.parentElement.parentElement.parentElement.style.display =
-                    "none";
+                btn.parentElement.parentElement.style.display = "none";
                 axiosFlashMessage.classList.remove("hidden");
                 axiosFlashMessage.innerHTML = `<span class="font-bold text-h4 text-egg">${response.data.status}</span>`;
             })

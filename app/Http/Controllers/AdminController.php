@@ -4,31 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreIllustrationRequest;
 use App\Models\Illustration;
+use App\Repository\IllustrationRepository;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 
 class AdminController extends Controller
 {
+    public function __construct(private IllustrationRepository $illustrationRepository)
+    {
+    }
+
     public function index()
     {
         return view(
             'admin.index',
+            [
+                'illustrationsThisMonth' => $this->illustrationRepository->illustrationsThisMonth(),
+                'illustrationsThisYear' => $this->illustrationRepository->illustrationsThisYear()
+            ],
         );
     }
 
     public function illustrations(Request $request)
     {
         $search = $request->input('search');
-
-        if ($search) {
-            $illustrations = Illustration::where('title', 'like', "%{$search}%")->latest()->paginate(3)->withQueryString();
-        } else {
-            $illustrations =  Illustration::latest()->paginate(3);
-        }
-
+        $illustrations = Illustration::where('title', 'like', "%{$search}%")->latest()->paginate(3)->appends(['search' => $search]);
 
         return view('admin.illustrations', [
-            'illustrations' => $illustrations
+            'illustrations' => $illustrations,
         ]);
     }
 
@@ -79,18 +82,4 @@ class AdminController extends Controller
 
         return redirect('/admin/illustrations')->with('status', $message);
     }
-
-    // public function searchIllustration(Request $request)
-    // {
-    //     $search = $request->get('search');
-    //     $illustrations = Illustration::query();
-
-    //     if ($search) {
-    //         $illustrations->where('title', 'like', "%{$search}%");
-    //     }
-
-    //     $illustrations = $illustrations->paginate(10); // Adjust pagination as needed
-
-    //     return view('admin.illustrations', compact('illustrations'));
-    // }
 }

@@ -1,4 +1,4 @@
-<form method="POST" class="bg-egg drop-shadow-sm hover:drop-shadow-lg px-8 py-6 rounded-3xl mb-6"
+<form method="POST" class="bg-egg drop-shadow-sm hover:drop-shadow-lg px-8 py-6 rounded-3xl mb-14"
     action="{{ route('illustration.store') }}" id="addIllustrationForm" enctype="multipart/form-data">
     @csrf
     <div class="flex flex-col gap-2">
@@ -24,7 +24,7 @@
             <div id="dragAndDropArea"
                 class="mt-2 flex justify-center rounded-lg bg-white border-gray-900/25 px-6 py-10 ring-1  ring-gray-300">
                 <div class="text-center">
-                    <img id="previewImage" src="" class="hidden w-full max-w-[500px]" alt="Preview Image">
+                    <img id="previewImage" src="" class="hidden w-full max-w-[400px]" alt="Preview Image">
                     <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" id="dragAndDropSvg"
                         fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd"
