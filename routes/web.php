@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IllustrationController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,10 +42,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::middleware('can:admin')->group(function () {
         Route::get('admin', [AdminController::class, 'index'])->name('admin');
         Route::post('logout', [SessionsController::class, 'destroy'])->withoutMiddleware(['auth']);
-        Route::match(['get', 'post'], '/admin/illustrations', [AdminController::class, 'illustrations'])->name('illustrations');
-        Route::post('/admin/illustrations/store', [AdminController::class, 'storeIllustration'])->name('illustration.store');
-        Route::delete('admin/illustrations/delete/{illustration}', [AdminController::class, 'destroyIllustration'])->name('illustration.destroy');
-        Route::delete('admin/illustrations/deleteAll', [AdminController::class, 'destroyAllIllustrations'])->name('illustrations.destroyAll');
-        Route::delete('admin/illustrations/deleteSelected', [AdminController::class, 'deleteSelectedIllustrations'])->name('illustrations.deleteSelected');
+        Route::get('/admin/illustrations', [IllustrationController::class, 'illustrations'])->name('illustrations');
+        Route::post('/admin/illustrations/store', [IllustrationController::class, 'storeIllustration'])->name('illustration.store');
+        Route::delete('admin/illustrations/delete/{illustration}', [IllustrationController::class, 'destroyIllustration'])->name('illustration.destroy');
+        Route::delete('admin/illustrations/deleteAll', [IllustrationController::class, 'destroyAllIllustrations'])->name('illustrations.destroyAll');
+        Route::delete('admin/illustrations/deleteSelected', [IllustrationController::class, 'deleteSelectedIllustrations'])->name('illustrations.deleteSelected');
+        Route::get('admin/illustrations/edit/{illustration}', [IllustrationController::class, 'editIllustration'])->name('illustration.edit');
+        Route::patch('admin/illustrations/update/{illustration}', [IllustrationController::class, 'updateIllustration'])->name('illustration.update');
     });
 });

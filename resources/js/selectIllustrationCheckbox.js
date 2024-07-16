@@ -3,41 +3,23 @@ const deleteSelectedBtn = document.getElementById("deleteSelectedBtn");
 const selectAllCheckbox = document.getElementById(
     "selectAllIllustrationsCheckbox"
 );
-let checkedInputs = [];
 
 // ********** Checkbox: Select ALL illustrations functionality ************
 selectAllCheckbox?.addEventListener("change", function () {
-    let arrayHelper = [];
-    if (selectAllCheckbox.checked) {
-        deleteSelectedBtn.classList.remove("hidden");
-        illustrations.forEach(function (checkbox) {
-            checkbox.checked = true;
-            arrayHelper.push(checkbox.value);
-        });
-        checkedInputs = arrayHelper;
-    } else {
-        deleteSelectedBtn.classList.add("hidden");
-        illustrations.forEach(function (checkbox) {
-            checkbox.checked = false;
-        });
-        checkedInputs = [];
-    }
+    selectAllToggle(this, deleteSelectedBtn, illustrations);
 });
 
 // ********** Checkbox: Select SINGLE illustration functionality ************
 illustrations?.forEach(function (checkbox) {
     checkbox.addEventListener("click", function () {
-        if (checkbox.checked) {
-            checkedInputs.push(checkbox.value);
-        } else {
-            checkedInputs = checkedInputs.filter(function (item) {
-                return item !== checkbox.value;
-            });
-        }
+        const checkedList = document.querySelectorAll(
+            "input[name='selected_illustrations[]']:checked"
+        );
 
-        if (checkedInputs.length == illustrations.length) {
+        if (checkedList.length == illustrations.length) {
             selectAllCheckbox.checked = true;
-        } else if (checkedInputs.length > 0) {
+            deleteSelectedBtn.classList.remove("hidden");
+        } else if (checkedList.length > 0) {
             deleteSelectedBtn.classList.remove("hidden");
             selectAllCheckbox.checked = false;
         } else {
@@ -46,3 +28,11 @@ illustrations?.forEach(function (checkbox) {
         }
     });
 });
+
+function selectAllToggle(selectAllCheckbox, deleteSelectedBtn, illustrations) {
+    const newState = selectAllCheckbox.checked;
+    deleteSelectedBtn.classList.toggle("hidden", !newState);
+    illustrations.forEach((checkbox) => {
+        checkbox.checked = newState;
+    });
+}

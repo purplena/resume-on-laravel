@@ -12,8 +12,8 @@
         </div>
 
         <div>
-            @foreach ($illustrationsThisMonth as $illustartion)
-                <p>{{ $illustartion->created_at }}</p>
+            @foreach ($illustrationsThisMonth as $illustration)
+                <p>{{ $illustration->created_at }}</p>
             @endforeach
         </div>
 

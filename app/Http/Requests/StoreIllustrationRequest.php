@@ -14,7 +14,7 @@ class StoreIllustrationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
+            'title' => 'required|unique:illustrations',
             'path' => 'required|image',
         ];
     }

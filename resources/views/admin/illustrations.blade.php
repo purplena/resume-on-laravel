@@ -6,25 +6,11 @@
         <h2 class="text-h3 mb-6">
             {{ __('admin.illustrations.h2.add') }}
         </h2>
-        <x-sections.form.upload-image-form />
+        <x-sections.form.upload-image-form route="illustration.store" />
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <h2 class="text-h3">{{ __('admin.illustrations.h2.table') }}</h2>
-
-            <div class="flex flex-row items-center gap-2">
-                <form action="{{ route('illustrations') }}" method="POST" class="flex flex-row gap-2">
-                    @csrf
-                    <input type="hidden" name="title" value="{{ request('title') }}">
-                    <input type="text" name="search" placeholder="{{ __('form.placeholder.search') }}"
-                        value="{{ request('search') }}"
-                        class="block w-full h-[27.5px] rounded-3xl border-0 bg-white py-1.5 text-gray-900 ring-main-800 ring-1 focus:ring-1 focus:ring-inset focus:ring-main-800 placeholder:text-gray-400 placeholder:text-[14px]"
-                        value="{{ old(request('search')) ? request('search') : '' }}">
-                    <button
-                        class="inline cursor-pointer px-6 py-1 text-center border border-main-800 text-main-800 uppercase rounded-3xl hover:border hover:border-main-800  hover:bg-main-800 hover:text-white drop-shadow-lg">{{ __('form.button.search') }}</button>
-                </form>
-                <a class="cursor-pointer px-6 py-1 text-center border border-red-800 text-red-800 uppercase rounded-3xl hover:border hover:border-red-800  hover:bg-red-800 hover:text-white drop-shadow-lg"
-                    href="{{ route('illustrations') }}">{{ __('form.button.search.clear') }}</a>
-            </div>
+            <x-sections.form.search-illustration />
         </div>
 
         <form action="{{ route('illustrations.deleteSelected') }}" method="POST" class="mb-6">
@@ -60,10 +46,10 @@
                             <td class="p-2 md:px-6 md:py-4 text-center">
                                 <span
                                     class="cursor-pointer px-6 py-1 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg  hidden editIllustrationBtn"
-                                    data-action="edit">
+                                    data-action="edit" data-illustrationId={{ $illustration->id }}>
                                     {{ __('form.illustrations.edit') }}</span>
-                                <i
-                                    class="fa-solid fa-wand-magic-sparkles cursor-pointer hover:text-main-800 text-main-600 hidden editIconElement"></i>
+                                <i class="fa-solid fa-wand-magic-sparkles cursor-pointer hover:text-main-800 text-main-600 hidden editIconElement"
+                                    data-action="edit" data-illustrationId={{ $illustration->id }}></i>
                             </td>
                             <td class="p-2 md:px-6 md:py-4 text-center">
                                 <span data-action="delete" data-illustrationId={{ $illustration->id }}
@@ -90,5 +76,8 @@
             <button
                 class="cursor-pointer px-6 py-1 text-center border border-red-800 text-red-800 uppercase rounded-3xl hover:border hover:border-red-800  hover:bg-red-800 hover:text-white drop-shadow-lg">{{ __('form.illustrations.delete.all') }}</button>
         </form>
+
+        <x-sections.components.editIllustrationModal />
+
     </section>
 </x-layout>
