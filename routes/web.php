@@ -47,7 +47,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('admin/illustrations/delete/{illustration}', [IllustrationController::class, 'destroyIllustration'])->name('illustration.destroy');
         Route::delete('admin/illustrations/deleteAll', [IllustrationController::class, 'destroyAllIllustrations'])->name('illustrations.destroyAll');
         Route::delete('admin/illustrations/deleteSelected', [IllustrationController::class, 'deleteSelectedIllustrations'])->name('illustrations.deleteSelected');
-        Route::get('admin/illustrations/edit/{illustration}', [IllustrationController::class, 'editIllustration'])->name('illustration.edit');
         Route::patch('admin/illustrations/update/{illustration}', [IllustrationController::class, 'updateIllustration'])->name('illustration.update');
     });
 });

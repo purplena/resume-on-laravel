@@ -10,6 +10,7 @@ export function imagePreview(file) {
             document.getElementById("dragAndDropSvg").classList.add("hidden");
             document.getElementById("previewImage").classList.remove("hidden");
             document.getElementById("previewImage").src = event.target.result;
+            document.getElementById("previewImage").alt = "Image Preview";
         };
 
         reader.readAsDataURL(file);

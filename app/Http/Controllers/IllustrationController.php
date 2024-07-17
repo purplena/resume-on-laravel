@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditIllustrationRequest;
 use App\Http\Requests\StoreIllustrationRequest;
 use App\Models\Illustration;
 use Illuminate\Http\Request;
@@ -11,10 +12,13 @@ class IllustrationController extends Controller
 {
     public function illustrations(Request $request)
     {
+        $id = $request->id;
+        $illustration = $id ? Illustration::findOrFail($id) : "";
         $illustrations = Illustration::where('title', 'like', "%{$request->input('search')}%")->latest()->paginate(3)->withQueryString();
 
         return view('admin.illustrations', [
             'illustrations' => $illustrations,
+            'illustration' => $illustration,
         ]);
     }
 
@@ -61,5 +65,17 @@ class IllustrationController extends Controller
     public function editIllustration(Illustration $illustration)
     {
         return response()->json(['illustration' => $illustration, 'url' => asset('storage/' . $illustration->path)], HttpResponse::HTTP_OK);
+    }
+
+    public function updateIllustration(Illustration $illustration, EditIllustrationRequest $request)
+    {
+        $path = $request->file('path') ? request()->file('path')->store('path') : $illustration->path;
+
+        $illustration->update([
+            'title' => request()->input('title'),
+            'path' => $path
+        ]);
+
+        return redirect('/admin/illustrations')->with('status', __('status.illustration.updated'));
     }
 }

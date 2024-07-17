@@ -5,7 +5,6 @@ import "./smoothScroll.js";
 import "./contactFormValidation.js";
 import "./loginFormValidation.js";
 import { imagePreview } from "./imagePreview.js";
-import "./modifyIllustrationModal.js";
 import "./deleteIllustration.js";
 import "./selectIllustrationCheckbox.js";
 import { toggleVisibility } from "./functions/toggleVisibilityIcons.js";

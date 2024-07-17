@@ -4,9 +4,11 @@
             {{ __('admin.illustrations.h1') }}
         </h1>
         <h2 class="text-h3 mb-6">
-            {{ __('admin.illustrations.h2.add') }}
+            {{ $illustration ? __('admin.illustrations.h2.update') : __('admin.illustrations.h2.add') }}
         </h2>
-        <x-sections.form.upload-image-form route="illustration.store" />
+
+
+        <x-sections.form.upload-image-form :illustration="$illustration" />
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <h2 class="text-h3">{{ __('admin.illustrations.h2.table') }}</h2>
@@ -44,12 +46,13 @@
                                     src="{{ asset('storage/' . $illustration->path) }}" alt="">
                             </td>
                             <td class="p-2 md:px-6 md:py-4 text-center">
-                                <span
-                                    class="cursor-pointer px-6 py-1 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg  hidden editIllustrationBtn"
-                                    data-action="edit" data-illustrationId={{ $illustration->id }}>
-                                    {{ __('form.illustrations.edit') }}</span>
-                                <i class="fa-solid fa-wand-magic-sparkles cursor-pointer hover:text-main-800 text-main-600 hidden editIconElement"
-                                    data-action="edit" data-illustrationId={{ $illustration->id }}></i>
+                                <a class="cursor-pointer px-6 py-1 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg  hidden editIllustrationBtn"
+                                    href="{{ route('illustrations', ['id' => $illustration->id]) }}">{{ __('form.illustrations.edit') }}</a>
+                                <a data-action="edit" class="hidden editIconElement"
+                                    href="{{ route('illustrations', ['id' => $illustration->id]) }}">
+                                    <i class="fa-solid fa-wand-magic-sparkles cursor-pointer hover:text-main-800 text-main-600"
+                                        data-illustrationId={{ $illustration->id }}></i>
+                                </a>
                             </td>
                             <td class="p-2 md:px-6 md:py-4 text-center">
                                 <span data-action="delete" data-illustrationId={{ $illustration->id }}
