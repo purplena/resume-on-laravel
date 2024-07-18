@@ -41,4 +41,9 @@ class IllustrationRepository
 
         return Illustration::whereBetween('created_at', [$startOfMonthLastYear, $endOfMonthLastYear])->get();
     }
+
+    public function search($request)
+    {
+        return Illustration::where('title', 'like', "%{$request->input('search')}%")->latest()->paginate(3)->withQueryString();
+    }
 }

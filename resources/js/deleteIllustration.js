@@ -2,8 +2,7 @@ const deleteBtns = document.querySelectorAll("[data-action='delete']");
 
 deleteBtns.forEach((btn) => {
     btn.addEventListener("click", function (event) {
-        const targetBtn = event.target;
-        const id = targetBtn.getAttribute("data-illustrationId");
+        const id = event.target.getAttribute("data-illustrationId");
         const axiosFlashMessage = document.getElementById(
             "axios-flash-message"
         );
@@ -12,7 +11,7 @@ deleteBtns.forEach((btn) => {
         formData.append("id", id);
 
         axios
-            .delete(`/admin/illustrations/delete/${id}`, formData)
+            .delete(`/admin/illustrations/${id}`, formData)
             .then((response) => {
                 btn.parentElement.parentElement.style.display = "none";
                 axiosFlashMessage.classList.remove("hidden");

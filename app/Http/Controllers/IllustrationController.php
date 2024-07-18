@@ -5,16 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EditIllustrationRequest;
 use App\Http\Requests\StoreIllustrationRequest;
 use App\Models\Illustration;
+use App\Repository\IllustrationRepository;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 
 class IllustrationController extends Controller
 {
-    public function illustrations(Request $request)
+    public function __construct(private IllustrationRepository $repository)
     {
-        $id = $request->id;
-        $illustration = $id ? Illustration::findOrFail($id) : "";
-        $illustrations = Illustration::where('title', 'like', "%{$request->input('search')}%")->latest()->paginate(3)->withQueryString();
+    }
+
+    public function index(Request $request): View
+    {
+        $illustration = Illustration::find($request->id) ?? null;
+        $illustrations = $this->repository->search($request);
 
         return view('admin.illustrations', [
             'illustrations' => $illustrations,
@@ -22,7 +29,7 @@ class IllustrationController extends Controller
         ]);
     }
 
-    public function storeIllustration(StoreIllustrationRequest $request)
+    public function store(StoreIllustrationRequest $request): RedirectResponse
     {
         Illustration::create([
             'user_id' => auth()->id(),
@@ -33,22 +40,21 @@ class IllustrationController extends Controller
         return redirect('/admin/illustrations')->with('status', __('status.illustration.uploaded'));
     }
 
-    public function destroyIllustration(Illustration $illustration)
+    public function destroy(Illustration $illustration): JsonResponse
     {
         $illustration->delete();
 
         return response()->json(['status' => __('status.illustration.delete')], HttpResponse::HTTP_OK);
     }
 
-    public function destroyAllIllustrations()
+    public function destroyAll(): RedirectResponse
     {
-        $illustrations = auth()->user()->illustrations;
-        $illustrations->each->delete();
+        auth()->user()->illustrations()->delete();
 
-        return back()->with('status', 'You deleted all photos!');
+        return back()->with('status', __('status.illustration.delete.all'));
     }
 
-    public function deleteSelectedIllustrations(Request $request)
+    public function destroySelected(Request $request): RedirectResponse
     {
         $ids = $request->input('selected_illustrations');
 
@@ -62,12 +68,7 @@ class IllustrationController extends Controller
         return redirect('/admin/illustrations')->with('status', $message);
     }
 
-    public function editIllustration(Illustration $illustration)
-    {
-        return response()->json(['illustration' => $illustration, 'url' => asset('storage/' . $illustration->path)], HttpResponse::HTTP_OK);
-    }
-
-    public function updateIllustration(Illustration $illustration, EditIllustrationRequest $request)
+    public function update(Illustration $illustration, EditIllustrationRequest $request): RedirectResponse
     {
         $path = $request->file('path') ? request()->file('path')->store('path') : $illustration->path;
 

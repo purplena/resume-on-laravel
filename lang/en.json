@@ -62,6 +62,7 @@
     "status.illustration.uploaded": "You uploaded a new illustration",
     "status.illustration.updated": "You successfully updated an illustration",
     "status.illustration.delete": "You deleted an illustration",
+    "status.illustration.delete.all": "You deleted all illustrations",
     "status.illustration.delete.failed": "Please select at least one illustration",
     "status.illustration.delete.selected": "You successfully deleted",
     "status.illustration": "{1} :value illustration|[2,*] :value illustrations",

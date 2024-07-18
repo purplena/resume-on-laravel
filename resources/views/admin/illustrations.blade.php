@@ -15,7 +15,7 @@
             <x-sections.form.search-illustration />
         </div>
 
-        <form action="{{ route('illustrations.deleteSelected') }}" method="POST" class="mb-6">
+        <form action="{{ route('illustrations.destroySelected') }}" method="POST" class="mb-6">
             @csrf
             @method('DELETE')
 
@@ -79,8 +79,5 @@
             <button
                 class="cursor-pointer px-6 py-1 text-center border border-red-800 text-red-800 uppercase rounded-3xl hover:border hover:border-red-800  hover:bg-red-800 hover:text-white drop-shadow-lg">{{ __('form.illustrations.delete.all') }}</button>
         </form>
-
-        <x-sections.components.editIllustrationModal />
-
     </section>
 </x-layout>
