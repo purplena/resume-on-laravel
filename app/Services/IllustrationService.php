@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Http\DTO\IllustrationStatsDTO;
 use App\Repository\IllustrationRepository;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 
 class IllustrationService
 {
@@ -15,7 +15,7 @@ class IllustrationService
     public function getStats(): Object
     {
         $instance = $this->illustrationRepository;
-        $month = Carbon::now()->format('F');
+        $month = Carbon::now()->monthName;
         $currentYear = Carbon::now()->year;
         $lastYear = Carbon::now()->subYear()->format('Y');
         $illustrationsThisMonth = $instance->illustrationsThisMonth()->count();

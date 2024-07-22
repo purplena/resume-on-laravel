@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/admin/illustrations', [IllustrationController::class, 'index'])->name('illustrations');
         Route::post('/admin/illustrations', [IllustrationController::class, 'store'])->name('illustration.store');
         Route::delete('admin/illustrations', [IllustrationController::class, 'destroyAll'])->name('illustrations.destroyAll');
-        Route::delete('admin/illustrations/{illustration}', [IllustrationController::class, 'destroy']);
+        Route::delete('admin/illustrations/{illustration}', [IllustrationController::class, 'destroy'])->where('id', '[0-9]+');
         Route::delete('admin/illustrations/destroySelected', [IllustrationController::class, 'destroySelected'])->name('illustrations.destroySelected');
         Route::patch('admin/illustrations/{illustration}', [IllustrationController::class, 'update'])->name('illustration.update');
     });

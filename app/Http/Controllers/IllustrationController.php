@@ -20,8 +20,8 @@ class IllustrationController extends Controller
 
     public function index(Request $request): View
     {
-        $illustration = Illustration::find($request->id) ?? null;
-        $illustrations = $this->repository->search($request);
+        $illustration = Illustration::find($request->id);
+        $illustrations = $this->repository->search($request, 3);
 
         return view('admin.illustrations', [
             'illustrations' => $illustrations,
@@ -54,10 +54,9 @@ class IllustrationController extends Controller
         return back()->with('status', __('status.illustration.delete.all'));
     }
 
-    public function destroySelected(Request $request): RedirectResponse
+    public function destroySelected(Request $request)
     {
         $ids = $request->input('selected_illustrations');
-
         if (!$ids) {
             return redirect('/admin/illustrations')->with('status', __('status.illustration.delete.failed'));
         }

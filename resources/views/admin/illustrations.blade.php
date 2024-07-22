@@ -12,7 +12,7 @@
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <h2 class="text-h3">{{ __('admin.illustrations.h2.table') }}</h2>
-            <x-sections.form.search-illustration />
+            <x-sections.form.search-illustration route="illustrations" />
         </div>
 
         <form action="{{ route('illustrations.destroySelected') }}" method="POST" class="mb-6">

@@ -19,8 +19,11 @@
                         <i class='{{ $illustrationStats->illustrationsThisMonth ? 'fa-solid fa-chart-line' : 'fa-regular fa-face-sad-tear' }}'
                             style="color:
                         {{ $illustrationStats->illustrationsThisMonth ? '#22c55e' : '#ef4444' }}"></i>
-                        <p><span class="font-bold">{{ $illustrationStats->illustrationsThisMonth ?? '0' }}</span>
-                            illustrations in
+                        <p>
+                            <span class="font-bold">
+                                {{ trans_choice('status.illustration', $illustrationStats->illustrationsThisMonth, ['value' => $illustrationStats->illustrationsThisMonth]) }}
+                            </span>
+                            {{ __('admin.preposition.in') }}
                             {{ $illustrationStats->month }}
                             {{ $illustrationStats->currentYear }}
                         </p>
@@ -32,7 +35,7 @@
                         <p><span class="font-bold"
                                 style="color:
                         {{ $illustrationStats->monthVsMonth > 0 ? '#22c55e' : '#ef4444' }}">{{ $illustrationStats->monthVsMonth > 0 ? '+' : '' }}{{ $illustrationStats->monthVsMonth }}%</span>
-                            in {{ $illustrationStats->month }}
+                            {{ __('admin.preposition.in') }} {{ $illustrationStats->month }}
                             {{ $illustrationStats->currentYear }} vs {{ $illustrationStats->month }}
                             {{ $illustrationStats->lastYear }}
                         </p>
@@ -40,9 +43,11 @@
 
                     <div class="flex flex-row justify-end">
                         <p class="text-gray-500"><span
-                                class="font-bold">{{ $illustrationStats->illustrationsThisMonth }}</span> in
+                                class="font-bold">{{ $illustrationStats->illustrationsThisMonth }}</span>
+                            {{ __('admin.preposition.in') }}
                             {{ $illustrationStats->month }} {{ $illustrationStats->currentYear }} vs
-                            <span class="font-bold">{{ $illustrationStats->illustrationsThisMonthLastYear }}</span> in
+                            <span class="font-bold">{{ $illustrationStats->illustrationsThisMonthLastYear }}</span>
+                            {{ __('admin.preposition.in') }}
                             {{ $illustrationStats->month }} {{ $illustrationStats->lastYear }}
                         </p>
                     </div>
@@ -53,9 +58,11 @@
                         <i class='{{ $illustrationStats->illustrationsThisYear ? 'fa-solid fa-chart-line' : 'fa-regular fa-face-sad-tear' }}'
                             style="color:
                         {{ $illustrationStats->illustrationsThisYear ? '#22c55e' : '#ef4444' }}"></i>
-                        <p><span class="font-bold">{{ $illustrationStats->illustrationsThisYear ?? '0' }}</span>
-                            illustrations in
-                            {{ $illustrationStats->currentYear }}
+                        <p>
+                            <span class="font-bold">
+                                {{ trans_choice('status.illustration', $illustrationStats->illustrationsThisMonth, ['value' => $illustrationStats->illustrationsThisMonth]) }}
+                            </span>
+                            {{ __('admin.preposition.in') }} {{ $illustrationStats->currentYear }}
                         </p>
                     </div>
 
@@ -66,15 +73,17 @@
                         <p><span class="font-bold"
                                 style="color:
                     {{ $illustrationStats->yearVsYear > 0 ? '#22c55e' : '#ef4444' }}">{{ $illustrationStats->yearVsYear > 0 ? '+' : '' }}{{ $illustrationStats->yearVsYear }}%</span>
-                            in {{ $illustrationStats->currentYear }} vs
+                            {{ __('admin.preposition.in') }} {{ $illustrationStats->currentYear }} vs
                             {{ $illustrationStats->lastYear }}
                         </p>
                     </div>
                     <div class="flex flex-row justify-end">
                         <p class="text-gray-500"><span
-                                class="font-bold">{{ $illustrationStats->illustrationsThisYear }}</span> in
+                                class="font-bold">{{ $illustrationStats->illustrationsThisYear }}</span>
+                            {{ __('admin.preposition.in') }}
                             {{ $illustrationStats->currentYear }} vs
-                            <span class="font-bold">{{ $illustrationStats->illustrationsLastYear }}</span> in
+                            <span class="font-bold">{{ $illustrationStats->illustrationsLastYear }}</span>
+                            {{ __('admin.preposition.in') }}
                             {{ $illustrationStats->lastYear }}
                         </p>
                     </div>

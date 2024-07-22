@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Models\Illustration;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 
 class IllustrationRepository
 {
@@ -42,8 +42,8 @@ class IllustrationRepository
         return Illustration::whereBetween('created_at', [$startOfMonthLastYear, $endOfMonthLastYear])->get();
     }
 
-    public function search($request)
+    public function search($request, $paginate)
     {
-        return Illustration::where('title', 'like', "%{$request->input('search')}%")->latest()->paginate(3)->withQueryString();
+        return Illustration::where('title', 'like', "%{$request->input('search')}%")->latest()->paginate($paginate)->withQueryString();
     }
 }
