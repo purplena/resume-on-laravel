@@ -12,12 +12,12 @@ class Illustration extends Model
 
     protected $guarded = [];
 
-    public function createdAtMonth()
+    public function createdAtMonth(): string
     {
         return Carbon::parse($this->created_at)->monthName;
     }
 
-    public function createdAtYear()
+    public function createdAtYear(): string
     {
         return Carbon::parse($this->created_at)->format('Y');
     }

@@ -12,7 +12,7 @@ class IllustrationService
     {
     }
 
-    public function getStats(): Object
+    public function getStats(): IllustrationStatsDTO
     {
         $instance = $this->illustrationRepository;
         $month = Carbon::now()->monthName;
@@ -25,7 +25,7 @@ class IllustrationService
 
         if ($illustrationsThisMonthLastYear > 0) {
             $monthVsMonth = ceil(($illustrationsThisMonth - $illustrationsThisMonthLastYear) / $illustrationsThisMonthLastYear * 100);
-        } elseif($illustrationsThisMonthLastYear == 0 && $illustrationsThisMonth == 0) {
+        } elseif ($illustrationsThisMonthLastYear == 0 && $illustrationsThisMonth == 0) {
             $monthVsMonth = 0;
         } else {
             $monthVsMonth = 100;
@@ -39,7 +39,7 @@ class IllustrationService
             $yearVsYear = 100;
         }
 
-        $illustrationStats = new IllustrationStatsDTO(
+        return new IllustrationStatsDTO(
             $illustrationsThisMonth,
             $illustrationsThisYear,
             $illustrationsLastYear,
@@ -50,7 +50,5 @@ class IllustrationService
             $monthVsMonth,
             $yearVsYear
         );
-
-        return $illustrationStats;
     }
 }

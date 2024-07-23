@@ -7,7 +7,6 @@
             {{ $illustration ? __('admin.illustrations.h2.update') : __('admin.illustrations.h2.add') }}
         </h2>
 
-
         <x-sections.form.upload-image-form :illustration="$illustration" />
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">

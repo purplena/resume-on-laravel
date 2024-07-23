@@ -54,7 +54,7 @@ class IllustrationController extends Controller
         return back()->with('status', __('status.illustration.delete.all'));
     }
 
-    public function destroySelected(Request $request)
+    public function destroySelected(Request $request): RedirectResponse
     {
         $ids = $request->input('selected_illustrations');
         if (!$ids) {
