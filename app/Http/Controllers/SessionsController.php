@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response as HttpResponse;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 
 class SessionsController extends Controller
 {
-    public function login()
+    public function login(): View
     {
         return view('sessions.login');
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(StoreUserRequest $request): JsonResponse
     {
         $credentials = $request->validated();
 
@@ -31,7 +34,7 @@ class SessionsController extends Controller
         ], HttpResponse::HTTP_BAD_REQUEST);
     }
 
-    public function destroy()
+    public function destroy(): RedirectResponse
     {
         auth()->logout();
 

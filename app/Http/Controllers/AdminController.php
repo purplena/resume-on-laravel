@@ -2,49 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Photo;
+use App\Services\IllustrationService;
+use Illuminate\Contracts\View\View;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(IllustrationService $service): View
     {
         return view(
             'admin.index',
+            [
+                'illustrationStats' => $service->getStats(),
+            ],
         );
-    }
-
-    public function illustrations()
-    {
-        return view('admin.illustrations', [
-            'photos' => Photo::latest()->paginate(20)
-        ]);
-    }
-
-    public function create()
-    {
-        return view('admin.create');
-    }
-
-    public function store()
-    {
-        request()->validate([
-            'title' => 'required',
-            'path' => ['required', 'image'],
-        ]);
-
-        Photo::create([
-            'user_id' => auth()->id(),
-            'title' => request()->input('title'),
-            'path' => request()->file('path')->store('path')
-        ]);
-
-        return redirect('/admin')->with('success', 'You uploaded a new photo!');
-    }
-
-    public function destroy(Photo $photo)
-    {
-        $photo->delete();
-
-        return back()->with('success', 'Photo has been deleted!');
     }
 }

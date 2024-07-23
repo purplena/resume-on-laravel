@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IllustrationController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,10 +41,13 @@ Route::post('/sessions', [SessionsController::class, 'store'])->name('session.st
 Route::group(['middleware' => 'auth'], function () {
     Route::middleware('can:admin')->group(function () {
         Route::get('admin', [AdminController::class, 'index'])->name('admin');
-        Route::get('photos', [AdminController::class, 'photos'])->name('photos');
         Route::post('logout', [SessionsController::class, 'destroy'])->withoutMiddleware(['auth']);
-        Route::get('/admin/illustrations', [AdminController::class, 'illustrations'])->name('illustrations');
-        Route::post('/admin/illustrations/store', [AdminController::class, 'store'])->name('illustrations.store');
-        Route::delete('admin/photos/{photo}', [AdminController::class, 'destroy']);
+
+        Route::get('/admin/illustrations', [IllustrationController::class, 'index'])->name('illustrations');
+        Route::post('/admin/illustrations', [IllustrationController::class, 'store'])->name('illustration.store');
+        Route::delete('admin/illustrations', [IllustrationController::class, 'destroyAll'])->name('illustrations.destroyAll');
+        Route::delete('admin/illustrations/{illustration}', [IllustrationController::class, 'destroy'])->where('id', '[0-9]+');
+        Route::delete('admin/illustrations/destroySelected', [IllustrationController::class, 'destroySelected'])->name('illustrations.destroySelected');
+        Route::patch('admin/illustrations/{illustration}', [IllustrationController::class, 'update'])->name('illustration.update');
     });
 });

@@ -20,8 +20,7 @@
         </div>
         <div class="bg-main-400 h-[1px] mb-4"></div>
         <div class="flex flex-col gap-2 md:grid md:grid-cols-3">
-            <x-sections.components.about-section header="{{ __('about.education') }}"
-                icon="fa-solid fa-graduation-cap about-section-icon">
+            <x-sections.components.about-section header="{{ __('about.education') }}" icon="fa-solid fa-graduation-cap">
                 <div>
                     <p class="text-center leading-5"><span
                             class="font-bold text-[16px]">{{ __('about.degree.1') }}</span></p>
@@ -40,8 +39,7 @@
 
             </x-sections.components.about-section>
 
-            <x-sections.components.about-section header="{{ __('about.work') }}"
-                icon="fa-solid fa-briefcase about-section-icon">
+            <x-sections.components.about-section header="{{ __('about.work') }}" icon="fa-solid fa-briefcase">
                 <div>
                     <p class="text-center font-bold text-[16px] leading-5">Sales Capability, PepsiCo</p>
                     <p class="text-center leading-5">{{ __('about.work.pepsi.1') }}</p>
@@ -57,8 +55,7 @@
                 </div>
             </x-sections.components.about-section>
 
-            <x-sections.components.about-section header="{{ __('about.ITskills') }}"
-                icon="fa-solid fa-code about-section-icon">
+            <x-sections.components.about-section header="{{ __('about.ITskills') }}" icon="fa-solid fa-code">
                 <div class="flex flex-col items-center">
                     <p class="font-bold text-[16px] leading-5">
                         Full-Stack
