@@ -4,7 +4,8 @@
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10">
                 <div class="pulse simple h-[180px] w-[180px] bg-main-200 rounded-full"></div>
             </div>
-            <img src="{{ url('/images/photo-bg-empty.png') }}" alt="image of Lena" class="w-[100%] max-w-heroImage" />
+            <img src="{{ asset('/images/assets/photo-bg-empty.png') }}" alt="image of Lena"
+                class="w-[100%] max-w-heroImage" />
             <div
                 class="w-full flex flex-row justify-center gap-4 absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                 <x-sections.components.social-icon-links href="https://github.com/purplena" icon="fa-github" />
