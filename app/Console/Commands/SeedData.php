@@ -62,7 +62,14 @@ class SeedData extends Command
                 'category'      => Project::CATEGORY_ART,
                 'title'         => 'test illustration',
                 'project_data'  => [],
-                'images'        => ['test.jpg']
+                'images'        => ['media/test.jpg']
+            ],
+            [
+                'user_id'       => $user,
+                'category'      => Project::CATEGORY_ART,
+                'title'         => 'purple',
+                'project_data'  => [],
+                'images'        => ['media/purple.jpg']
             ]
         ];
 
@@ -71,7 +78,7 @@ class SeedData extends Command
                 'user_id'       => $project['user_id'],
                 'category'      => $project['category'],
                 'title'         => $project['title'],
-                'project_data'  => $project['media/project_data'],
+                'project_data'  => $project['project_data'],
             ]);
 
             collect($project['images'])->each(function ($image) use ($newProject) {
