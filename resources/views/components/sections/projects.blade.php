@@ -9,7 +9,7 @@
                 <div class="absolute h-full w-full -z-50">
                     @include('components/svg')
                 </div>
-                <img src={{ url('/images/illustration-no-bg.png') }} alt="vector-illustration"
+                <img src={{ asset('/images/assets/illustration-no-bg.png') }} alt="vector-illustration"
                     class="object-contain mx-auto w-[200px] max-w-[400px]">
             </div>
 

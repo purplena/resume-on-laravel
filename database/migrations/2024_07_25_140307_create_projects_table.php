@@ -10,11 +10,12 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::create('illustrations', function (Blueprint $table) {
+        Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('title')->unique();
-            $table->string('path');
+            $table->integer('category');
+            $table->string('title');
+            $table->json('project_data')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('illustrations');
+        Schema::dropIfExists('projects');
     }
 };
