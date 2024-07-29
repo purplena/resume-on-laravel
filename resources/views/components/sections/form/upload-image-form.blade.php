@@ -1,5 +1,5 @@
 <form method='POST' class="bg-egg drop-shadow-sm hover:drop-shadow-lg px-8 py-6 rounded-3xl mb-14"
-    action="{{ $illustration ? route('illustration.update', ['illustration' => $illustration->id]) : route('illustration.store') }}"
+    action="{{ $illustration ? route('illustration.update', ['project' => $illustration->id]) : route('illustration.store') }}"
     id="addIllustrationForm" enctype="multipart/form-data">
     @csrf
     @if ($illustration)
@@ -28,7 +28,8 @@
             <div id="dragAndDropArea"
                 class="mt-2 flex justify-center rounded-lg bg-white border-gray-900/25 px-6 py-10 ring-1  ring-gray-300">
                 <div class="text-center">
-                    <img id="previewImage" src="{{ $illustration ? asset('storage/' . $illustration->path) : '' }}"
+                    <img id="previewImage"
+                        src="{{ $illustration ? asset('storage/' . $illustration->medias()->first()->path) : '' }}"
                         class="w-full max-w-[250px]">
                     <svg class="{{ $illustration ? 'hidden' : '' }} mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24"
                         id="dragAndDropSvg" fill="currentColor" aria-hidden="true">

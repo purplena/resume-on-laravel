@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditIllustrationRequest;
 use App\Http\Requests\StoreIllustrationRequest;
-use App\Models\Illustration;
-use App\Repository\IllustrationRepository;
+use App\Models\Media;
+use App\Models\Project;
+use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -14,42 +15,50 @@ use Illuminate\Http\Response as HttpResponse;
 
 class IllustrationController extends Controller
 {
-    public function __construct(private IllustrationRepository $repository)
+    public function index(Request $request, ProjectService $service): View
     {
-    }
-
-    public function index(Request $request): View
-    {
-        $illustration = Illustration::find($request->id);
-        $illustrations = $this->repository->search($request, 3);
+        $projectData = $service->getProjects($request, Project::CATEGORY_ART);
 
         return view('admin.illustrations', [
-            'illustrations' => $illustrations,
-            'illustration' => $illustration,
+            'projectData' => $projectData,
         ]);
     }
 
     public function store(StoreIllustrationRequest $request): RedirectResponse
     {
-        Illustration::create([
+        $project = Project::create([
             'user_id' => auth()->id(),
             'title' => request()->input('title'),
-            'path' => request()->file('path')->store('path')
+            'category' => Project::CATEGORY_ART,
+            'project_data' => [],
+        ]);
+
+        Media::create([
+                'project_id' => $project->id,
+                'path' => request()->file('path')->store('media'),
         ]);
 
         return redirect('/admin/illustrations')->with('status', __('status.illustration.uploaded'));
     }
 
-    public function destroy(Illustration $illustration): JsonResponse
+    public function update(Project $project, EditIllustrationRequest $request): RedirectResponse
     {
-        $illustration->delete();
+        $path = request()->file('path') ? request()->file('path')->store('media') : $project->medias()->first()->path;
 
-        return response()->json(['status' => __('status.illustration.delete')], HttpResponse::HTTP_OK);
+        $project->update([
+            'title' => request()->input('title'),
+        ]);
+
+        $project->medias()->first()->update([
+            'path' => $path
+        ]);
+
+        return redirect('/admin/illustrations')->with('status', __('status.illustration.updated'));
     }
 
     public function destroyAll(): RedirectResponse
     {
-        auth()->user()->illustrations()->delete();
+        auth()->user()->artProjects()->each->delete();
 
         return back()->with('status', __('status.illustration.delete.all'));
     }
@@ -61,21 +70,16 @@ class IllustrationController extends Controller
             return redirect('/admin/illustrations')->with('status', __('status.illustration.delete.failed'));
         }
 
-        $deletedCount = Illustration::whereIn('id', $ids)->delete();
+        $deletedCount = Project::whereIn('id', $ids)->delete();
         $message = __('status.illustration.delete.selected') . " " . trans_choice('status.illustration', $deletedCount, ['value' => $deletedCount]);
 
         return redirect('/admin/illustrations')->with('status', $message);
     }
 
-    public function update(Illustration $illustration, EditIllustrationRequest $request): RedirectResponse
+    public function destroy(Project $project): JsonResponse
     {
-        $path = $request->file('path') ? request()->file('path')->store('path') : $illustration->path;
+        $project->delete();
 
-        $illustration->update([
-            'title' => request()->input('title'),
-            'path' => $path
-        ]);
-
-        return redirect('/admin/illustrations')->with('status', __('status.illustration.updated'));
+        return response()->json(['status' => __('status.illustration.delete')], HttpResponse::HTTP_OK);
     }
 }

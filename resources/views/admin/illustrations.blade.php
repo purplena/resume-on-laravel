@@ -4,10 +4,10 @@
             {{ __('admin.illustrations.h1') }}
         </h1>
         <h2 class="text-h3 mb-6">
-            {{ $illustration ? __('admin.illustrations.h2.update') : __('admin.illustrations.h2.add') }}
+            {{ $projectData['project'] ? __('admin.illustrations.h2.update') : __('admin.illustrations.h2.add') }}
         </h2>
 
-        <x-sections.form.upload-image-form :illustration="$illustration" />
+        <x-sections.form.upload-image-form :illustration="$projectData['project']" />
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <h2 class="text-h3">{{ __('admin.illustrations.h2.table') }}</h2>
@@ -28,7 +28,7 @@
                 </div>
 
                 <tbody>
-                    @foreach ($illustrations as $illustration)
+                    @foreach ($projectData['projects'] as $illustration)
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="p-4 md:py-4">
@@ -42,7 +42,7 @@
                             </td>
                             <td class="p-2 md:px-6 md:py-4 text-center">
                                 <img class="w-full min-w-[100px] max-w-[200px] mx-auto"
-                                    src="{{ asset('storage/' . $illustration->path) }}" alt="">
+                                    src="{{ asset('storage/' . $illustration->medias->first()->path) }}" alt="">
                             </td>
                             <td class="p-2 md:px-6 md:py-4 text-center">
                                 <a class="cursor-pointer px-6 py-1 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg  hidden editIllustrationBtn"
@@ -67,7 +67,7 @@
             </table>
         </form>
         <div class="flex flex-row justify-center mb-14">
-            {{ $illustrations->links() }}
+            {{ $projectData['projects']->links() }}
         </div>
 
 

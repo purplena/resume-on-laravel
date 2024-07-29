@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\IllustrationService;
+use App\Models\Project;
+use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
 
 class AdminController extends Controller
 {
-    public function index(IllustrationService $service): View
+    public function index(ProjectService $service): View
     {
         return view(
             'admin.index',
             [
-                'illustrationStats' => $service->getStats(),
+                'projectsStats' => $service->getStatsPerProjectCategory(Project::CATEGORY_ART),
             ],
         );
     }
