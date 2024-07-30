@@ -13,7 +13,16 @@ class AdminController extends Controller
         return view(
             'admin.index',
             [
-                'projectsStats' => $service->getStatsPerProjectCategory(Project::CATEGORY_ART),
+                'projectsStats' => [
+                    'art' => [
+                        'stats' => $service->getStatsPerProjectCategory(Project::CATEGORY_ART),
+                        'translationKey' => 'illustrations'
+                    ],
+                    'web' => [
+                        'stats' => $service->getStatsPerProjectCategory(Project::CATEGORY_WEB),
+                        'translationKey' => 'projects'
+                    ]
+                ],
             ],
         );
     }

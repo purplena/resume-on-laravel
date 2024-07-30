@@ -7,7 +7,7 @@
             {{ $projectData['project'] ? __('admin.illustrations.h2.update') : __('admin.illustrations.h2.add') }}
         </h2>
 
-        <x-sections.form.upload-image-form :illustration="$projectData['project']" />
+        <x-sections.form.upload-image-form :illustration="$projectData['project']" :projectCategory="$projectCategory" :route="$route" />
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
             <h2 class="text-h3">{{ __('admin.illustrations.h2.table') }}</h2>

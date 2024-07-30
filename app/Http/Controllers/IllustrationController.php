@@ -21,6 +21,8 @@ class IllustrationController extends Controller
 
         return view('admin.illustrations', [
             'projectData' => $projectData,
+            'projectCategory' => Project::CATEGORY_ART,
+            'route' => 'illustration'
         ]);
     }
 
@@ -29,8 +31,8 @@ class IllustrationController extends Controller
         $project = Project::create([
             'user_id' => auth()->id(),
             'title' => request()->input('title'),
-            'category' => Project::CATEGORY_ART,
-            'project_data' => [],
+            'category' => request()->input('projectCategory'),
+            'project_data' => $this->returnProjectData(),
         ]);
 
         Media::create([
@@ -39,6 +41,21 @@ class IllustrationController extends Controller
         ]);
 
         return redirect('/admin/illustrations')->with('status', __('status.illustration.uploaded'));
+    }
+
+    private function returnProjectData(): array
+    {
+        if (request()->input('description') || request()->input('github')) {
+            $projectData = [
+                'description' => request()->input('description'),
+                'github' => request()->input('github'),
+                'link' => request()->input('github') ?? null,
+            ];
+        } else {
+            $projectData = [];
+        }
+
+        return $projectData;
     }
 
     public function update(Project $project, EditIllustrationRequest $request): RedirectResponse
