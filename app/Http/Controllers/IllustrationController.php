@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditIllustrationRequest;
 use App\Http\Requests\StoreIllustrationRequest;
-use App\Models\Media;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
@@ -20,42 +19,17 @@ class IllustrationController extends Controller
         $projectData = $service->getProjects($request, Project::CATEGORY_ART);
 
         return view('admin.illustrations', [
-            'projectData' => $projectData,
-            'projectCategory' => Project::CATEGORY_ART,
-            'route' => 'illustration'
+            'projectData'       => $projectData,
+            'projectCategory'   => Project::CATEGORY_ART,
+            'route'             => 'illustration'
         ]);
     }
 
-    public function store(StoreIllustrationRequest $request): RedirectResponse
+    public function store(StoreIllustrationRequest $request, ProjectService $service): RedirectResponse
     {
-        $project = Project::create([
-            'user_id' => auth()->id(),
-            'title' => request()->input('title'),
-            'category' => request()->input('projectCategory'),
-            'project_data' => $this->returnProjectData(),
-        ]);
-
-        Media::create([
-                'project_id' => $project->id,
-                'path' => request()->file('path')->store('media'),
-        ]);
+        $service->storeProject();
 
         return redirect('/admin/illustrations')->with('status', __('status.illustration.uploaded'));
-    }
-
-    private function returnProjectData(): array
-    {
-        if (request()->input('description') || request()->input('github')) {
-            $projectData = [
-                'description' => request()->input('description'),
-                'github' => request()->input('github'),
-                'link' => request()->input('github') ?? null,
-            ];
-        } else {
-            $projectData = [];
-        }
-
-        return $projectData;
     }
 
     public function update(Project $project, EditIllustrationRequest $request): RedirectResponse

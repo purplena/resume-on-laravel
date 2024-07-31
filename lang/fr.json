@@ -61,6 +61,7 @@
     "admin.illustrations.h2.add": "ajouter une nouvelle illustration",
     "admin.illustrations.h2.update": "mets à jour ton illustration",
     "status.illustration.uploaded": "Tu as téléchargé une nouvelle illustration",
+    "status.project.uploaded": "Tu as téléchargé un nouveau projet",
     "status.illustration.updated": "Tu as mis à jour une illustration",
     "status.illustration.delete": "Tu as supprimé une illustration",
     "status.illustration.delete.all": "Tu as supprimé toutes les illustrations",
