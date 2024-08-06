@@ -2,13 +2,13 @@
 
 namespace App\Http\DTO;
 
-class IllustrationStatsDTO
+class ProjectStatsDTO
 {
     public function __construct(
-        public int $illustrationsThisMonth,
-        public int $illustrationsThisYear,
-        public int $illustrationsLastYear,
-        public int $illustrationsThisMonthLastYear,
+        public int $projectsThisMonth,
+        public int $projectsThisYear,
+        public int $projectsLastYear,
+        public int $projectsThisMonthLastYear,
         public string $month,
         public int $currentYear,
         public int $lastYear,

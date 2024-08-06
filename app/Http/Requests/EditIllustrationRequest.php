@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\File;
 
 class EditIllustrationRequest extends FormRequest
 {
@@ -15,7 +16,8 @@ class EditIllustrationRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'path' => 'nullable|image',
+            'path.*' => ['required', 'image', File::image()->max('2mb')],
+            'project_data' => 'nullable'
         ];
     }
 }

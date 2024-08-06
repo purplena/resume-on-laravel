@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 class Project extends Model
 {
@@ -28,5 +29,15 @@ class Project extends Model
     public function medias(): HasMany
     {
         return $this->hasMany(Media::class);
+    }
+
+    public function createdAtMonth(): string
+    {
+        return Carbon::parse($this->created_at)->monthName;
+    }
+
+    public function createdAtYear(): string
+    {
+        return Carbon::parse($this->created_at)->format('Y');
     }
 }

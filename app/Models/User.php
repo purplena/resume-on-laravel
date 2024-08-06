@@ -46,4 +46,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
     }
+
+    public function artProjects()
+    {
+        return $this->projects()->where('category', Project::CATEGORY_ART)->get();
+    }
+
+    public function webProjects()
+    {
+        return $this->projects()->where('category', Project::CATEGORY_WEB)->get();
+    }
 }
