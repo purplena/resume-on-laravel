@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditIllustrationRequest;
 use App\Http\Requests\StoreWebProjectRequest;
+use App\Models\Media;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response as HttpResponse;
 
 class ProjectController
 {
@@ -30,18 +33,17 @@ class ProjectController
         return redirect('/admin/projects')->with('status', __('status.project.uploaded'));
     }
 
-    public function update(Project $project, EditIllustrationRequest $request): RedirectResponse
+    public function update(Project $project, EditIllustrationRequest $request, ProjectService $service): RedirectResponse
     {
-        $path = request()->file('path') ? request()->file('path')->store('media') : $project->medias()->first()->path;
-
-        $project->update([
-            'title' => request()->input('title'),
-        ]);
-
-        $project->medias()->first()->update([
-            'path' => $path
-        ]);
+        $service->updateProject($project);
 
         return redirect('/admin/projects')->with('status', __('status.illustration.updated'));
+    }
+
+    public function destroyMedia(Media $media): JsonResponse
+    {
+        $media->delete();
+
+        return response()->json(['status' => "you deleted a project's picture" ], HttpResponse::HTTP_OK);
     }
 }

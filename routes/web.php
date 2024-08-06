@@ -54,5 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/admin/projects', [ProjectController::class, 'index'])->name('projects');
         Route::post('/admin/projects', [ProjectController::class, 'store'])->name('project.store');
         Route::patch('admin/projects/{project}', [ProjectController::class, 'update'])->name('project.update');
+        Route::patch('admin/projects/{project}', [ProjectController::class, 'update'])->name('project.update');
+        Route::delete('admin/projects/media/{media}', [ProjectController::class, 'destroyMedia'])->where('id', '[0-9]+');
     });
 });

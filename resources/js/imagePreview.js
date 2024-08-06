@@ -15,9 +15,38 @@ export function imagePreview(files) {
             const imgElement = document.createElement("img");
             imgElement.src = event.target.result;
             imgElement.alt = "Image Preview";
-            imgElement.classList.add("w-full", "max-w-[250px]", "m-2"); // Example classes, adjust as needed
+            imgElement.classList.add(
+                "object-contain",
+                "w-[100%]",
+                "max-w-[200px]"
+            );
 
-            previewContainer.appendChild(imgElement);
+            const outerDiv = document.createElement("div");
+            outerDiv.className = "absolute -right-2 -top-2 cursor-pointer";
+
+            const buttonDiv = document.createElement("div");
+            buttonDiv.className =
+                "w-[36px] h-[36px] relative border border-bg-main-600 bg-white rounded-full hover:bg-egg";
+
+            const iconElement = document.createElement("i");
+            iconElement.className =
+                "fa-solid fa-xmark absolute top-0 left-[50%] -translate-x-2/4 text-main-600 text-[18px] p-2";
+
+            buttonDiv.appendChild(iconElement);
+            outerDiv.appendChild(buttonDiv);
+
+            const outerOuterDiv = document.createElement("div");
+            outerOuterDiv.className = "relative";
+
+            outerOuterDiv.appendChild(outerDiv);
+            outerOuterDiv.appendChild(imgElement);
+
+            buttonDiv.addEventListener("click", function () {
+                imgElement.remove();
+                outerOuterDiv.remove();
+            });
+
+            previewContainer.appendChild(outerOuterDiv);
         };
 
         reader.readAsDataURL(file);

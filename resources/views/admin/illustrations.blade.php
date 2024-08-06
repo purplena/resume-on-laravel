@@ -1,12 +1,21 @@
+@php
+    use App\Models\Project;
+
+    $category = Project::CATEGORY_WEB;
+@endphp
+
 <x-layout>
     <section class="mt-navbarMargin py-12 px-4 max-w-maxScreenWidth mx-auto">
         <h1 class="text-h1 mb-6">
-            {{ __('admin.illustrations.h1') }}
+            {{ $projectCategory == $category ? __('admin.projects.h1') : __('admin.illustrations.h1') }}
         </h1>
         <h2 class="text-h3 mb-6">
-            {{ $projectData['project'] ? __('admin.illustrations.h2.update') : __('admin.illustrations.h2.add') }}
+            @if ($projectCategory == $category)
+                {{ $projectData['project'] ? __('admin.projects.h2.update') : __('admin.projects.h2.add') }}
+            @else
+                {{ $projectData['project'] ? __('admin.illustrations.h2.update') : __('admin.illustrations.h2.add') }}
+            @endif
         </h2>
-
         <x-sections.form.upload-image-form :illustration="$projectData['project']" :projectCategory="$projectCategory" :route="$route" />
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
@@ -36,19 +45,22 @@
                                     class="selectedIllustrations h-4 w-4 rounded border-gray-300 text-main-500 focus:ring-main-500">
 
                             </td>
-                            <td class="p-2 md:px-6 md:py-4 text-gray-900 whitespace-nowrap dark:text-white text-center">
+                            <td class="p-2 md:px-6 md:py-4 text-gray-900 dark:text-white text-center">
                                 {{ $illustration->title }}
-
                             </td>
                             <td class="p-2 md:px-6 md:py-4 text-center">
-                                <img class="w-full min-w-[100px] max-w-[200px] mx-auto"
-                                    src="{{ asset('storage/' . $illustration->medias->first()->path) }}" alt="">
+                                <div class="flex flex-col lg:flex-row gap-2 justify-center mx-auto">
+                                    @foreach ($illustration->medias as $media)
+                                        <img class="object-contain w-[100%] max-w-[200px]"
+                                            src="{{ asset('storage/' . $media->path) }}" alt="">
+                                    @endforeach
+                                </div>
                             </td>
                             <td class="p-2 md:px-6 md:py-4 text-center">
                                 <a class="cursor-pointer px-6 py-1 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg  hidden editIllustrationBtn"
-                                    href="{{ route('illustrations', ['id' => $illustration->id]) }}">{{ __('form.illustrations.edit') }}</a>
+                                    href="{{ $projectCategory == $category ? route('projects', ['id' => $illustration->id]) : route('illustrations', ['id' => $illustration->id]) }}">{{ __('form.illustrations.edit') }}</a>
                                 <a data-action="edit" class="hidden editIconElement"
-                                    href="{{ route('illustrations', ['id' => $illustration->id]) }}">
+                                    href="{{ $projectCategory == $category ? route('projects', ['id' => $illustration->id]) : route('illustrations', ['id' => $illustration->id]) }}">
                                     <i class="fa-solid fa-wand-magic-sparkles cursor-pointer hover:text-main-800 text-main-600"
                                         data-illustrationId={{ $illustration->id }}></i>
                                 </a>

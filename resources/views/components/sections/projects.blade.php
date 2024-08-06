@@ -20,7 +20,7 @@
                         <div class="swiper-wrapper">
                             @for ($i = 0; $i < $webProjects->count(); $i++)
                                 <div
-                                    class="swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center bg-main-200 ">
+                                    class="swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center bg-main-200 p-4">
                                     <div class="absolute">
                                         <x-svg-project :coordinates="$coordinates[$i]" />
                                     </div>
@@ -30,10 +30,10 @@
                                         </h3>
                                         <div class="flex flex-row items-center justify-center gap-4">
                                             <a href="{{ $webProjects[$i]->project_data['github'] }}"
-                                                class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[170px]">GitHub
+                                                class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">GitHub
                                                 Repo</a>
                                             <a href=""
-                                                class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[170px]">See
+                                                class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">See
                                                 More</a>
                                         </div>
                                     </div>

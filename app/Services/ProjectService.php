@@ -90,4 +90,38 @@ class ProjectService
         ]);
         }
     }
+
+    // Have not finilized this feature
+    public function updateProject($project)
+    {
+        if($project->category == Project::CATEGORY_WEB) {
+            if (request()->file('path')) {
+                foreach (request()->file('path') as $file) {
+                    // foreach($project->medias()->get() as $media) {
+                    //     $media->create([
+                    //         'path'          => $file->store('media'),
+                    //     ]);
+                    // }
+                    Media::create([
+                        'project_id'    => $project->id,
+                        'path'          => $file->store('media'),
+                    ]);
+                }
+            } else {
+                foreach($project->medias() as $media) {
+                    Media::update([
+                        'path' => $media->path
+                    ]);
+                }
+
+                // $project->medias()->first()->path;
+            }
+        }
+        // $path = request()->file('path') ? request()->file('path')->store('media') : $project->medias()->first()->path;
+
+        $project->update([
+            'title' => request()->input('title'),
+            'project_data'  => request()->input('description') && request()->input('github') ? ProjectDataDTO::projectDataArray() : [],
+        ]);
+    }
 }

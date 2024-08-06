@@ -21,25 +21,25 @@
             @enderror
             <div class="mt-2">
                 <input type="text" name="title" id="title"
-                    class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 placeholder:text-gray-400 placeholder:text-[14px] focus:ring-gray-300"
+                    class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 ring-inset placeholder:text-gray-400 placeholder:text-[14px] focus:ring-gray-300"
                     placeholder="{{ __('form.input.title') }}" value="{{ old('title', $illustration->title ?? '') }}">
             </div>
         </div>
 
         @if ($projectCategory == $category)
-            <div class="sm:col-span-4">
+            <div class="col-span-full">
                 <label for="description"
                     class="block text-sm font-bold leading-6 text-gray-900">{{ __('form.label.description') }}</label>
                 @error('description')
                     <p class="text-red-500">{{ $message }}</p>
                 @enderror
                 <div class="mt-2">
-                    <input type="test" name="description" id="description"
-                        class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 placeholder:text-gray-400 placeholder:text-[14px] focus:ring-gray-300"
-                        placeholder="{{ __('form.input.description') }}"
-                        value="{{ old('description', $illustration->description ?? '') }}">
+                    <textarea id="description" name="description" rows="3"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400  focus:ring-gray-300 sm:text-sm sm:leading-6">{{ old('description', $illustration->project_data['description'] ?? '') }}</textarea>
                 </div>
+                <p class="mt-2 text-xs leading-6 text-gray-600">{{ __('form.input.description') }}</p>
             </div>
+
 
             <div class="sm:col-span-4">
                 <label for="github"
@@ -49,9 +49,9 @@
                 @enderror
                 <div class="mt-2">
                     <input type="text" name="github" id="github"
-                        class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 placeholder:text-gray-400 placeholder:text-[14px] focus:ring-gray-300"
+                        class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 ring-inset placeholder:text-gray-400 placeholder:text-[14px] focus:ring-gray-300"
                         placeholder="{{ __('form.input.github') }}"
-                        value="{{ old('github', $illustration->github ?? '') }}">
+                        value="{{ old('github', $illustration->project_data['github'] ?? '') }}">
                 </div>
             </div>
 
@@ -60,9 +60,9 @@
                     class="block text-sm font-bold leading-6 text-gray-900">{{ __('form.label.link') }}</label>
                 <div class="mt-2">
                     <input type="text" name="link" id="link"
-                        class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 placeholder:text-gray-400 placeholder:text-[14px] focus:ring-gray-300"
+                        class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 ring-inset placeholder:text-gray-400 placeholder:text-[14px] focus:ring-gray-300"
                         placeholder="{{ __('form.input.link') }}"
-                        value="{{ old('project_data.link', $illustration->link ?? '') }}">
+                        value="{{ old('link', $illustration->project_data['link'] ?? '') }}">
                 </div>
             </div>
         @endif
@@ -74,24 +74,38 @@
                 <p class="text-red-500">{{ $message }}</p>
             @enderror
             <div id="dragAndDropArea"
-                class="mt-2 flex justify-center rounded-lg bg-white border-gray-900/25 px-6 py-10 ring-1  ring-gray-300">
+                class="mt-2 flex justify-center rounded-lg bg-white border-gray-900/25 px-6 py-10 ring-1 ring-inset ring-gray-300">
                 <div class="text-center">
-                    <div id="previewContainer" class="flex flex-wrap">
-                    </div>
-                    @if ($projectCategory == $category && $illustration)
-                        <div class="flex flex-wrap gap-2">
-
-                            @foreach ($illustration->medias()->get() as $img)
-                                <img src="{{ $illustration ? asset('storage/' . $img->path) : '' }}"
-                                    class="w-full max-w-[250px]">
-                            @endforeach
+                    <div class="flex flex-row gap-4">
+                        <div id="previewContainer" class="flex flex-row gap-4">
                         </div>
-                    @else
-                        <img id="previewImage"
-                            src="{{ $illustration ? asset('storage/' . $illustration->medias()->first()->path) : '' }}"
-                            class="w-full max-w-[250px]">
-                    @endif
+                        <div>
+                            @if ($projectCategory == $category && $illustration)
+                                <div class="flex flex-wrap gap-4">
+                                    @foreach ($illustration->medias()->get() as $img)
+                                        <div class="relative" data-mediaId="{{ $img->id }}">
+                                            <div class="absolute -right-2 -top-2 cursor-pointer"
+                                                data-action="deleteProjectMedia">
+                                                <div
+                                                    class="w-[36px] h-[36px] relative border border-bg-main-600 bg-white rounded-full hover:bg-egg">
+                                                    <i
+                                                        class="fa-solid fa-xmark absolute top-0 left-[50%] -translate-x-2/4 text-main-600 text-[18px] 
+                                                p-2"></i>
+                                                </div>
+                                            </div>
 
+                                            <img src="{{ $illustration ? asset('storage/' . $img->path) : '' }}"
+                                                class="object-contain w-[100%] max-w-[200px]">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @else
+                                <img id="previewImage"
+                                    src="{{ $illustration ? asset('storage/' . $illustration->medias()->first()->path) : '' }}"
+                                    class="w-full max-w-[250px]">
+                            @endif
+                        </div>
+                    </div>
 
 
                     <svg class="{{ $illustration ? 'hidden' : '' }} mx-auto h-12 w-12 text-gray-300"
@@ -121,7 +135,7 @@
     </div>
     <div class="flex justify-end mt-4 gap-4">
         @if ($illustration)
-            <a href="{{ route('illustrations') }}"
+            <a href="{{ $illustration->category == $category ? route('projects') : route('illustrations') }}"
                 class="px-10 py-2 border border-gray-400 text-gray-400 uppercase rounded-3xl hover:bg-gray-400 hover:text-white drop-shadow-lg text-center">{{ __('button.cancel') }}</a>
         @endif
         <button type="submit"
