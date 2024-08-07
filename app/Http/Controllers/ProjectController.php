@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EditIllustrationRequest;
+use App\Http\Requests\EditWebProjectRequest;
 use App\Http\Requests\StoreWebProjectRequest;
 use App\Models\Media;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response as HttpResponse;
+use Illuminate\Http\Request;
 
 class ProjectController
 {
@@ -33,7 +33,7 @@ class ProjectController
         return redirect('/admin/projects')->with('status', __('status.project.uploaded'));
     }
 
-    public function update(Project $project, EditIllustrationRequest $request, ProjectService $service): RedirectResponse
+    public function update(Project $project, EditWebProjectRequest $request, ProjectService $service): RedirectResponse
     {
         $service->updateProject($project);
 

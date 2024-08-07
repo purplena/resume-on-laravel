@@ -55,6 +55,7 @@
     "form.placeholder.search": "Type here...",
     "form.button.search": "Search",
     "form.button.search.clear": "Clear",
+    "form.path.error": "Add at least one image",
     "auth.session.login": "Log in",
     "auth.session.logout": "Log out",
     "auth.login.success": "Welcome back!",

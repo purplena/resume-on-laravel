@@ -44,6 +44,7 @@ export function imagePreview(files) {
             buttonDiv.addEventListener("click", function () {
                 imgElement.remove();
                 outerOuterDiv.remove();
+                document.getElementById("path").value = "";
             });
 
             previewContainer.appendChild(outerOuterDiv);

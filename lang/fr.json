@@ -55,6 +55,7 @@
     "form.placeholder.search": "Écris ici...",
     "form.button.search": "Rechercher",
     "form.button.search.clear": "Anuler",
+    "form.path.error": "Ajoute au moins une image",
     "auth.session.login": "Me connecter",
     "auth.session.logout": "Déconnexion",
     "auth.login.success": "Je suis contente de te voir!",

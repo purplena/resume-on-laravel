@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\File;
 
-class StoreWebProjectRequest extends FormRequest
+class EditWebProjectRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -21,7 +21,28 @@ class StoreWebProjectRequest extends FormRequest
             'path.*' => ['image', File::image()->max('2mb')],
             'description' => 'required',
             'github' => 'required',
-            'link' => 'nullable'
+            'link' => 'nullable',
         ];
+    }
+
+    /**
+     * Configure the validator instance.
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    public function withValidator($validator): void
+    {
+        $validator->after(function ($validator) {
+            $project = $this->project;
+            $newMedias = $this->file('path') ? count($this->file('path')) : 0;
+            $existingMedias = $project->medias()->get()->count();
+            if ($existingMedias + $newMedias === 0) {
+                $validator->errors()->add(
+                    'path',
+                    __("form.path.error")
+                );
+            }
+        });
     }
 }

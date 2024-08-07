@@ -79,8 +79,8 @@
                     <div class="flex flex-row gap-4">
                         <div id="previewContainer" class="flex flex-row gap-4">
                         </div>
-                        <div>
-                            @if ($projectCategory == $category && $illustration)
+                        @if ($projectCategory == $category && $illustration)
+                            <div>
                                 <div class="flex flex-wrap gap-4">
                                     @foreach ($illustration->medias()->get() as $img)
                                         <div class="relative" data-mediaId="{{ $img->id }}">
@@ -95,16 +95,16 @@
                                             </div>
 
                                             <img src="{{ $illustration ? asset('storage/' . $img->path) : '' }}"
-                                                class="object-contain w-[100%] max-w-[200px]">
+                                                class=" object-contain w-[100%] max-w-[200px]">
                                         </div>
                                     @endforeach
                                 </div>
-                            @else
-                                <img id="previewImage"
-                                    src="{{ $illustration ? asset('storage/' . $illustration->medias()->first()->path) : '' }}"
-                                    class="w-full max-w-[250px]">
-                            @endif
-                        </div>
+                            </div>
+                        @else
+                            <img id="previewExistingMedia"
+                                src="{{ $illustration ? asset('storage/' . $illustration->medias()->first()->path) : '' }}"
+                                class="w-full max-w-[250px]">
+                        @endif
                     </div>
 
 

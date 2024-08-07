@@ -93,6 +93,7 @@ dragAndDropArea?.addEventListener("dragover", function (event) {
 dragAndDropArea?.addEventListener("drop", function (event) {
     event.preventDefault();
     document.getElementById("dragAndDropSvg").classList.add("hidden");
+    document.getElementById("previewExistingMedia")?.classList.add("hidden");
 
     const file = event.dataTransfer.files;
     imagePreview(file);
@@ -106,6 +107,7 @@ dragAndDropArea?.addEventListener("drop", function (event) {
 // ********** Upload Image with Classic Form Submission ************
 document.getElementById("path")?.addEventListener("change", function (e) {
     document.getElementById("dragAndDropSvg").classList.add("hidden");
+    document.getElementById("previewExistingMedia")?.classList.add("hidden");
 
     const file = e.target.files;
     imagePreview(file);
