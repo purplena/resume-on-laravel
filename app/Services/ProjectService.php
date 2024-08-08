@@ -94,11 +94,24 @@ class ProjectService
     public function updateProject($project)
     {
         if (request()->file('path')) {
-            foreach (request()->file('path') as $file) {
-                Media::create([
-                    'project_id'    => $project->id,
-                    'path'          => $file->store('media'),
-                ]);
+            if($project->category == Project::CATEGORY_WEB) {
+                foreach (request()->file('path') as $file) {
+                    Media::create([
+                        'project_id'    => $project->id,
+                        'path'          => $file->store('media'),
+                    ]);
+                }
+            } else {
+                if($project->medias()->first()) {
+                    $project->medias()->first()->update([
+                        'path' => request()->file('path')->store('media'),
+                    ]);
+                } else {
+                    Media::create([
+                        'project_id'    => $project->id,
+                        'path'          => request()->file('path')->store('media'),
+                    ]);
+                }
             }
         }
 
@@ -106,5 +119,18 @@ class ProjectService
             'title' => request()->input('title'),
             'project_data'  => request()->input('description') && request()->input('github') ? ProjectDataDTO::projectDataArray() : [],
         ]);
+    }
+
+    public function destroySelectedProjects()
+    {
+        $ids = $this->returnSelectedIds();
+        $deletedCount = Project::whereIn('id', $ids)->delete();
+
+        return $deletedCount;
+    }
+
+    public function returnSelectedIds(): array
+    {
+        return request()->input('selected_medias');
     }
 }

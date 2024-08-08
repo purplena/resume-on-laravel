@@ -32,36 +32,31 @@ class IllustrationController extends Controller
         return redirect('/admin/illustrations')->with('status', __('status.illustration.uploaded'));
     }
 
-    public function update(Project $project, EditIllustrationRequest $request): RedirectResponse
+    public function update(Project $project, EditIllustrationRequest $request, ProjectService $service): RedirectResponse
     {
-        $path = request()->file('path') ? request()->file('path')->store('media') : $project->medias()->first()->path;
-
-        $project->update([
-            'title' => request()->input('title'),
-        ]);
-
-        $project->medias()->first()->update([
-            'path' => $path
-        ]);
+        $service->updateProject($project);
 
         return redirect('/admin/illustrations')->with('status', __('status.illustration.updated'));
     }
 
     public function destroyAll(): RedirectResponse
     {
+        if(collect(auth()->user()->artProjects())->isEmpty()) {
+            return back()->with('status', __('status.illustration.delete.all.error'));
+        }
+
         auth()->user()->artProjects()->each->delete();
 
         return back()->with('status', __('status.illustration.delete.all'));
     }
 
-    public function destroySelected(Request $request): RedirectResponse
+    public function destroySelected(ProjectService $service): RedirectResponse
     {
-        $ids = $request->input('selected_illustrations');
-        if (!$ids) {
+        if (!$service->returnSelectedIds()) {
             return redirect('/admin/illustrations')->with('status', __('status.illustration.delete.failed'));
         }
 
-        $deletedCount = Project::whereIn('id', $ids)->delete();
+        $deletedCount = $service->destroySelectedProjects();
         $message = __('status.illustration.delete.selected') . " " . trans_choice('status.illustration', $deletedCount, ['value' => $deletedCount]);
 
         return redirect('/admin/illustrations')->with('status', $message);

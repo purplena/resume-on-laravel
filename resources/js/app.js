@@ -95,12 +95,20 @@ dragAndDropArea?.addEventListener("drop", function (event) {
     document.getElementById("dragAndDropSvg").classList.add("hidden");
     document.getElementById("previewExistingMedia")?.classList.add("hidden");
 
-    const file = event.dataTransfer.files;
-    imagePreview(file);
+    if (window.location.href.includes("illustrations")) {
+        document.getElementById("existingIllustrationsContainer")?.remove();
+    }
+
+    const files = event.dataTransfer.files;
+    imagePreview(files);
 
     const input = document.getElementById("path");
     const dataTransfer = new DataTransfer();
-    dataTransfer.items.add(file);
+
+    for (let i = 0; i < files.length; i++) {
+        dataTransfer.items.add(files[i]);
+    }
+
     input.files = dataTransfer.files;
 });
 
@@ -108,6 +116,10 @@ dragAndDropArea?.addEventListener("drop", function (event) {
 document.getElementById("path")?.addEventListener("change", function (e) {
     document.getElementById("dragAndDropSvg").classList.add("hidden");
     document.getElementById("previewExistingMedia")?.classList.add("hidden");
+
+    if (window.location.href.includes("illustrations")) {
+        document.getElementById("existingIllustrationsContainer")?.remove();
+    }
 
     const file = e.target.files;
     imagePreview(file);

@@ -13,7 +13,7 @@ selectAllCheckbox?.addEventListener("change", function () {
 illustrations?.forEach(function (checkbox) {
     checkbox.addEventListener("click", function () {
         const checkedList = document.querySelectorAll(
-            "input[name='selected_illustrations[]']:checked"
+            "input[name='selected_medias[]']:checked"
         );
 
         if (checkedList.length == illustrations.length) {

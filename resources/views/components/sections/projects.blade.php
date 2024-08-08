@@ -14,38 +14,46 @@
             </div>
 
             {{-- Swiper --}}
-            <div class="swiper-container-main md:col-span-2 px-16">
-                <div class="h-[350px] relative">
-                    <div class="swiper mySwiper w-full h-full !pb-8">
-                        <div class="swiper-wrapper">
-                            @for ($i = 0; $i < $webProjects->count(); $i++)
-                                <div
-                                    class="swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center bg-main-200 p-4">
-                                    <div class="absolute">
-                                        <x-svg-project :coordinates="$coordinates[$i]" />
-                                    </div>
-                                    <div class="z-10">
-                                        <h3 class="text-[3rem]">
-                                            {{ $webProjects[$i]->title }}
-                                        </h3>
-                                        <div class="flex flex-row items-center justify-center gap-4">
-                                            <a href="{{ $webProjects[$i]->project_data['github'] }}"
-                                                class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">GitHub
-                                                Repo</a>
-                                            <a href=""
-                                                class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">See
-                                                More</a>
+            @if ($webProjects->count())
+                <div class="swiper-container-main md:col-span-2 px-16">
+                    <div class="h-[350px] relative">
+                        <div class="swiper mySwiper w-full h-full !pb-8">
+                            <div class="swiper-wrapper">
+                                @for ($i = 0; $i < $webProjects->count(); $i++)
+                                    <div
+                                        class="swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center bg-main-200 p-4">
+                                        <div class="absolute">
+                                            <x-svg-project :coordinates="$coordinates[$i]" />
+                                        </div>
+                                        <div class="z-10">
+                                            <h3 class="text-[3rem]">
+                                                {{ $webProjects[$i]->title }}
+                                            </h3>
+                                            <div class="flex flex-row items-center justify-center gap-4">
+                                                <a href="{{ $webProjects[$i]->project_data['github'] }}"
+                                                    class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">GitHub
+                                                    Repo</a>
+                                                <a href=""
+                                                    class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">See
+                                                    More</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endfor
+                                @endfor
+                            </div>
+                            <div class="swiper-pagination"></div>
                         </div>
-                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev" style="z-index: 0;"></div>
+                        <div class="swiper-button-next" style="z-index: 0;"></div>
                     </div>
-                    <div class="swiper-button-prev" style="z-index: 0;"></div>
-                    <div class="swiper-button-next" style="z-index: 0;"></div>
                 </div>
-            </div>
+            @else
+                <div class="md:col-span-2 px-16">
+                    <div class="h-[350px] flex justify-center items-center">
+                        <h2 class="text-h2">{{ __('status.no.project') }}</h2>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </section>

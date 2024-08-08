@@ -14,7 +14,7 @@ deleteBtns.forEach((btn) => {
         formData.append("id", id);
 
         axios
-            .delete(`/admin/projects/media/${id}`, formData)
+            .delete(`/admin/projects/medias/${id}`, formData)
             .then((response) => {
                 btn.parentElement.style.display = "none";
                 axiosFlashMessage.classList.remove("hidden");

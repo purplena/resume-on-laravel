@@ -69,7 +69,7 @@
 
         <div class="col-span-full">
             <label for="path"
-                class="block text-sm font-bold leading-6 text-gray-900">{{ __('form.label.illustration') }}</label>
+                class="block text-sm font-bold leading-6 text-gray-900">{{ __('form.label.image') }}</label>
             @error('path')
                 <p class="text-red-500">{{ $message }}</p>
             @enderror
@@ -79,8 +79,8 @@
                     <div class="flex flex-row gap-4">
                         <div id="previewContainer" class="flex flex-row gap-4">
                         </div>
-                        @if ($projectCategory == $category && $illustration)
-                            <div>
+                        @if ($illustration)
+                            <div id="existingIllustrationsContainer">
                                 <div class="flex flex-wrap gap-4">
                                     @foreach ($illustration->medias()->get() as $img)
                                         <div class="relative" data-mediaId="{{ $img->id }}">
@@ -100,10 +100,6 @@
                                     @endforeach
                                 </div>
                             </div>
-                        @else
-                            <img id="previewExistingMedia"
-                                src="{{ $illustration ? asset('storage/' . $illustration->medias()->first()->path) : '' }}"
-                                class="w-full max-w-[250px]">
                         @endif
                     </div>
 
@@ -117,7 +113,7 @@
                     <div class="mt-4 flex flex-col justify-center text-sm leading-6 text-gray-600 ">
                         <label for="path"
                             class="relative cursor-pointer rounded-md bg-white font-semibold text-main-500 focus-within:outline-none focus-within:ring-main-600 focus-within:ring-offset-2 hover:text-main-700">
-                            <span>{{ __('form.label.illustration.upload') }}</span>
+                            <span>{{ __('form.label.image.upload') }}</span>
                             @if ($projectCategory == $category)
                                 <input id="path" name="path[]" type="file" class="sr-only" accept="image/*"
                                     multiple>
@@ -125,9 +121,9 @@
                                 <input id="path" name="path" type="file" class="sr-only" accept="image/*">
                             @endif
                         </label>
-                        <p class="pl-1">{{ __('form.label.illustration.drag') }}</p>
+                        <p class="pl-1">{{ __('form.label.image.drag') }}</p>
                     </div>
-                    <p class="text-xs leading-5 text-gray-600">{{ __('form.label.illustration.formats') }}</p>
+                    <p class="text-xs leading-5 text-gray-600">{{ __('form.label.image.formats') }}</p>
                 </div>
             </div>
         </div>

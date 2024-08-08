@@ -10,8 +10,10 @@ deleteBtns.forEach((btn) => {
         const formData = new FormData();
         formData.append("id", id);
 
+        const route = identifyRoute();
+
         axios
-            .delete(`/admin/illustrations/${id}`, formData)
+            .delete(`${route}${id}`, formData)
             .then((response) => {
                 btn.parentElement.parentElement.style.display = "none";
                 axiosFlashMessage.classList.remove("hidden");
@@ -22,3 +24,11 @@ deleteBtns.forEach((btn) => {
             });
     });
 });
+
+function identifyRoute() {
+    if (window.location.href.includes("illustrations")) {
+        return "/admin/illustrations/";
+    } else if (window.location.href.includes("projects")) {
+        return "/admin/projects/";
+    }
+}

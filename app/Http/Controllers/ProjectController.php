@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditWebProjectRequest;
 use App\Http\Requests\StoreWebProjectRequest;
-use App\Models\Media;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
@@ -37,13 +36,36 @@ class ProjectController
     {
         $service->updateProject($project);
 
-        return redirect('/admin/projects')->with('status', __('status.illustration.updated'));
+        return redirect('/admin/projects')->with('status', __('status.project.updated'));
     }
 
-    public function destroyMedia(Media $media): JsonResponse
+    public function destroyAll(): RedirectResponse
     {
-        $media->delete();
+        if(collect(auth()->user()->webProjects())->isEmpty()) {
+            return back()->with('status', __('status.project.delete.all.error'));
+        }
 
-        return response()->json(['status' => "you deleted a project's picture" ], HttpResponse::HTTP_OK);
+        auth()->user()->webProjects()->each->delete();
+
+        return back()->with('status', __('status.project.delete.all'));
+    }
+
+    public function destroySelected(ProjectService $service): RedirectResponse
+    {
+        if (!$service->returnSelectedIds()) {
+            return redirect('/admin/projects')->with('status', __('status.project.delete.failed'));
+        }
+
+        $deletedCount = $service->destroySelectedProjects();
+        $message = __('status.project.delete.selected') . " " . trans_choice('status.project', $deletedCount, ['value' => $deletedCount]);
+
+        return redirect('/admin/projects')->with('status', $message);
+    }
+
+    public function destroy(Project $project): JsonResponse
+    {
+        $project->delete();
+
+        return response()->json(['status' => __('status.project.delete')], HttpResponse::HTTP_OK);
     }
 }
