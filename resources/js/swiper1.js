@@ -3,7 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const swiper = new Swiper(".mySwiper", {
+const swiper1 = new Swiper("#mySwiper", {
     loop: true,
 
     pagination: {
@@ -11,9 +11,9 @@ const swiper = new Swiper(".mySwiper", {
         dynamicBullets: true,
     },
     navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: "#page-swiper-button-next",
+        prevEl: "#page-swiper-button-prev",
     },
 });
 
-export default swiper;
+export default swiper1;

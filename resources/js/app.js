@@ -1,6 +1,7 @@
 import "../css/main.scss";
 import "./bootstrap.js";
-import swiper from "./swiper.js";
+import swiper1 from "./swiper1.js";
+import swiper2 from "./swiper2.js";
 import "./smoothScroll.js";
 import "./contactFormValidation.js";
 import "./loginFormValidation.js";

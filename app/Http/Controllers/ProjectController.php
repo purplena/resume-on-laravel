@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditWebProjectRequest;
 use App\Http\Requests\StoreWebProjectRequest;
+use App\Http\Resources\WebProjectResource;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
@@ -23,6 +24,14 @@ class ProjectController
             'projectCategory'   => Project::CATEGORY_WEB,
             'route'             => 'project'
         ]);
+    }
+
+    public function show(Project $project)
+    {
+        return view('project', [
+            'project' => new WebProjectResource($project)
+        ]);
+        // return response()->json(['status' => true, 'project' => new WebProjectResource($project)]);
     }
 
     public function store(StoreWebProjectRequest $request, ProjectService $service): RedirectResponse
