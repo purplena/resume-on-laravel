@@ -16,7 +16,11 @@ class IllustrationController extends Controller
 {
     public function index(Request $request, ProjectService $service): View
     {
-        $projectData = $service->getProjects($request, Project::CATEGORY_ART);
+        $projectData = $service->getProjects(
+            $request->id,
+            Project::CATEGORY_ART,
+            $request->input('search')
+        );
 
         return view('admin.illustrations', [
             'projectData'       => $projectData,
@@ -25,16 +29,26 @@ class IllustrationController extends Controller
         ]);
     }
 
+    private function returnProjectData($request)
+    {
+        return [
+            'user_id'       => auth()->id(),
+            'title'         => $request->input('title'),
+            'category'      => $request->input('projectCategory'),
+            'files'          => $request->hasFile('path') ? $request->file('path') : null,
+        ];
+    }
+
     public function store(StoreIllustrationRequest $request, ProjectService $service): RedirectResponse
     {
-        $service->storeProject();
+        $service->storeProject($this->returnProjectData($request));
 
         return redirect('/admin/illustrations')->with('status', __('status.illustration.uploaded'));
     }
 
     public function update(Project $project, EditIllustrationRequest $request, ProjectService $service): RedirectResponse
     {
-        $service->updateProject($project);
+        $service->updateProject($project, $this->returnProjectData($request));
 
         return redirect('/admin/illustrations')->with('status', __('status.illustration.updated'));
     }
@@ -52,11 +66,12 @@ class IllustrationController extends Controller
 
     public function destroySelected(ProjectService $service): RedirectResponse
     {
-        if (!$service->returnSelectedIds()) {
+        $ids = request()->input('selected_medias');
+        if (!$ids) {
             return redirect('/admin/illustrations')->with('status', __('status.illustration.delete.failed'));
         }
 
-        $deletedCount = $service->destroySelectedProjects();
+        $deletedCount = $service->destroySelectedProjects($ids);
         $message = __('status.illustration.delete.selected') . " " . trans_choice('status.illustration', $deletedCount, ['value' => $deletedCount]);
 
         return redirect('/admin/illustrations')->with('status', $message);

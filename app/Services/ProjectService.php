@@ -8,7 +8,6 @@ use App\Models\Media;
 use App\Models\Project;
 use App\Repository\ProjectRepository;
 use Illuminate\Support\Carbon;
-use Illuminate\Http\Request;
 
 class ProjectService
 {
@@ -56,10 +55,10 @@ class ProjectService
         );
     }
 
-    public function getProjects(Request $request, $projectCategory): array
+    public function getProjects($projectId, $projectCategory, $search): array
     {
-        $project    = Project::find($request->id);
-        $projects   = $this->projectRepository->search($request, 3, $projectCategory);
+        $project    = Project::find($projectId);
+        $projects   = $this->projectRepository->search($search, 3, $projectCategory);
 
         return [
             'projects'  => $projects,
@@ -67,17 +66,14 @@ class ProjectService
         ];
     }
 
-    public function storeProject(): void
+    public function storeProject(array $projectData): void
     {
-        $project = Project::create([
-            'user_id'       => auth()->id(),
-            'title'         => request()->input('title'),
-            'category'      => request()->input('projectCategory'),
-            'project_data'  => request()->input('description') && request()->input('github') ? ProjectDataDTO::projectDataArray() : [],
-        ]);
+        $project = Project::create(
+            ProjectDataDTO::projectDataArray($projectData)
+        );
 
-        if(request()->input('projectCategory') == Project::CATEGORY_WEB) {
-            foreach (request()->file('path') as $file) {
+        if($projectData['category'] == Project::CATEGORY_WEB) {
+            foreach ($projectData['files'] as $file) {
                 Media::create([
                     'project_id'    => $project->id,
                     'path'          => $file->store('media'),
@@ -86,16 +82,16 @@ class ProjectService
         } else {
             Media::create([
                 'project_id'        => $project->id,
-                'path'              => request()->file('path')->store('media'),
+                'path'              => $projectData['file']->store('media'),
         ]);
         }
     }
 
-    public function updateProject($project)
+    public function updateProject($project, $projectData): void
     {
-        if (request()->file('path')) {
+        if ($projectData['files']) {
             if($project->category == Project::CATEGORY_WEB) {
-                foreach (request()->file('path') as $file) {
+                foreach ($projectData['files'] as $file) {
                     Media::create([
                         'project_id'    => $project->id,
                         'path'          => $file->store('media'),
@@ -104,33 +100,22 @@ class ProjectService
             } else {
                 if($project->medias()->first()) {
                     $project->medias()->first()->update([
-                        'path' => request()->file('path')->store('media'),
+                        'path' => $projectData['files']->store('media'),
                     ]);
                 } else {
                     Media::create([
                         'project_id'    => $project->id,
-                        'path'          => request()->file('path')->store('media'),
+                        'path'          => $projectData['files']->store('media'),
                     ]);
                 }
             }
         }
 
-        $project->update([
-            'title' => request()->input('title'),
-            'project_data'  => request()->input('description') && request()->input('github') ? ProjectDataDTO::projectDataArray() : [],
-        ]);
+        $project->update(ProjectDataDTO::projectDataArray($projectData));
     }
 
-    public function destroySelectedProjects()
+    public function destroySelectedProjects(array $ids): int
     {
-        $ids = $this->returnSelectedIds();
-        $deletedCount = Project::whereIn('id', $ids)->delete();
-
-        return $deletedCount;
-    }
-
-    public function returnSelectedIds(): array
-    {
-        return request()->input('selected_medias');
+        return Project::whereIn('id', $ids)->delete();
     }
 }

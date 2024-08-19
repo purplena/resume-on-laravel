@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EditWebProjectRequest;
 use App\Http\Requests\StoreWebProjectRequest;
-use App\Http\Resources\WebProjectResource;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
@@ -17,7 +16,11 @@ class ProjectController
 {
     public function index(Request $request, ProjectService $service): View
     {
-        $projectData = $service->getProjects($request, Project::CATEGORY_WEB);
+        $projectData = $service->getProjects(
+            $request->id,
+            Project::CATEGORY_WEB,
+            $request->input('search')
+        );
 
         return view('admin.illustrations', [
             'projectData'       => $projectData,
@@ -29,21 +32,36 @@ class ProjectController
     public function show(Project $project)
     {
         return view('project', [
-            'project' => new WebProjectResource($project)
+            'project' => $project,
         ]);
-        // return response()->json(['status' => true, 'project' => new WebProjectResource($project)]);
+    }
+
+    private function returnProjectData($request): array
+    {
+        return [
+            'user_id'       => auth()->id(),
+            'title'         => $request->input('title'),
+            'category'      => $request->input('projectCategory'),
+            'description'   => $request->input('description'),
+            'github'        => $request->input('github'),
+            'link'          => $request->input('link') ?? null,
+            'files'         => $request->hasFile('path') ? $request->file('path') : null,
+        ];
     }
 
     public function store(StoreWebProjectRequest $request, ProjectService $service): RedirectResponse
     {
-        $service->storeProject();
+        $service->storeProject($this->returnProjectData($request));
 
         return redirect('/admin/projects')->with('status', __('status.project.uploaded'));
     }
 
     public function update(Project $project, EditWebProjectRequest $request, ProjectService $service): RedirectResponse
     {
-        $service->updateProject($project);
+        $service->updateProject(
+            $project,
+            $this->returnProjectData($request)
+        );
 
         return redirect('/admin/projects')->with('status', __('status.project.updated'));
     }
@@ -61,11 +79,12 @@ class ProjectController
 
     public function destroySelected(ProjectService $service): RedirectResponse
     {
-        if (!$service->returnSelectedIds()) {
+        $ids = request()->input('selected_medias');
+        if (!$ids) {
             return redirect('/admin/projects')->with('status', __('status.project.delete.failed'));
         }
 
-        $deletedCount = $service->destroySelectedProjects();
+        $deletedCount = $service->destroySelectedProjects($ids);
         $message = __('status.project.delete.selected') . " " . trans_choice('status.project', $deletedCount, ['value' => $deletedCount]);
 
         return redirect('/admin/projects')->with('status', $message);

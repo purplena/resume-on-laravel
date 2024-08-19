@@ -1,7 +1,6 @@
 import "../css/main.scss";
 import "./bootstrap.js";
 import swiper1 from "./swiper1.js";
-import swiper2 from "./swiper2.js";
 import "./smoothScroll.js";
 import "./contactFormValidation.js";
 import "./loginFormValidation.js";
@@ -53,6 +52,14 @@ document.addEventListener("click", function (event) {
 // ********** DOMContentLoaded ************
 // ********** Flash Session Message  ************
 document.addEventListener("DOMContentLoaded", function () {
+    const galleryImgs = document.querySelectorAll(".galleryImgs");
+    galleryImgs?.forEach(function (img) {
+        img.addEventListener("click", function (event) {
+            const src = event.target.src;
+            document.getElementById("mainGalleryImg").src = src;
+        });
+    });
+
     if (flashMessage) {
         setTimeout(function () {
             flashMessage.style.display = "none";

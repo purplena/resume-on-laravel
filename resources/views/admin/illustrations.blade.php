@@ -26,7 +26,9 @@
                 <x-sections.form.search-illustration route="illustrations" />
             </div>
 
-            <form action="{{ route('illustrations.destroySelected') }}" method="POST" class="mb-6">
+            <form
+                action="{{ $projectCategory == $category ? route('projects.destroySelected') : route('illustrations.destroySelected') }}"
+                method="POST" class="mb-6">
                 @csrf
                 @method('DELETE')
 

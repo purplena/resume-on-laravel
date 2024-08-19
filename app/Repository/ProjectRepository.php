@@ -49,13 +49,18 @@ class ProjectRepository
             ->get();
     }
 
-    public function search($request, $paginate, $projectCategory): LengthAwarePaginator
+    public function search($search, $paginate, $projectCategory): LengthAwarePaginator
     {
-        return Project::where('title', 'like', "%{$request->input('search')}%")
+        return Project::where('title', 'like', "%{$search}%")
                 ->where('category', '=', $projectCategory)
                 ->with('medias')
                 ->latest()
                 ->paginate($paginate)
                 ->withQueryString();
+    }
+
+    public function getAllProjectsByCategory($category)
+    {
+        return Project::where('category', '=', $category)->get();
     }
 }

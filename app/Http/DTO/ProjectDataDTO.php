@@ -4,12 +4,16 @@ namespace App\Http\DTO;
 
 class ProjectDataDTO
 {
-    public static function projectDataArray()
+    public static function projectDataArray(array $projectData)
     {
         return [
-            'description' => request()->input('description'),
-            'github' => request()->input('github'),
-            'link' => request()->input('github') ?? null,
+            'user_id'       => $projectData['user_id'],
+            'title'         => $projectData['title'],
+            'category'      => $projectData['category'],
+            'project_data' => isset($projectData['description'], $projectData['github']) ?
+                ['description' => $projectData['description'],
+                'github'      => $projectData['github'],
+                'link'        => $projectData['link']] : []
         ];
     }
 }

@@ -1,29 +1,19 @@
 <x-layout>
     <div class="mt-navbarMargin">
-        <section class="mb-12 pt-12 px-4 max-w-maxScreenWidth mx-auto" id="home">
+        <section class="mb-12 pt-12 px-4 max-w-maxScreenWidth mx-auto">
             <h1 class="text-h1 mt-8 mb-4 md:mt-0">
-
                 {{ $project->title }}
-
             </h1>
-            <?php dd($project); ?>
-
-            <div id="swiper2" class="swiper">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
+            <div class="product">
+                <div class="product-small-img">
                     @foreach ($project->medias as $media)
-                        <div class="swiper-slide">
-                            <img src="{{ asset('storage/' . $media) }}" />
-                        </div>
+                        <img class="galleryImgs" data-galleryImgId="{{ $media->id }}"
+                            src="{{ asset('storage/' . $media->path) }}" />
                     @endforeach
                 </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
-
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-
-                <!-- If we need navigation buttons -->
+                <div class="img-container">
+                    <img id="mainGalleryImg" src="{{ asset('storage/' . $project->medias->first()->path) }}" />
+                </div>
             </div>
         </section>
     </div>
