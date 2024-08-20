@@ -16,7 +16,8 @@ class StoreIllustrationRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:projects',
-            'path' => ['required', 'image', File::image()->max('2mb')],
+            'path' => ['required', 'array'],
+            'path.*' => ['image', File::image()->max('2mb')],
         ];
     }
 }

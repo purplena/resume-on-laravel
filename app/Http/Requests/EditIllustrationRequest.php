@@ -16,7 +16,8 @@ class EditIllustrationRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'path' => ['image', File::image()->max('2mb')],
+            'path' => ['array'],
+            'path.*' => ['image', File::image()->max('2mb')],
             'project_data' => 'nullable'
         ];
     }

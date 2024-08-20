@@ -9,9 +9,13 @@ use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
-    public function index(Request $request, ProjectRepository $repository): View
+    public function __construct(private ProjectRepository $projectRepository)
     {
-        $projects = $repository->search($request, 20, Project::CATEGORY_ART);
+    }
+
+    public function index(Request $request): View
+    {
+        $projects = $this->projectRepository->search($request->input('search'), 20, Project::CATEGORY_ART);
         return view('gallery', [
             'projects' => $projects,
         ]);

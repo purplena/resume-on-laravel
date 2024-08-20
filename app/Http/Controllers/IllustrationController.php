@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\DTO\ProjectDataDTO;
 use App\Http\Requests\EditIllustrationRequest;
 use App\Http\Requests\StoreIllustrationRequest;
 use App\Models\Project;
@@ -29,7 +30,7 @@ class IllustrationController extends Controller
         ]);
     }
 
-    private function returnProjectData($request)
+    private function getProjectData($request)
     {
         return [
             'user_id'       => auth()->id(),
@@ -41,14 +42,19 @@ class IllustrationController extends Controller
 
     public function store(StoreIllustrationRequest $request, ProjectService $service): RedirectResponse
     {
-        $service->storeProject($this->returnProjectData($request));
+        $service->storeProject(
+            ProjectDataDTO::make($this->getProjectData($request))
+        );
 
         return redirect('/admin/illustrations')->with('status', __('status.illustration.uploaded'));
     }
 
     public function update(Project $project, EditIllustrationRequest $request, ProjectService $service): RedirectResponse
     {
-        $service->updateProject($project, $this->returnProjectData($request));
+        $service->updateProject(
+            $project,
+            ProjectDataDTO::make($this->getProjectData($request))
+        );
 
         return redirect('/admin/illustrations')->with('status', __('status.illustration.updated'));
     }
@@ -72,7 +78,7 @@ class IllustrationController extends Controller
         }
 
         $deletedCount = $service->destroySelectedProjects($ids);
-        $message = __('status.illustration.delete.selected') . " " . trans_choice('status.illustration', $deletedCount, ['value' => $deletedCount]);
+        $message = __('status.delete.selected') . " " . trans_choice('status.illustration', $deletedCount, ['value' => $deletedCount]);
 
         return redirect('/admin/illustrations')->with('status', $message);
     }

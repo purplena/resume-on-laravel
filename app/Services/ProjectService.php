@@ -15,7 +15,7 @@ class ProjectService
     {
     }
 
-    public function getStatsPerProjectCategory($projectCategory): ProjectStatsDTO
+    public function getStatsPerProjectCategory(int $projectCategory): ProjectStatsDTO
     {
         $instance                   = $this->projectRepository;
         $month                      = Carbon::now()->monthName;
@@ -55,7 +55,7 @@ class ProjectService
         );
     }
 
-    public function getProjects($projectId, $projectCategory, $search): array
+    public function getProjects(?int $projectId, int $projectCategory, ?string $search): array
     {
         $project    = Project::find($projectId);
         $projects   = $this->projectRepository->search($search, 3, $projectCategory);
@@ -66,32 +66,25 @@ class ProjectService
         ];
     }
 
-    public function storeProject(array $projectData): void
+    public function storeProject(ProjectDataDTO $projectData): void
     {
         $project = Project::create(
-            ProjectDataDTO::projectDataArray($projectData)
+            $projectData->toArray()
         );
 
-        if($projectData['category'] == Project::CATEGORY_WEB) {
-            foreach ($projectData['files'] as $file) {
-                Media::create([
-                    'project_id'    => $project->id,
-                    'path'          => $file->store('media'),
-                ]);
-            }
-        } else {
+        foreach ($projectData->toArray()['files'] as $file) {
             Media::create([
-                'project_id'        => $project->id,
-                'path'              => $projectData['file']->store('media'),
-        ]);
+                'project_id'    => $project->id,
+                'path'          => $file->store('media'),
+            ]);
         }
     }
 
-    public function updateProject($project, $projectData): void
+    public function updateProject(Project $project, ProjectDataDTO $projectData): void
     {
-        if ($projectData['files']) {
+        if ($projectData->toArray()['files']) {
             if($project->category == Project::CATEGORY_WEB) {
-                foreach ($projectData['files'] as $file) {
+                foreach ($projectData->toArray()['files'] as $file) {
                     Media::create([
                         'project_id'    => $project->id,
                         'path'          => $file->store('media'),
@@ -100,18 +93,18 @@ class ProjectService
             } else {
                 if($project->medias()->first()) {
                     $project->medias()->first()->update([
-                        'path' => $projectData['files']->store('media'),
+                        'path' => $projectData->toArray()['files'][0]->store('media'),
                     ]);
                 } else {
                     Media::create([
                         'project_id'    => $project->id,
-                        'path'          => $projectData['files']->store('media'),
+                        'path'          => $projectData->toArray()['files'][0]->store('media'),
                     ]);
                 }
             }
         }
 
-        $project->update(ProjectDataDTO::projectDataArray($projectData));
+        $project->update($projectData->toArray());
     }
 
     public function destroySelectedProjects(array $ids): int

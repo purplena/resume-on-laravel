@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\DTO\ProjectDataDTO;
 use App\Http\Requests\EditWebProjectRequest;
 use App\Http\Requests\StoreWebProjectRequest;
 use App\Models\Project;
@@ -29,14 +30,14 @@ class ProjectController
         ]);
     }
 
-    public function show(Project $project)
+    public function show(Project $project): View
     {
         return view('project', [
             'project' => $project,
         ]);
     }
 
-    private function returnProjectData($request): array
+    private function getProjectData($request): array
     {
         return [
             'user_id'       => auth()->id(),
@@ -51,7 +52,9 @@ class ProjectController
 
     public function store(StoreWebProjectRequest $request, ProjectService $service): RedirectResponse
     {
-        $service->storeProject($this->returnProjectData($request));
+        $service->storeProject(
+            ProjectDataDTO::make($this->getProjectData($request))
+        );
 
         return redirect('/admin/projects')->with('status', __('status.project.uploaded'));
     }
@@ -60,7 +63,7 @@ class ProjectController
     {
         $service->updateProject(
             $project,
-            $this->returnProjectData($request)
+            ProjectDataDTO::make($this->getProjectData($request))
         );
 
         return redirect('/admin/projects')->with('status', __('status.project.updated'));
@@ -85,7 +88,7 @@ class ProjectController
         }
 
         $deletedCount = $service->destroySelectedProjects($ids);
-        $message = __('status.project.delete.selected') . " " . trans_choice('status.project', $deletedCount, ['value' => $deletedCount]);
+        $message = __('status.delete.selected') . " " . trans_choice('status.projects', $deletedCount, ['value' => $deletedCount]);
 
         return redirect('/admin/projects')->with('status', $message);
     }

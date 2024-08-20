@@ -9,7 +9,7 @@ use Illuminate\Support\Carbon;
 
 class ProjectRepository
 {
-    public function projectsThisYear($projectCategory): Collection
+    public function projectsThisYear(int $projectCategory): Collection
     {
         return Project::whereBetween(
             'created_at',
@@ -21,14 +21,14 @@ class ProjectRepository
         ->where('category', '=', $projectCategory)->get();
     }
 
-    public function projectsThisMonth($projectCategory): Collection
+    public function projectsThisMonth(int $projectCategory): Collection
     {
         return Project::where('created_at', '>=', Carbon::now()->startOfMonth())
             ->where('category', '=', $projectCategory)
             ->get();
     }
 
-    public function projectsLastYear($projectCategory): Collection
+    public function projectsLastYear(int $projectCategory): Collection
     {
         return Project::whereBetween(
             'created_at',
@@ -39,7 +39,7 @@ class ProjectRepository
         )->where('category', '=', $projectCategory)->get();
     }
 
-    public function projectsThisMonthLastYear($projectCategory): Collection
+    public function projectsThisMonthLastYear(int $projectCategory): Collection
     {
         $startOfMonthLastYear = Carbon::now()->startOfMonth()->subYear();
         $endOfMonthLastYear = Carbon::now()->endOfMonth()->subYear();
@@ -49,7 +49,7 @@ class ProjectRepository
             ->get();
     }
 
-    public function search($search, $paginate, $projectCategory): LengthAwarePaginator
+    public function search(?string $search, ?int $paginate, int $projectCategory): LengthAwarePaginator
     {
         return Project::where('title', 'like', "%{$search}%")
                 ->where('category', '=', $projectCategory)
@@ -59,8 +59,8 @@ class ProjectRepository
                 ->withQueryString();
     }
 
-    public function getAllProjectsByCategory($category)
+    public function getAllProjectsByCategory(int $projectCategory)
     {
-        return Project::where('category', '=', $category)->get();
+        return Project::where('category', '=', $projectCategory)->get();
     }
 }

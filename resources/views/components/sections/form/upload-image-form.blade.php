@@ -114,12 +114,8 @@
                         <label for="path"
                             class="relative cursor-pointer rounded-md bg-white font-semibold text-main-500 focus-within:outline-none focus-within:ring-main-600 focus-within:ring-offset-2 hover:text-main-700">
                             <span>{{ __('form.label.image.upload') }}</span>
-                            @if ($projectCategory == $category)
-                                <input id="path" name="path[]" type="file" class="sr-only" accept="image/*"
-                                    multiple>
-                            @else
-                                <input id="path" name="path" type="file" class="sr-only" accept="image/*">
-                            @endif
+                            <input id="path" name="path[]" type="file" class="sr-only" accept="image/*"
+                                {{ $projectCategory == $category ? 'multiple' : '' }}>
                         </label>
                         <p class="pl-1">{{ __('form.label.image.drag') }}</p>
                     </div>
