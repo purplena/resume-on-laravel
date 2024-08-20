@@ -50,16 +50,77 @@ document.addEventListener("click", function (event) {
 });
 
 // ********** DOMContentLoaded ************
-// ********** Flash Session Message  ************
+
 document.addEventListener("DOMContentLoaded", function () {
+    const mainGalleryImg = document.getElementById("mainGalleryImg");
+    const prevBtn = document.querySelector(".prevBtn");
+    const nextBtn = document.querySelector(".nextBtn");
     const galleryImgs = document.querySelectorAll(".galleryImgs");
-    galleryImgs?.forEach(function (img) {
-        img.addEventListener("click", function (event) {
-            const src = event.target.src;
-            document.getElementById("mainGalleryImg").src = src;
+
+    // ********** change image on click prev/next ************
+    let currentIndex = 0;
+
+    function updateMainImage(index) {
+        const newSrc = galleryImgs[index].src;
+        mainGalleryImg.src = newSrc;
+        updateOpacity();
+        scrollToCurrentImage();
+    }
+
+    prevBtn.addEventListener("click", () => {
+        currentIndex--;
+        if (currentIndex < 0) {
+            currentIndex = galleryImgs.length - 1;
+        }
+        updateMainImage(currentIndex);
+    });
+
+    nextBtn.addEventListener("click", () => {
+        currentIndex++;
+        if (currentIndex >= galleryImgs.length) {
+            currentIndex = 0;
+        }
+        updateMainImage(currentIndex);
+    });
+
+    updateMainImage(currentIndex);
+
+    galleryImgs?.forEach(function (img, index) {
+        img.addEventListener("click", function () {
+            currentIndex = index;
+            updateMainImage(currentIndex);
         });
     });
 
+    // ********** opacity change for an active image ************
+    function updateOpacity() {
+        galleryImgs.forEach((img) => {
+            img.style.opacity = "0.6";
+        });
+
+        if (galleryImgs[currentIndex]) {
+            galleryImgs[currentIndex].style.opacity = "1";
+        }
+    }
+
+    updateOpacity();
+
+    // ********** smooth scroll in slider ************
+    function scrollToCurrentImage() {
+        const smallImgContainer = document.querySelector(
+            ".product-small-img .flex"
+        );
+        const imgWidth =
+            galleryImgs[0].offsetWidth +
+            parseInt(window.getComputedStyle(galleryImgs[0]).marginRight);
+        const scrollPosition = currentIndex * imgWidth;
+
+        smallImgContainer.scrollLeft = scrollPosition;
+    }
+
+    scrollToCurrentImage();
+
+    // ********** Flash Session Message  ************
     if (flashMessage) {
         setTimeout(function () {
             flashMessage.style.display = "none";

@@ -55,7 +55,7 @@ class SeedData extends Command
                     'github'        => 'https://github.com/purplena/Javascript-Mapbox-project',
                     'link'          => 'https://purplena.github.io/Javascript-Mapbox-project/'
                 ],
-                'images'        => ['media/mapbox-img1.png', 'media/mapbox-img2.png']
+                'images'        => ['media/mapbox-1.png', 'media/mapbox-2.png', 'media/mapbox-3.png', 'media/mapbox-4.png', 'media/mapbox-5.png']
             ],
             [
                 'user_id'       => $user,

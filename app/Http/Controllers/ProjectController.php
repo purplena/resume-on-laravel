@@ -8,6 +8,7 @@ use App\Http\Requests\StoreWebProjectRequest;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response as HttpResponse;
@@ -37,7 +38,7 @@ class ProjectController
         ]);
     }
 
-    private function getProjectData($request): array
+    private function getProjectData(FormRequest $request): array
     {
         return [
             'user_id'       => auth()->id(),

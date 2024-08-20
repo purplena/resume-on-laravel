@@ -8,6 +8,7 @@ use App\Http\Requests\StoreIllustrationRequest;
 use App\Models\Project;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class IllustrationController extends Controller
         ]);
     }
 
-    private function getProjectData($request)
+    private function getProjectData(FormRequest $request)
     {
         return [
             'user_id'       => auth()->id(),

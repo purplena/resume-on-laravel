@@ -37,30 +37,3 @@ ul {
 a {
     text-decoration: none;
 }
-
-/* Gallery Project Medias CSS */
-.product-small-img img{
-    height: 92px;
-    margin: 10px 0;
-    cursor: pointer;
-    display: block;
-    opacity: 0.6;
-}
-.product-small-img img:first-child {
-    margin: 0 0;
-}
-
-.product-small-img img:hover{
-    opacity: 1;
-}
-
-.product{
-    display: flex; 
-    justify-content: center;
-    gap: 2rem;
-}
-
-.img-container img{
-    width: 350px;
-    object-fit: contain;
-}

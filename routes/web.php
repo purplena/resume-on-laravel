@@ -34,6 +34,7 @@ Route::fallback(function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('project');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.us.store');
@@ -53,7 +54,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('admin/illustrations/{project}', [IllustrationController::class, 'update'])->name('illustration.update');
 
         Route::get('/admin/projects', [ProjectController::class, 'index'])->name('projects');
-        Route::get('/admin/projects/{project}', [ProjectController::class, 'show'])->name('project');
+
         Route::post('/admin/projects', [ProjectController::class, 'store'])->name('project.store');
         Route::patch('/admin/projects/{project}', [ProjectController::class, 'update'])->name('project.update');
         Route::delete('admin/projects', [ProjectController::class, 'destroyAll'])->name('projects.destroyAll');
