@@ -90,5 +90,8 @@
     "pagination.showing": "Affichage de",
     "pagination.to": "à",
     "pagination.of": "de",
-    "pagination.results": "illustrations"
+    "pagination.results": "illustrations",
+    "project.repo": "Github Repo",
+    "project.see.more": "Voir plus",
+    "project.visit.me": "Visiter"
 }

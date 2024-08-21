@@ -17,7 +17,7 @@
             @if ($webProjects->count())
                 <div class="swiper-container-main md:col-span-2 px-16">
                     <div class="h-[350px] relative">
-                        <div class="swiper w-full h-full !pb-8" id="mySwiper">
+                        <div class="swiper w-full h-full !pb-8 mySwiperInit">
                             <div class="swiper-wrapper">
                                 @for ($i = 0; $i < $webProjects->count(); $i++)
                                     <div
@@ -31,11 +31,9 @@
                                             </h3>
                                             <div class="flex flex-row items-center justify-center gap-4">
                                                 <a href="{{ $webProjects[$i]->project_data['github'] }}"
-                                                    class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">GitHub
-                                                    Repo</a>
+                                                    class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">{{ __('project.repo') }}</a>
                                                 <a href="{{ route('project', ['project' => $webProjects[$i]->id]) }}"
-                                                    class="openModalBtn block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">See
-                                                    More
+                                                    class="openModalBtn block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">{{ __('project.see.more') }}
                                                 </a>
                                             </div>
                                         </div>

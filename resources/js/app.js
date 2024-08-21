@@ -1,6 +1,5 @@
 import "../css/main.scss";
 import "./bootstrap.js";
-import swiper1 from "./swiper1.js";
 import "./smoothScroll.js";
 import "./contactFormValidation.js";
 import "./loginFormValidation.js";
@@ -9,6 +8,10 @@ import "./deleteIllustration.js";
 import "./deleteProjectMedia.js";
 import "./selectIllustrationCheckbox.js";
 import { toggleVisibility } from "./functions/toggleVisibilityIcons.js";
+import Swiper from "swiper/bundle";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // ********** set date ************
 var date = document.getElementById("date");
@@ -52,73 +55,114 @@ document.addEventListener("click", function (event) {
 // ********** DOMContentLoaded ************
 
 document.addEventListener("DOMContentLoaded", function () {
-    const mainGalleryImg = document.getElementById("mainGalleryImg");
-    const prevBtn = document.querySelector(".prevBtn");
-    const nextBtn = document.querySelector(".nextBtn");
-    const galleryImgs = document.querySelectorAll(".galleryImgs");
+    const swiper1 = new Swiper(".mySwiperInit", {
+        loop: true,
 
-    // ********** change image on click prev/next ************
-    let currentIndex = 0;
-
-    function updateMainImage(index) {
-        const newSrc = galleryImgs[index].src;
-        mainGalleryImg.src = newSrc;
-        updateOpacity();
-        scrollToCurrentImage();
-    }
-
-    prevBtn.addEventListener("click", () => {
-        currentIndex--;
-        if (currentIndex < 0) {
-            currentIndex = galleryImgs.length - 1;
-        }
-        updateMainImage(currentIndex);
+        pagination: {
+            el: ".swiper-pagination",
+            dynamicBullets: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
     });
 
-    nextBtn.addEventListener("click", () => {
-        currentIndex++;
-        if (currentIndex >= galleryImgs.length) {
-            currentIndex = 0;
-        }
-        updateMainImage(currentIndex);
+    const swiper3 = new Swiper(".mySwiper", {
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
     });
 
-    updateMainImage(currentIndex);
-
-    galleryImgs?.forEach(function (img, index) {
-        img.addEventListener("click", function () {
-            currentIndex = index;
-            updateMainImage(currentIndex);
-        });
+    const swiper2 = new Swiper(".mySwiper2", {
+        loop: true,
+        spaceBetween: 10,
+        pagination: {
+            el: ".swiper-pagination",
+            dynamicBullets: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+            swiper: swiper3,
+        },
     });
 
-    // ********** opacity change for an active image ************
-    function updateOpacity() {
-        galleryImgs.forEach((img) => {
-            img.style.opacity = "0.6";
-        });
+    // const mainGalleryImg = document.getElementById("mainGalleryImg");
+    // const prevBtn = document.querySelector(".prevBtn");
+    // const nextBtn = document.querySelector(".nextBtn");
+    // const galleryImgs = document.querySelectorAll(".galleryImgs");
 
-        if (galleryImgs[currentIndex]) {
-            galleryImgs[currentIndex].style.opacity = "1";
-        }
-    }
+    // // ********** change image on click prev/next ************
+    // let currentIndex = 0;
 
-    updateOpacity();
+    // function updateMainImage(index) {
+    //     const newSrc = galleryImgs[index].src;
+    //     mainGalleryImg.src = newSrc;
+    //     updateOpacity();
+    //     scrollToCurrentImage();
+    // }
 
-    // ********** smooth scroll in slider ************
-    function scrollToCurrentImage() {
-        const smallImgContainer = document.querySelector(
-            ".product-small-img .flex"
-        );
-        const imgWidth =
-            galleryImgs[0].offsetWidth +
-            parseInt(window.getComputedStyle(galleryImgs[0]).marginRight);
-        const scrollPosition = currentIndex * imgWidth;
+    // prevBtn.addEventListener("click", () => {
+    //     currentIndex--;
+    //     if (currentIndex < 0) {
+    //         currentIndex = galleryImgs.length - 1;
+    //     }
+    //     updateMainImage(currentIndex);
+    // });
 
-        smallImgContainer.scrollLeft = scrollPosition;
-    }
+    // nextBtn.addEventListener("click", () => {
+    //     currentIndex++;
+    //     if (currentIndex >= galleryImgs.length) {
+    //         currentIndex = 0;
+    //     }
+    //     updateMainImage(currentIndex);
+    // });
 
-    scrollToCurrentImage();
+    // updateMainImage(currentIndex);
+
+    // galleryImgs?.forEach(function (img, index) {
+    //     img.addEventListener("click", function () {
+    //         currentIndex = index;
+    //         updateMainImage(currentIndex);
+    //     });
+    // });
+
+    // // ********** opacity change for an active image ************
+    // function updateOpacity() {
+    //     galleryImgs.forEach((img) => {
+    //         img.style.opacity = "0.6";
+    //     });
+
+    //     if (galleryImgs[currentIndex]) {
+    //         galleryImgs[currentIndex].style.opacity = "1";
+    //     }
+    // }
+
+    // updateOpacity();
+
+    // // ********** smooth scroll in slider ************
+    // function scrollToCurrentImage() {
+    //     const smallImgContainer = document.querySelector(
+    //         ".product-small-img .flex"
+    //     );
+    //     const imgWidth =
+    //         galleryImgs[0].offsetWidth +
+    //         parseInt(window.getComputedStyle(galleryImgs[0]).marginRight);
+    //     const scrollPosition = currentIndex * imgWidth;
+
+    //     // smallImgContainer.scrollLeft = scrollPosition;
+    //     smallImgContainer.scrollTo({
+    //         left: scrollPosition,
+    //         behavior: "smooth",
+    //     });
+    // }
+
+    // scrollToCurrentImage();
 
     // ********** Flash Session Message  ************
     if (flashMessage) {
