@@ -71,27 +71,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const swiper3 = new Swiper(".mySwiper", {
         loop: true,
         spaceBetween: 10,
-        slidesPerView: 4,
+        slidesPerView: 3,
         freeMode: true,
         watchSlidesProgress: true,
     });
 
-    const swiper2 = new Swiper(".mySwiper2", {
-        loop: true,
-        spaceBetween: 10,
-        pagination: {
-            el: ".swiper-pagination",
-            dynamicBullets: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        thumbs: {
-            swiper: swiper3,
-        },
-    });
+    const swiperSlides = document
+        .querySelector(".mySwiper2")
+        ?.querySelectorAll(".swiper-slide");
 
+    if (swiperSlides?.length > 1) {
+        const swiper2 = new Swiper(".mySwiper2", {
+            loop: true,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination",
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiper3,
+            },
+        });
+    }
     // const mainGalleryImg = document.getElementById("mainGalleryImg");
     // const prevBtn = document.querySelector(".prevBtn");
     // const nextBtn = document.querySelector(".nextBtn");
