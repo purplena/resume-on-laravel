@@ -55,6 +55,20 @@ document.addEventListener("click", function (event) {
 // ********** DOMContentLoaded ************
 
 document.addEventListener("DOMContentLoaded", function () {
+    const shadow = document.getElementById("shadow");
+
+    window.addEventListener("scroll", function () {
+        document.querySelector(".svg-dark").style.top = -(
+            window.scrollY * 0.05
+        );
+        document.querySelector("#shadow1").style.transform = `translate(-${
+            scrollY * 0.02
+        }px, -${scrollY * 0.02}px)`;
+        document.querySelector("#shadow3").style.transform = `translate(${
+            scrollY * 0.02
+        }px, -${scrollY * 0.02}px)`;
+    });
+
     const swiper1 = new Swiper(".mySwiperInit", {
         loop: true,
 
@@ -97,77 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         });
     }
-    // const mainGalleryImg = document.getElementById("mainGalleryImg");
-    // const prevBtn = document.querySelector(".prevBtn");
-    // const nextBtn = document.querySelector(".nextBtn");
-    // const galleryImgs = document.querySelectorAll(".galleryImgs");
-
-    // // ********** change image on click prev/next ************
-    // let currentIndex = 0;
-
-    // function updateMainImage(index) {
-    //     const newSrc = galleryImgs[index].src;
-    //     mainGalleryImg.src = newSrc;
-    //     updateOpacity();
-    //     scrollToCurrentImage();
-    // }
-
-    // prevBtn.addEventListener("click", () => {
-    //     currentIndex--;
-    //     if (currentIndex < 0) {
-    //         currentIndex = galleryImgs.length - 1;
-    //     }
-    //     updateMainImage(currentIndex);
-    // });
-
-    // nextBtn.addEventListener("click", () => {
-    //     currentIndex++;
-    //     if (currentIndex >= galleryImgs.length) {
-    //         currentIndex = 0;
-    //     }
-    //     updateMainImage(currentIndex);
-    // });
-
-    // updateMainImage(currentIndex);
-
-    // galleryImgs?.forEach(function (img, index) {
-    //     img.addEventListener("click", function () {
-    //         currentIndex = index;
-    //         updateMainImage(currentIndex);
-    //     });
-    // });
-
-    // // ********** opacity change for an active image ************
-    // function updateOpacity() {
-    //     galleryImgs.forEach((img) => {
-    //         img.style.opacity = "0.6";
-    //     });
-
-    //     if (galleryImgs[currentIndex]) {
-    //         galleryImgs[currentIndex].style.opacity = "1";
-    //     }
-    // }
-
-    // updateOpacity();
-
-    // // ********** smooth scroll in slider ************
-    // function scrollToCurrentImage() {
-    //     const smallImgContainer = document.querySelector(
-    //         ".product-small-img .flex"
-    //     );
-    //     const imgWidth =
-    //         galleryImgs[0].offsetWidth +
-    //         parseInt(window.getComputedStyle(galleryImgs[0]).marginRight);
-    //     const scrollPosition = currentIndex * imgWidth;
-
-    //     // smallImgContainer.scrollLeft = scrollPosition;
-    //     smallImgContainer.scrollTo({
-    //         left: scrollPosition,
-    //         behavior: "smooth",
-    //     });
-    // }
-
-    // scrollToCurrentImage();
 
     // ********** Flash Session Message  ************
     if (flashMessage) {
