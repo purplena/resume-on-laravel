@@ -82,3 +82,19 @@ a {
     background-position: center;
     background-size: contain;
  }
+
+ .project-hero-img{
+    z-index: 11;
+    position: relative;
+ }
+
+ .project-hero-img::before{
+    position: absolute;
+    z-index: -1;
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: -6px;
+    left: -6px;
+    background: #B3A3C0;
+}

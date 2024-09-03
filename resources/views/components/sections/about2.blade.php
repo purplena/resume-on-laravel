@@ -10,7 +10,7 @@
                     {{-- Education --}}
                     <div class="mb-6">
                         <h2 class="text-left text-h3 mb-4">{{ __('about.education') }}</h2>
-                        <div class="flex flex-col gap-4 justify-center items-center">
+                        <div class="flex flex-col gap-4 justify-center items-center max-w-[350px] mx-auto">
                             {{-- Education 1 --}}
                             <div class="relative">
                                 <img src="{{ asset('/images/assets/arrow.png') }}"
@@ -51,75 +51,82 @@
                         </div>
                     </div>
                     {{-- Technologies --}}
-                    <div>
-                        <h2 class="text-h3 text-left mb-4">Technologies</h2>
-                        <div class="flex flex-row justify-center items-center">
-                            <x-svg.html />
-                            <x-svg.css />
-                            <x-svg.js />
-                            <x-svg.ts />
-                            <x-svg.php />
-                            <x-svg.react />
-                            <x-svg.laravel />
-                            <x-svg.symfony />
-                            <x-svg.figma />
-                            <x-svg.tailwind />
+                    <div class="relative">
+                        <h2 class="text-h3 text-left mb-4 typing-demo">Technologies</h2>
+                        <div>
+                            <div class="flex flex-row mb-4 xs:mb-0 gap-4 justify-center mx-auto max-w-[190px]">
+                                <img class="hidden xs:block xs:h-[55px] xs:scale-x-[-1]"
+                                    src="{{ asset('/images/assets/arrow-tech.png') }}" alt="computer-illustration">
+                                <img class="w-[83px] h-[48px] mx-auto"
+                                    src="{{ asset('/images/assets/_computer.png') }}" alt="computer-illustration">
+                                <img class="hidden xs:block xs:h-[55px]"
+                                    src="{{ asset('/images/assets/arrow-tech.png') }}" alt="computer-illustration">
+                            </div>
+                            <div
+                                class="flex flex-col xs:flex-row justify-center items-center xs:items-start gap-6 xs:gap-0 max-w-[350px] mx-auto">
+                                <div>
+                                    <h3 class="text-h5 text-center mb-2">Front-End</h3>
+                                    <div class="flex flex-col gap-1 w-[200px] flex-wrap">
+                                        <div class="flex flex-row gap-4 justify-center ">
+                                            <div class="tech-icon">
+                                                <x-svg.figma />
+                                            </div>
+                                            <div class="tech-icon">
+                                                <x-svg.html />
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-row gap-4 justify-center">
+                                            <div class="tech-icon">
+                                                <x-svg.js />
+                                            </div>
+                                            <div class="tech-icon">
+                                                <x-svg.react />
+                                            </div>
+                                            <div class="tech-icon">
+                                                <x-svg.ts />
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-row gap-4 justify-center">
+                                            <div class="tech-icon">
+                                                <x-svg.tailwind />
+                                            </div>
+                                            <div class="tech-icon">
+                                                <x-svg.css />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-h5 text-center mb-2">Back-End</h3>
+                                    <div class="flex flex-col gap-1 w-[200px]">
+                                        <div class="flex flex-row gap-4 justify-center">
+                                            <div class="tech-icon">
+                                                <x-svg.php />
+                                            </div>
+                                            <div class="tech-icon">
+                                                <x-svg.laravel />
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-row gap-4 justify-center">
+                                            <div class="tech-icon">
+                                                <x-svg.symfony />
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-row gap-4 justify-center">
+                                            <div class="tech-icon">
+                                                <x-svg.docker />
+                                            </div>
+                                            <div class="tech-icon">
+                                                <x-svg.github />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                {{-- <div>
-                    <h2 class="text-h3 mb-4 education-h2">{{ __('about.education') }}</h2>
-                    <div>
-                        <div>
-                            <div class="relative">
-                                <img src="{{ asset('/images/assets/arrow.png') }}"
-                                    class="hidden sm:block sm:absolute sm:-top-5 sm:-left-10 sm:z-20 sm:h-full sm:max-h-[150px] md:max-h-[120px] md:-left-3 md:-top-[30px] lg:max-h-[150px]"
-                                    alt="">
-                                <div class="relative min-w-[200px] parallax-container">
-                                    <div class="absolute top-0 bottom-0 left-0 right-0 m-auto flex flex-col justify-center items-center p-2"
-                                        style="z-index: 10;">
-                                        <p class="text-center leading-5"><span
-                                                class="font-bold text-[16px]">{{ __('about.degree.1') }}</span></p>
-                                        <p class="text-center leading-5">{{ __('about.education.university.1') }}</p>
-                                        <p class="text-center leading-5">{{ __('about.graduation.year') }}: 2015</p>
-                                        <p class="text-center leading-5">{{ __('about.location.1') }}</p>
-                                    </div>
-                                    <div class="relative">
-                                        <img src="{{ asset('/images/assets/blob-shadow.png') }}"
-                                            class="w-full max-w-[420px] absolute" style="z-index: 0;" id="shadow1">
-                                        <img src="{{ asset('/images/assets/blob.png') }}"
-                                            class="relative w-full max-w-[420px]" style="z-index: 0;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="relative">
-                                <img src="{{ asset('/images/assets/arrow.png') }}"
-                                    class="hidden sm:block sm:absolute sm:-top-10 sm:-right-10 sm:z-20 sm:h-full sm:max-h-[150px] md:max-h-[120px] md:-right-0 md:-top-[50px] lg:max-h-[150px] scale-x-[-1]"
-                                    alt="">
-                                <div class="relative min-w-[200px]">
-                                    <div class="absolute top-0 bottom-0 left-0 right-0 m-auto flex flex-col justify-center items-center p-4"
-                                        style="z-index: 10;">
-                                        <p class="text-center leading-5"><span
-                                                class="font-bold text-[16px]">{{ __('about.degree.2') }}</span></p>
-                                        <p class="text-center leading-5">{{ __('about.education.university.2') }}</p>
-                                        <p class="text-center leading-5">{{ __('about.graduation.year') }}: 2024</p>
-                                        <p class="text-center leading-5">{{ __('about.location.2') }}</p>
-                                    </div>
-                                    <div class="relative">
-                                        <img src="{{ asset('/images/assets/blob-shadow.png') }}"
-                                            class="w-full max-w-[420px] absolute" style="z-index: 0;" id="shadow2">
-                                        <img src="{{ asset('/images/assets/blob.png') }}"
-                                            class="relative w-full max-w-[420px]" style="z-index: 0;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div> --}}
 
                 {{-- Col 2 //Carrier --}}
                 <div>
@@ -130,7 +137,7 @@
                             <img src="{{ asset('/images/assets/arrow.png') }}"
                                 class="hidden sm:block sm:absolute sm:-top-5 sm:-left-10 sm:z-20 sm:h-full sm:max-h-[150px] md:max-h-[120px] md:-left-3 md:-top-[15px] md:rotate-0 lg:max-h-[150px]"
                                 alt="">
-                            <div class="relative min-w-[200px] md:w-[350px] lg:w-[420px] parallax-container">
+                            <div class="relative min-w-[150px] md:w-[350px] lg:w-[420px] parallax-container">
                                 <div class="absolute top-0 bottom-0 left-0 right-0 m-auto flex flex-col justify-center items-center p-4"
                                     style="z-index: 10;">
                                     <p class="text-center font-bold text-[16px] leading-5">Sales Capability, PepsiCo
@@ -154,7 +161,7 @@
                             <img src="{{ asset('/images/assets/arrow.png') }}"
                                 class="hidden sm:block sm:absolute sm:-top-5 sm:-right-10 sm:z-20 sm:h-full sm:max-h-[150px] sm:scale-x-[-1] md:max-h-[120px] md:-right-0 md:-top-[50px] lg:max-h-[150px]"
                                 alt="">
-                            <div class="relative min-w-[200px] md:w-[350px] lg:w-[420px]">
+                            <div class="relative min-w-[150px] md:w-[350px] lg:w-[420px]">
                                 <div class="absolute top-0 bottom-0 left-0 right-0 m-auto flex flex-col justify-center items-center p-4"
                                     style="z-index: 10;">
                                     <p class="text-center font-bold text-[16px] leading-5">

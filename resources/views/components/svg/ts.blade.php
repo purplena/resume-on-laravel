@@ -1,7 +1,7 @@
-<svg id="-icon" class="h-[43px] tech-icon" viewBox="0 0 400 400" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+<svg id="-icon" class="h-[43px]" viewBox="0 0 400 400" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
     <style>
         .st0 {
-            fill: #B3A3C0
+            fill: #8f8299
         }
 
         .st1 {

@@ -25,11 +25,17 @@
                                         <div class="absolute">
                                             <x-svg-project :coordinates="$coordinates[$i]" />
                                         </div>
-                                        <div class="z-10">
-                                            <h3 class="text-[3rem]">
+                                        <div class="z-10 flex flex-col gap-2 items-center justify-center">
+                                            <h3 class="text-h3 md:text-h2">
                                                 {{ $webProjects[$i]->title }}
                                             </h3>
-                                            <div class="flex flex-row items-center justify-center gap-4">
+                                            <div class="project-hero-img">
+                                                <img class="h-[100px] block"
+                                                    src="{{ asset('storage/' . $webProjects[$i]->medias->first()->path) }}"
+                                                    alt="projects's image" />
+                                            </div>
+                                            <div
+                                                class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
                                                 <a href="{{ $webProjects[$i]->project_data['github'] }}"
                                                     class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">{{ __('project.repo') }}</a>
                                                 <a href="{{ route('project', ['project' => $webProjects[$i]->id]) }}"

@@ -55,8 +55,6 @@ document.addEventListener("click", function (event) {
 // ********** DOMContentLoaded ************
 
 document.addEventListener("DOMContentLoaded", function () {
-    const shadow = document.getElementById("shadow");
-
     window.addEventListener("scroll", function () {
         document.querySelector(".svg-dark").style.top = -(
             window.scrollY * 0.05

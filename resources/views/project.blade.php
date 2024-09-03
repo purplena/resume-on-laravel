@@ -6,7 +6,6 @@
             </h1>
             {{-- Galery --}}
             <div class="swiper mySwiper2">
-
                 <div class="swiper-wrapper">
                     @foreach ($project->medias as $media)
                         <div class="swiper-slide">
@@ -29,7 +28,7 @@
                     <div class="swiper-wrapper ">
                         @foreach ($project->medias as $media)
                             <div class="swiper-slide cursor-pointer">
-                                <div class="flex items-center justify-center">
+                                <div class="flex flex-row items-center justify-center">
                                     <img class="h-[30px] sm:h-[50px] md:h-[92px]"
                                         src="{{ asset('storage/' . $media->path) }}" />
                                 </div>
