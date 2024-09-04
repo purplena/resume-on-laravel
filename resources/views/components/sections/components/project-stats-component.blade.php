@@ -75,6 +75,6 @@
             </div>
         </div>
         <a class="block text-center px-4 py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg"
-            href="{{ route($translationKey) }}">{{ __('button.see.more') }}</a>
+            href="{{ route('admin.' . $translationKey) }}">{{ __('button.see.more') }}</a>
     </div>
 </div>

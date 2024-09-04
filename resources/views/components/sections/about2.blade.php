@@ -1,6 +1,6 @@
 <section class="relative reference-point" style="z-index: -10; !important">
     <x-svg.shadow-wave />
-    <x-svg.top-wave />
+    <x-svg.top-wave fill='#e0dae5' />
     <div class="bg-main-200 px-4 py-12 w-full -mt-[5px] -mb-[1px]">
         <div class="max-w-maxScreenWidth mx-auto">
             <div class="flex flex-col md:flex-row gap-6 xs:gap-4 md:justify-around education-div">
@@ -132,10 +132,9 @@
                 <div>
                     <h2 class="text-h3 mb-4 text-left">{{ __('about.work') }}</h2>
                     <div class="flex flex-col justify-center items-center">
-
                         <div class="relative">
                             <img src="{{ asset('/images/assets/arrow.png') }}"
-                                class="hidden sm:block sm:absolute sm:-top-5 sm:-left-10 sm:z-20 sm:h-full sm:max-h-[150px] md:max-h-[120px] md:-left-3 md:-top-[15px] md:rotate-0 lg:max-h-[150px]"
+                                class="hidden sm:block sm:absolute sm:-top-5 sm:-left-10 sm:z-20 sm:h-full sm:max-h-[150px] md:max-h-[120px] md:-left-4 md:-top-[20px] md:rotate-0 lg:max-h-[150px]"
                                 alt="">
                             <div class="relative min-w-[150px] md:w-[350px] lg:w-[420px] parallax-container">
                                 <div class="absolute top-0 bottom-0 left-0 right-0 m-auto flex flex-col justify-center items-center p-4"
@@ -177,13 +176,10 @@
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <x-svg.bottom-wave />
+    <x-svg.bottom-wave fill='#e0dae5' />
 </section>

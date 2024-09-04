@@ -1,4 +1,8 @@
 {
+    "nav.home": "home",
+    "nav.gallery": "gallery",
+    "nav.projects": "projects",
+    "nav.admin": "admin",
     "hero.welcome": "I'm Lena",
     "hero.h2": "full stack web developer",
     "hero.p2": "My favorite color is purple. That's how the name of my website appeared.",
@@ -92,7 +96,7 @@
     "pagination.to": "to",
     "pagination.of": "of",
     "pagination.results": "illustrations",
-    "project.repo": "Github Repo",
+    "project.repo": "Github",
     "project.see.more": "See more",
     "project.visit.me": "Visit me"
 }

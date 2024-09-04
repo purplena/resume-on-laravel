@@ -23,7 +23,7 @@
         @else
             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                 <h2 class="text-h3">{{ __('admin.illustrations.h2.table') }}</h2>
-                <x-sections.form.search-illustration route="illustrations" />
+                <x-sections.form.search-illustration route="admin.illustrations" />
             </div>
 
             <form
@@ -64,9 +64,9 @@
                                 </td>
                                 <td class="p-2 md:px-6 md:py-4 text-center">
                                     <a class="cursor-pointer px-6 py-1 text-center border border-main-500 text-main-500 uppercase rounded-3xl hover:border hover:border-main-500  hover:bg-main-500 hover:text-white drop-shadow-lg  hidden editIllustrationBtn"
-                                        href="{{ $projectCategory == $category ? route('projects', ['id' => $illustration->id]) : route('illustrations', ['id' => $illustration->id]) }}">{{ __('form.illustrations.edit') }}</a>
+                                        href="{{ $projectCategory == $category ? route('admin.projects', ['id' => $illustration->id]) : route('admin.illustrations', ['id' => $illustration->id]) }}">{{ __('form.illustrations.edit') }}</a>
                                     <a data-action="edit" class="hidden editIconElement"
-                                        href="{{ $projectCategory == $category ? route('projects', ['id' => $illustration->id]) : route('illustrations', ['id' => $illustration->id]) }}">
+                                        href="{{ $projectCategory == $category ? route('admin.projects', ['id' => $illustration->id]) : route('admin.illustrations', ['id' => $illustration->id]) }}">
                                         <i class="fa-solid fa-wand-magic-sparkles cursor-pointer hover:text-main-800 text-main-600"
                                             data-illustrationId={{ $illustration->id }}></i>
                                     </a>

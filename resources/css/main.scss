@@ -98,3 +98,45 @@ a {
     left: -6px;
     background: #B3A3C0;
 }
+
+
+.gallery-img{
+    z-index: 0;
+    position: relative;
+ }
+
+ .gallery-img::before {
+    position: absolute;
+    content: "";
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    top: -6px;
+    left: -6px;
+    background: #B3A3C0;
+ }
+
+
+.gallery-img-shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -6px;
+    left: -6px;
+    background: #B3A3C0;
+    transition: background 0.3s ease-in-out;
+}
+ 
+.project-title {
+    transition: text-decoration 0.3s ease-in-out;
+}
+
+.project-btn:hover .project-title  {
+    // top: 0;
+    text-decoration: underline;
+}
+
+
+.title-transform {
+    font-weight: 800;
+}

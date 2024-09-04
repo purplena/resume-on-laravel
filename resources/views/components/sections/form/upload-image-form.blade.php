@@ -127,7 +127,7 @@
     </div>
     <div class="flex justify-end mt-4 gap-4">
         @if ($illustration)
-            <a href="{{ $illustration->category == $category ? route('projects') : route('illustrations') }}"
+            <a href="{{ $illustration->category == $category ? route('admin.projects') : route('admin.illustrations') }}"
                 class="px-10 py-2 border border-gray-400 text-gray-400 uppercase rounded-3xl hover:bg-gray-400 hover:text-white drop-shadow-lg text-center">{{ __('button.cancel') }}</a>
         @endif
         <button type="submit"

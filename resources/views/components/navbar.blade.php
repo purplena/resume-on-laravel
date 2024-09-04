@@ -17,7 +17,7 @@
                 <ul class="links flex flex-col md:flex-row md:gap-4" id="nav-links">
                     <x-sections.navbar.link-component routeName="home" />
                     <x-sections.navbar.link-component routeName="gallery" />
-                    <x-sections.navbar.link-component routeName="blog" />
+                    <x-sections.navbar.link-component routeName="projects" />
                     @auth
                         <x-sections.navbar.link-component routeName="admin" />
                     @endauth

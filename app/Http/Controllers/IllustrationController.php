@@ -6,6 +6,7 @@ use App\Http\DTO\ProjectDataDTO;
 use App\Http\Requests\EditIllustrationRequest;
 use App\Http\Requests\StoreIllustrationRequest;
 use App\Models\Project;
+use App\Repository\ProjectRepository;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Http\FormRequest;
@@ -16,6 +17,10 @@ use Illuminate\Http\Response as HttpResponse;
 
 class IllustrationController extends Controller
 {
+    public function __construct(private ProjectRepository $projectRepository)
+    {
+    }
+
     public function index(Request $request, ProjectService $service): View
     {
         $projectData = $service->getProjects(
@@ -28,6 +33,15 @@ class IllustrationController extends Controller
             'projectData'       => $projectData,
             'projectCategory'   => Project::CATEGORY_ART,
             'route'             => 'illustration'
+        ]);
+    }
+
+    public function showAll(Request $request): View
+    {
+        $projects = $this->projectRepository->search($request->input('search'), 20, Project::CATEGORY_ART);
+        return view('projectsGallery', [
+            'projects' => $projects,
+            'category' => Project::CATEGORY_ART
         ]);
     }
 

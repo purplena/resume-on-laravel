@@ -6,6 +6,7 @@ use App\Http\DTO\ProjectDataDTO;
 use App\Http\Requests\EditWebProjectRequest;
 use App\Http\Requests\StoreWebProjectRequest;
 use App\Models\Project;
+use App\Repository\ProjectRepository;
 use App\Services\ProjectService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Http\FormRequest;
@@ -16,6 +17,10 @@ use Illuminate\Http\Request;
 
 class ProjectController
 {
+    public function __construct(private ProjectRepository $projectRepository)
+    {
+    }
+
     public function index(Request $request, ProjectService $service): View
     {
         $projectData = $service->getProjects(
@@ -35,6 +40,15 @@ class ProjectController
     {
         return view('project', [
             'project' => $project,
+        ]);
+    }
+
+    public function showAll(Request $request)
+    {
+        $projects = $this->projectRepository->search($request->input('search'), 20, Project::CATEGORY_WEB);
+        return view('projectsGallery', [
+            'projects' => $projects,
+            'category' => Project::CATEGORY_WEB
         ]);
     }
 

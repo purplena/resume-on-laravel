@@ -67,6 +67,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }px, -${scrollY * 0.02}px)`;
     });
 
+    const projectTitles = document.querySelectorAll(".project-title");
+    const projectBtns = document.querySelectorAll(".project-btn");
+
+    projectBtns.forEach(function (element) {
+        element.addEventListener("mouseover", function (event) {
+            const projectId = element.getAttribute("data-projectId");
+            const targetTitle = document.querySelector(
+                "#project-id-" + projectId
+            );
+            targetTitle.classList.add("title-transform");
+        });
+    });
+
+    projectBtns.forEach(function (element) {
+        element.addEventListener("mouseout", () => {
+            projectTitles.forEach(function (title) {
+                title.classList.remove("title-transform");
+            });
+        });
+    });
+
     const swiper1 = new Swiper(".mySwiperInit", {
         loop: true,
 
