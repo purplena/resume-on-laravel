@@ -15,14 +15,14 @@
 
             {{-- Swiper --}}
             @if ($webProjects->count())
-                <div class="swiper-container-main md:col-span-2 px-16">
-                    <div class="h-[350px] relative">
+                <div class="swiper-container-main w-[100%] md:col-span-2 xs:px-16">
+                    <div class="h-full w-full relative">
                         <div class="swiper w-full h-full !pb-8 mySwiperInit">
                             <div class="swiper-wrapper">
                                 @for ($i = 0; $i < $webProjects->count(); $i++)
                                     <div
-                                        class="swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center bg-main-200 p-4">
-                                        <div class="absolute">
+                                        class="swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center bg-main-200 px-4 py-6">
+                                        <div class="absolute h-[99%]">
                                             <x-svg-project :coordinates="$coordinates[$i]" />
                                         </div>
                                         <div class="z-10 flex flex-col gap-2 items-center justify-center">
@@ -30,16 +30,16 @@
                                                 {{ $webProjects[$i]->title }}
                                             </h3>
                                             <div class="project-hero-img">
-                                                <img class="h-[100px] block"
+                                                <img class="h-[75px] xs:h-[100px] block"
                                                     src="{{ asset('storage/' . $webProjects[$i]->medias->first()->path) }}"
                                                     alt="projects's image" />
                                             </div>
                                             <div
                                                 class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
                                                 <a href="{{ $webProjects[$i]->project_data['github'] }}"
-                                                    class="block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">{{ __('project.repo') }}</a>
+                                                    class="btn-transition block w-[130px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg">{{ __('project.repo') }}</a>
                                                 <a href="{{ route('project', ['project' => $webProjects[$i]->id]) }}"
-                                                    class="openModalBtn block w-full py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg xs:w-[130px]">{{ __('project.see.more') }}
+                                                    class="btn-transition openModalBtn block w-[130px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg">{{ __('project.see.more') }}
                                                 </a>
                                             </div>
                                         </div>

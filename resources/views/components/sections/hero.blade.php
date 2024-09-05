@@ -32,10 +32,10 @@
 
             <div class="flex flex-col xs:flex-row gap-2">
                 <button
-                    class="projects-button block w-[170px] py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg"
+                    class="btn-transition block w-[170px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg"
                     id="scroll-to-projects-btn">{{ __('button.projects') }}</button>
                 <button
-                    class="block w-[170px] py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 hover:text-egg drop-shadow-lg"
+                    class="btn-transition block w-[170px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg"
                     id="scroll-to-contact-btn">{{ __('button.contact') }}</button>
             </div>
         </div>

@@ -3,7 +3,7 @@ export default {
     content: ["./resources/views/**/*.blade.php", "./resources/js/**/*.js"],
     theme: {
         screens: {
-            xxs: "290px",
+            xxs: "330px",
             xs: "400px",
             sm: "540px",
             md: "768px",

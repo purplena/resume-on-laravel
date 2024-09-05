@@ -98,5 +98,8 @@
     "pagination.results": "illustrations",
     "project.repo": "Github",
     "project.see.more": "See more",
-    "project.visit.me": "Visit me"
+    "project.visit.me": "Visit me",
+    "project.description": "Description",
+    "project.check.work": "Check Out My Work",
+    "section.empty": "This section is empty..."
 }

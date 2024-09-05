@@ -130,14 +130,14 @@
 
                 {{-- Col 2 //Carrier --}}
                 <div>
-                    <h2 class="text-h3 mb-4 text-left">{{ __('about.work') }}</h2>
-                    <div class="flex flex-col justify-center items-center">
+                    <h2 class="text-h3 mb-4 text-left relative z-30">{{ __('about.work') }}</h2>
+                    <div class="flex flex-col justify-center items-center gap-4 xxs:gap-0">
                         <div class="relative">
                             <img src="{{ asset('/images/assets/arrow.png') }}"
                                 class="hidden sm:block sm:absolute sm:-top-5 sm:-left-10 sm:z-20 sm:h-full sm:max-h-[150px] md:max-h-[120px] md:-left-4 md:-top-[20px] md:rotate-0 lg:max-h-[150px]"
                                 alt="">
                             <div class="relative min-w-[150px] md:w-[350px] lg:w-[420px] parallax-container">
-                                <div class="absolute top-0 bottom-0 left-0 right-0 m-auto flex flex-col justify-center items-center p-4"
+                                <div class="static bg-egg rounded-xl xxs:bg-transparent xxs:absolute xxs:top-0 xxs:bottom-0 xxs:left-0 xxs:right-0 m-auto flex flex-col justify-center items-center p-4"
                                     style="z-index: 10;">
                                     <p class="text-center font-bold text-[16px] leading-5">Sales Capability, PepsiCo
                                     </p>
@@ -146,11 +146,12 @@
                                     <p class="text-center leading-5">{{ __('about.work.pepsi.3') }}</p>
                                     <p class="text-center leading-5">2013-2019</p>
                                 </div>
-                                <div class="relative">
+                                <div class="hidden xxs:block xxs:relative">
                                     <img src="{{ asset('/images/assets/blob-shadow-reversed.png') }}"
-                                        class="w-full max-w-[420px] absolute" style="z-index: 0;" id="shadow3">
+                                        class="hidden xs:block w-full max-w-[420px] absolute" style="z-index: 0;"
+                                        id="shadow3">
                                     <img src="{{ asset('/images/assets/blob.png') }}"
-                                        class="scale-x-[-1] relative w-full max-w-[420px]" style="z-index: 0;">
+                                        class="scale-x-[-1] relative w-full max-w-[420px]" style="z-index: 1;">
                                 </div>
                             </div>
                         </div>
@@ -161,16 +162,17 @@
                                 class="hidden sm:block sm:absolute sm:-top-5 sm:-right-10 sm:z-20 sm:h-full sm:max-h-[150px] sm:scale-x-[-1] md:max-h-[120px] md:-right-0 md:-top-[50px] lg:max-h-[150px]"
                                 alt="">
                             <div class="relative min-w-[150px] md:w-[350px] lg:w-[420px]">
-                                <div class="absolute top-0 bottom-0 left-0 right-0 m-auto flex flex-col justify-center items-center p-4"
+                                <div class="static bg-egg rounded-xl xxs:bg-transparent xxs:absolute xxs:top-0 xxs:bottom-0 xxs:left-0 xxs:right-0 m-auto flex flex-col justify-center items-center p-4"
                                     style="z-index: 10;">
                                     <p class="text-center font-bold text-[16px] leading-5">
                                         {{ __('about.work.web.1') }}</p>
                                     <p class="text-center leading-5">{{ __('about.work.web.2') }}</p>
                                     <p class="text-center leading-5">2024++</p>
                                 </div>
-                                <div class="relative">
+                                <div class="hidden xxs:block xxs:relative">
                                     <img src="{{ asset('/images/assets/blob-shadow.png') }}"
-                                        class="w-full max-w-[420px] absolute" style="z-index: 0;" id="shadow1">
+                                        class="hidden xs:block w-full max-w-[420px] absolute" style="z-index: 0;"
+                                        id="shadow1">
                                     <img src="{{ asset('/images/assets/blob.png') }}"
                                         class="relative w-full max-w-[420px]" style="z-index: 0;">
                                 </div>

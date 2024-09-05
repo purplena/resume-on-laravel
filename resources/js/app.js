@@ -29,17 +29,16 @@ const iconCross = document.querySelector(".fa-x");
 const flashMessage = document.getElementById("flash-message");
 const axiosFlashMessage = document.getElementById("axios-flash-message");
 
-navToggle.addEventListener("click", function () {
+const hamburger = document.querySelector(".hamburger");
+hamburger.addEventListener("click", function () {
     const containerHeight = linksContainer.getBoundingClientRect().height;
     const linksHeight = links.getBoundingClientRect().height;
     if (containerHeight === 0) {
         linksContainer.style.height = `${linksHeight}px`;
-        iconBars.classList.add("hidden");
-        iconCross.classList.remove("hidden");
+        hamburger.classList.add("is-opened");
     } else {
         linksContainer.style.height = 0;
-        iconCross.classList.add("hidden");
-        iconBars.classList.remove("hidden");
+        hamburger.classList.remove("is-opened");
     }
 });
 
@@ -47,8 +46,7 @@ navToggle.addEventListener("click", function () {
 document.addEventListener("click", function (event) {
     if (event.target !== navbarEl && !navbarEl.contains(event.target)) {
         linksContainer.style.height = 0;
-        iconCross.classList.add("hidden");
-        iconBars.classList.remove("hidden");
+        hamburger.classList.remove("is-opened");
     }
 });
 
@@ -56,15 +54,23 @@ document.addEventListener("click", function (event) {
 
 document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", function () {
-        document.querySelector(".svg-dark").style.top = -(
-            window.scrollY * 0.05
-        );
-        document.querySelector("#shadow1").style.transform = `translate(-${
-            scrollY * 0.02
-        }px, -${scrollY * 0.02}px)`;
-        document.querySelector("#shadow3").style.transform = `translate(${
-            scrollY * 0.02
-        }px, -${scrollY * 0.02}px)`;
+        if (document.querySelector(".svg-dark")) {
+            document.querySelector(".svg-dark").style.top = -(
+                window.scrollY * 0.05
+            );
+        }
+
+        if (document.querySelector("#shadow1")) {
+            document.querySelector("#shadow1").style.transform = `translate(-${
+                scrollY * 0.02
+            }px, -${scrollY * 0.02}px)`;
+        }
+
+        if (document.querySelector("#shadow3")) {
+            document.querySelector("#shadow3").style.transform = `translate(${
+                scrollY * 0.02
+            }px, -${scrollY * 0.02}px)`;
+        }
     });
 
     const projectTitles = document.querySelectorAll(".project-title");
@@ -76,14 +82,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const targetTitle = document.querySelector(
                 "#project-id-" + projectId
             );
-            targetTitle.classList.add("title-transform");
+            targetTitle.classList.add("hover-state");
         });
     });
 
     projectBtns.forEach(function (element) {
         element.addEventListener("mouseout", () => {
             projectTitles.forEach(function (title) {
-                title.classList.remove("title-transform");
+                title.classList.remove("hover-state");
             });
         });
     });
