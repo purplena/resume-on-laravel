@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,5 +46,15 @@ class User extends Authenticatable
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function artProjects(): Collection
+    {
+        return $this->projects()->where('category', Project::CATEGORY_ART)->get();
+    }
+
+    public function webProjects(): Collection
+    {
+        return $this->projects()->where('category', Project::CATEGORY_WEB)->get();
     }
 }

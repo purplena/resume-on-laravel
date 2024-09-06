@@ -3,6 +3,7 @@ export default {
     content: ["./resources/views/**/*.blade.php", "./resources/js/**/*.js"],
     theme: {
         screens: {
+            xxs: "330px",
             xs: "400px",
             sm: "540px",
             md: "768px",
@@ -10,11 +11,11 @@ export default {
             xl: "1280px",
         },
         fontSize: {
-            h1: "2rem",
-            h2: "1.75rem",
-            h3: "1.5rem",
-            h4: "1.25rem",
-            h5: "1rem",
+            h1: "2.5rem",
+            h2: "2rem",
+            h3: "1.75rem",
+            h4: "1.5rem",
+            h5: "1.25rem",
             h6: "0.875rem",
             xs: "0.75rem" /* 12px */,
             sm: "0.875rem" /* 14px */,

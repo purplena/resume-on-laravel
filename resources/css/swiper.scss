@@ -1,6 +1,6 @@
 .swiper-container-main {
-    .swiper-button-prev,
-    .swiper-button-next {
+    #page-swiper-button-prev,
+    #page-swiper-button-next {
         background-image: none;
         background-repeat: no-repeat;
         background-color: theme("colors.main-500");
@@ -12,41 +12,167 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+        transition: background-color 0.3s ease-out;
     }
 
-    .swiper-button-next {
+    #page-swiper-button-next {
         right: -4rem;
     }
 
-    .swiper-button-prev {
+    #page-swiper-button-prev {
         left: -4rem;
     }
-    .swiper-button-prev::before,
-    .swiper-button-next::before {
+
+    #page-swiper-button-prev::before,
+    #page-swiper-button-next::before {
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
         color: #fff;
     }
 
-    .swiper-button-prev::before {
+    #page-swiper-button-prev::before {
         content: "\f060";
     }
 
-    .swiper-button-next::before {
+    #page-swiper-button-next::before {
         content: "\f061";
     }
 
-    .swiper-button-prev::after,
-    .swiper-button-next::after {
+    #page-swiper-button-prev::after,
+    #page-swiper-button-next::after {
         display: none;
     }
 
-    .swiper-button-prev:hover,
-    .swiper-button-next:hover {
+    #page-swiper-button-prev:hover,
+    #page-swiper-button-next:hover {
         background-color: theme("colors.main-700");
     }
 
     .swiper-pagination-bullet {
         background-color: theme("colors.main-500");
+    }
+
+    @media (max-width: 400px) { 
+        #page-swiper-button-next {
+            z-index: 20 !important;
+            right: 0;
+        }
+    
+        #page-swiper-button-prev {
+            z-index: 20 !important;
+            left: 0;
+        }
+
+        #page-swiper-button-prev,
+        #page-swiper-button-next {
+            background-color: transparent;
+            padding: 0.5rem;
+            transition: all 0.3s ease-out;
+        }
+
+        #page-swiper-button-prev::before,
+        #page-swiper-button-next::before {
+            color: theme("colors.main-700");
+            transition: all 0.3s ease-out;
+        }
+
+        #page-swiper-button-prev:hover,
+        #page-swiper-button-next:hover {
+            color: theme("colors.main-900");
+            background-color: transparent;
+        }
+    }
+
+    @media (max-width: 255px) {
+        #page-swiper-button-prev,
+        #page-swiper-button-next {
+            display: none;
+        }
+    } 
+    
+}
+
+
+.mySwiper2 {
+    #swiper2-prev,
+    #swiper2-next{
+        background-image: none;
+        background-repeat: no-repeat;
+        background-color: theme("colors.main-500");
+        background-size: 100% auto;
+        background-position: center;
+        padding: 1.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: background-color 0.3s ease-out;
+    }
+    #swiper2-prev::before,
+    #swiper2-next::before {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: #fff;
+    }
+
+    #swiper2-prev::before {
+        content: "\f060";
+    }
+
+    #swiper2-next::before {
+        content: "\f061";
+    }
+
+    #swiper2-prev::after,
+    #swiper2-next::after {
+        display: none;
+    }
+
+    #swiper2-prev:hover,
+    #swiper2-next:hover {
+        background-color: theme("colors.main-700");
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: theme("colors.main-500");
+    }
+
+    @media (max-width: 400px) { 
+        #swiper2-next {
+            z-index: 20 !important;
+            right: 0;
+        }
+    
+        #swiper2-prev {
+            z-index: 20 !important;
+            left: 0;
+        }
+
+        #swiper2-prev,
+        #swiper2-next {
+            background-color: transparent;
+            padding: 0.5rem;
+            transition: all 0.3s ease-out;
+        }
+
+        #swiper2-prev::before,
+        #swiper2-next::before {
+            color: theme("colors.main-700");
+            transition: all 0.3s ease-out;
+        }
+
+        #swiper2-prev:hover,
+        #swiper2-next:hover {
+            color: theme("colors.main-900");
+            background-color: transparent;
+        }
+    }
+
+    @media (max-width: 255px) {
+        #swiper2-prev,
+        #swiper2-next {
+            display: none;
+        }
     }
 }

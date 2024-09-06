@@ -18,7 +18,7 @@
                 </div>
                 <div class="flex justify-end mt-4">
                     <button
-                        class="px-10 py-2 bg-main-500 text-white uppercase rounded-3xl hover:bg-main-700 drop-shadow-lg text-end"
+                        class="btn-transition px-10 py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg text-end"
                         id="submitButton">{{ __('button.send') }}</button>
                 </div>
             </form>

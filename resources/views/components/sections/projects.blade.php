@@ -1,7 +1,7 @@
 <section class="px-4 py-12" id="projects">
     <div class="max-w-maxScreenWidth mx-auto">
         <h2 class="text-h3 mb-4">My projects</h2>
-        <x-svg-project :coordinates="$coordinates" />
+
 
         <div class="flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-4">
             {{-- Illustration --}}
@@ -14,32 +14,51 @@
             </div>
 
             {{-- Swiper --}}
-            <div class="swiper-container-main md:col-span-2 px-16">
-                <div class="h-[350px] relative">
-                    <div class="swiper mySwiper w-full h-full !pb-8">
-                        <div class="swiper-wrapper">
-                            <div
-                                class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-main-400 ">
-                                Slide 1</div>
-                            <div
-                                class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-egg ">
-                                Slide 2</div>
-                            <div
-                                class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-main-300 ">
-                                Slide 3</div>
-                            <div
-                                class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-pink-active">
-                                Slide 4</div>
-                            <div
-                                class="swiper-slide rounded-3xl text-center !flex flex-row items-center justify-center bg-pink-pastel ">
-                                Slide 5</div>
+            @if ($webProjects->count())
+                <div class="swiper-container-main w-[100%] md:col-span-2 xs:px-16">
+                    <div class="h-full w-full relative">
+                        <div class="swiper w-full h-full !pb-8 mySwiperInit">
+                            <div class="swiper-wrapper">
+                                @for ($i = 0; $i < $webProjects->count(); $i++)
+                                    <div
+                                        class="swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center bg-main-200 px-4 py-6">
+                                        <div class="absolute h-[99%]">
+                                            <x-svg-project :coordinates="$coordinates[$i]" />
+                                        </div>
+                                        <div class="z-10 flex flex-col gap-2 items-center justify-center">
+                                            <h3 class="text-h3 md:text-h2">
+                                                {{ $webProjects[$i]->title }}
+                                            </h3>
+                                            <div class="project-hero-img">
+                                                <img class="h-[75px] xs:h-[100px] block"
+                                                    src="{{ asset('storage/' . $webProjects[$i]->medias->first()->path) }}"
+                                                    alt="projects's image" />
+                                            </div>
+                                            <div
+                                                class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                                                <a href="{{ $webProjects[$i]->project_data['github'] }}"
+                                                    class="btn-transition block w-[130px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg">{{ __('project.repo') }}</a>
+                                                <a href="{{ route('project', ['project' => $webProjects[$i]->id]) }}"
+                                                    class="btn-transition openModalBtn block w-[130px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg">{{ __('project.see.more') }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                            <div class="swiper-pagination"></div>
                         </div>
-                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev" id="page-swiper-button-prev" style="z-index: 0;"></div>
+                        <div class="swiper-button-next" id="page-swiper-button-next" style="z-index: 0;"></div>
                     </div>
-                    <div class="swiper-button-prev" style="z-index: 0;"></div>
-                    <div class="swiper-button-next" style="z-index: 0;"></div>
                 </div>
-            </div>
+            @else
+                <div class="md:col-span-2 px-16">
+                    <div class="h-[350px] flex justify-center items-center">
+                        <h2 class="text-h2">{{ __('status.no.project') }}</h2>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </section>
