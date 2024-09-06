@@ -55,7 +55,7 @@
                                     {{ $illustration->title }}
                                 </td>
                                 <td class="p-2 md:px-6 md:py-4 text-center">
-                                    <div class="flex flex-col lg:flex-row gap-2 justify-center mx-auto">
+                                    <div class="flex flex-col lg:flex-row gap-2 justify-center mx-auto flex-wrap">
                                         @foreach ($illustration->medias as $media)
                                             <img class="object-contain w-[100%] max-w-[200px]"
                                                 src="{{ asset('storage/' . $media->path) }}" alt="">
