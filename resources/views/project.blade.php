@@ -40,26 +40,42 @@
                     </div>
                 @endif
             </div>
-            {{-- Description --}}
-            <div>
-                <h2 class="text-h2 mt-4 xxs:mt-8 mb-4">{{ __('project.description') }}</h2>
-                <div class="flex flex-col gap-4 max-w-[700px]">
-                    {!! $project->project_data['description'] !!}
+            <div class="opacity-screen flex flex-col gap-4 md:flex-row md:gap-6 md:justify-between">
+                {{-- Description --}}
+                <div>
+                    <h2 class="text-h2 mt-4 xxs:mt-8 mb-4">{{ __('project.description') }}</h2>
+                    <div class="flex flex-col text-justify md:max-w-[600px]">
+                        {!! $project->project_data['description'] !!}
+                    </div>
                 </div>
-            </div>
-            {{-- Links --}}
-            <div>
-                <h2 class="text-h2 mt-8 mb-4">{{ __('project.check.work') }}</h2>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ $project->project_data['github'] }}"
-                        class="btn-transition  block w-full py-2 bg-main-500 text-center text-white uppercase rounded-3xl drop-shadow-lg xs:w-[130px]">{{ __('project.repo') }}</a>
-                    @if (isset($project->project_data['link']))
-                        <a href="{{ $project->project_data['link'] }}"
-                            class="btn-transition  block w-full py-2 bg-main-500 text-center text-white uppercase rounded-3xl drop-shadow-lg xs:w-[130px]">{{ __('project.visit.me') }}
-                        </a>
-                    @endif
+                <div>
+                    {{-- Languages --}}
+                    <div>
+                        <h2 class="text-h2 mt-8 mb-4">Languages</h2>
+                        <div class="flex flex-row flex-wrap gap-2 lg:gap-4">
+                            @foreach ($languages as $language)
+                                {!! Blade::render($language->svg) !!}
+                            @endforeach
+                        </div>
+                    </div>
+
+                    {{-- Links --}}
+                    <div>
+                        <h2 class="text-h2 mt-8 mb-4">{{ __('project.check.work') }}</h2>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="{{ $project->project_data['github'] }}"
+                                class="btn-transition  block w-full py-2 bg-main-500 text-center text-white uppercase rounded-3xl drop-shadow-lg xs:w-[130px]">{{ __('project.repo') }}</a>
+                            @if (isset($project->project_data['link']))
+                                <a href="{{ $project->project_data['link'] }}"
+                                    class="btn-transition  block w-full py-2 bg-main-500 text-center text-white uppercase rounded-3xl drop-shadow-lg xs:w-[130px]">{{ __('project.visit.me') }}
+                                </a>
+                            @endif
+                        </div>
+                    </div>
                 </div>
+
             </div>
+
         </section>
     </div>
 </x-layout>

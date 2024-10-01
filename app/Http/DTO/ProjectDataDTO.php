@@ -10,17 +10,19 @@ class ProjectDataDTO
         protected int $category,
         protected array $project_data,
         protected ?array $files,
+        protected ?array $project_language,
     ) {
     }
 
     public function toArray(): array
     {
         return [
-            'user_id'       => $this->user_id,
-            'title'         => $this->title,
-            'category'      => $this->category,
-            'project_data'  => $this->project_data,
-            'files'         => $this->files
+            'user_id'           => $this->user_id,
+            'title'             => $this->title,
+            'category'          => $this->category,
+            'project_data'      => $this->project_data,
+            'files'             => $this->files,
+            'project_language'  => $this->project_language
         ];
     }
 
@@ -37,7 +39,8 @@ class ProjectDataDTO
                 'link'          => $data['link']]
                 :
                 [],
-            files: $data['files']
+            files: $data['files'],
+            project_language: isset($data['project_language']) ? $data['project_language'] : []
         );
     }
 }

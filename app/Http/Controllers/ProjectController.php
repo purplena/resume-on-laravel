@@ -39,7 +39,8 @@ class ProjectController
     public function show(Project $project): View
     {
         return view('project', [
-            'project' => $project,
+            'project'   => $project,
+            'languages' => $project->languages()->get()
         ]);
     }
 
@@ -55,13 +56,14 @@ class ProjectController
     private function getProjectData(FormRequest $request): array
     {
         return [
-            'user_id'       => auth()->id(),
-            'title'         => $request->input('title'),
-            'category'      => $request->input('projectCategory'),
-            'description'   => $request->input('description'),
-            'github'        => $request->input('github'),
-            'link'          => $request->input('link') ?? null,
-            'files'         => $request->hasFile('path') ? $request->file('path') : null,
+            'user_id'           => auth()->id(),
+            'title'             => $request->input('title'),
+            'category'          => $request->input('projectCategory'),
+            'description'       => $request->input('description'),
+            'github'            => $request->input('github'),
+            'link'              => $request->input('link') ?? null,
+            'files'             => $request->hasFile('path') ? $request->file('path') : null,
+            'project_language'  => $request->input('project_language')
         ];
     }
 
