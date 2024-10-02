@@ -22,7 +22,7 @@
                                 @for ($i = 0; $i < $webProjects->count(); $i++)
                                     <div
                                         class="swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center bg-main-200 px-4 py-6">
-                                        <div class="absolute h-[99%]">
+                                        <div class="blob-div-projects absolute h-[99%]">
                                             <x-svg-project :coordinates="$coordinates[$i]" />
                                         </div>
                                         <div class="z-10 flex flex-col gap-2 items-center justify-center">

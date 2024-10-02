@@ -75,6 +75,7 @@
     "admin.projects.h2.add": "ajouter un nouveau projet",
     "admin.projects.h2.update": "mets à jour ton projet",
     "status.illustration.uploaded": "Tu as téléchargé une nouvelle illustration",
+    "status.project.updated": "Tu as mis à jour ton projet avec succès",
     "status.project.uploaded": "Tu as téléchargé un nouveau projet",
     "status.illustration.updated": "Tu as mis à jour une illustration",
     "status.illustration.delete": "Tu as supprimé une illustration",

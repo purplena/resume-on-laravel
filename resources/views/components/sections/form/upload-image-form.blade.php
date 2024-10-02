@@ -145,6 +145,16 @@
                         <p class="pl-1">{{ __('form.label.image.drag') }}</p>
                     </div>
                     <p class="text-xs leading-5 text-gray-600">{{ __('form.label.image.formats') }}</p>
+
+                    @if (session()->has('temp_files'))
+                        <div class="mt-4">
+                            @foreach (session('temp_files') as $tempFile)
+                                <img src="{{ Storage::url($tempFile) }}" alt="Uploaded Image"
+                                    class="w-32 h-32 object-cover mr-2">
+                                <input type="hidden" name="existing_paths[]" value="{{ $tempFile }}">
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

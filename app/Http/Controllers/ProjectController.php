@@ -40,7 +40,7 @@ class ProjectController
     {
         return view('project', [
             'project'   => $project,
-            'languages' => $project->languages()->get()
+            'languages' => $project->languages
         ]);
     }
 
@@ -73,7 +73,7 @@ class ProjectController
             ProjectDataDTO::make($this->getProjectData($request))
         );
 
-        return redirect('/admin/projects')->with('status', __('status.project.uploaded'));
+        return redirect('/admin/projects')->with('status', __('status.project.uploaded'))->withInput();
     }
 
     public function update(Project $project, EditWebProjectRequest $request, ProjectService $service): RedirectResponse

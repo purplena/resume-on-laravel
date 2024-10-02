@@ -1,10 +1,9 @@
-<section class="relative reference-point" style="z-index: -10; !important">
-    <x-svg.shadow-wave />
-    <x-svg.top-wave fill='#e0dae5' />
+<section class="relative">
+    <x-svg.shadow-wave-1 />
+    <x-svg.top-wave />
     <div class="bg-main-200 px-4 py-12 w-full -mt-[5px] -mb-[1px]">
         <div class="max-w-maxScreenWidth mx-auto">
             <div class="flex flex-col md:flex-row gap-6 xs:gap-4 md:justify-around education-div">
-                {{-- <img src="{{ asset('/images/assets/star.png') }}" alt="" class="absolute top-0 left-0"> --}}
                 {{-- Col 1 --}}
                 <div>
                     {{-- Education --}}
@@ -136,7 +135,7 @@
                             <img src="{{ asset('/images/assets/arrow.png') }}"
                                 class="hidden sm:block sm:absolute sm:-top-5 sm:-left-10 sm:z-20 sm:h-full sm:max-h-[150px] md:max-h-[120px] md:-left-4 md:-top-[20px] md:rotate-0 lg:max-h-[150px]"
                                 alt="">
-                            <div class="relative min-w-[150px] md:w-[350px] lg:w-[420px] parallax-container">
+                            <div class="work-div relative min-w-[150px] md:w-[350px] lg:w-[420px] parallax-container">
                                 <div class="static bg-egg rounded-xl xxs:bg-transparent xxs:absolute xxs:top-0 xxs:bottom-0 xxs:left-0 xxs:right-0 m-auto flex flex-col justify-center items-center p-4"
                                     style="z-index: 10;">
                                     <p class="text-center font-bold text-[16px] leading-5">Sales Capability, PepsiCo
@@ -161,7 +160,7 @@
                             <img src="{{ asset('/images/assets/arrow.png') }}"
                                 class="hidden sm:block sm:absolute sm:-top-5 sm:-right-10 sm:z-20 sm:h-full sm:max-h-[150px] sm:scale-x-[-1] md:max-h-[120px] md:-right-0 md:-top-[50px] lg:max-h-[150px]"
                                 alt="">
-                            <div class="relative min-w-[150px] md:w-[350px] lg:w-[420px]">
+                            <div class="work-div relative min-w-[150px] md:w-[350px] lg:w-[420px]">
                                 <div class="static bg-egg rounded-xl xxs:bg-transparent xxs:absolute xxs:top-0 xxs:bottom-0 xxs:left-0 xxs:right-0 m-auto flex flex-col justify-center items-center p-4"
                                     style="z-index: 10;">
                                     <p class="text-center font-bold text-[16px] leading-5">
@@ -183,5 +182,5 @@
             </div>
         </div>
     </div>
-    <x-svg.bottom-wave fill='#e0dae5' />
+    <x-svg.bottom-wave />
 </section>

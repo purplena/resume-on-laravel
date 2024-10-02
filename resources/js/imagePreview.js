@@ -2,7 +2,9 @@ export function imagePreview(files) {
     const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
     const previewContainer = document.getElementById("previewContainer");
 
-    previewContainer.innerHTML = "";
+    if (window.location.href.includes("illustrations")) {
+        previewContainer.innerHTML = "";
+    }
 
     Array.from(files).forEach((file) => {
         if (!allowedTypes.includes(file.type)) {

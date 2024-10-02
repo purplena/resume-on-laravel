@@ -53,10 +53,60 @@ document.addEventListener("click", function (event) {
 // ********** DOMContentLoaded ************
 
 document.addEventListener("DOMContentLoaded", function () {
+    // ===========>LEFT THIS CODE TO TRY ONE MORE TIME TOMORROW <==============
+    // const darkThemeBtn = document.querySelector("#dark-mode");
+    // darkThemeBtn.addEventListener("click", function () {
+    //     document.body.classList.add("dark");
+    // });
+
+    // let theme = "";
+
+    // function setTheme(themeName) {
+    //     localStorage.setItem("theme", themeName);
+    // }
+
+    // if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    //     theme = "dark";
+    //     setTheme(theme);
+    // } else {
+    //     theme = "light";
+    //     setTheme(theme);
+    // }
+
+    // function toggleTheme() {
+    //     document.body.classList.toggle("dark-theme");
+
+    //     // Store the preference in localStorage
+    //     if (document.body.classList.contains("dark-theme")) {
+    //         localStorage.setItem("theme", "dark");
+    //     } else {
+    //         localStorage.setItem("theme", "light");
+    //     }
+    // }
+
+    // // Initialize based on stored preference
+    // if (localStorage.getItem("theme") === "dark") {
+    //     document.body.classList.add("dark-theme");
+    // }
+
+    // Add event listener to the switcher button
+    // document
+    //     .getElementById("theme-switcher")
+    //     .addEventListener("click", toggleTheme);
+
+    console.log(window.matchMedia("(prefers-color-scheme: dark)"));
+    // const theme = setTheme(window.matchMedia.matches);
+
     window.addEventListener("scroll", function () {
-        if (document.querySelector(".svg-dark")) {
-            document.querySelector(".svg-dark").style.top = -(
+        if (document.querySelector(".svg-dark-1")) {
+            document.querySelector(".svg-dark-1").style.top = -(
                 window.scrollY * 0.05
+            );
+        }
+
+        if (document.querySelector(".svg-dark-2")) {
+            document.querySelector(".svg-dark-2").style.top = -(
+                window.scrollY * 0.01
             );
         }
 

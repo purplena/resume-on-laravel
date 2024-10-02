@@ -86,7 +86,7 @@ class SeedData extends Command
                     'github'        => 'https://github.com/purplena/playlist-app'
                 ],
                 'images'        => ['media/playlist-1.png', 'media/playlist-2.png', 'media/playlist-3.png', 'media/playlist-4.png', 'media/playlist-5.png', 'media/playlist-6.png'],
-                'languages'     => ['HTML', 'CSS', 'JavaScript', 'Laravel', 'React']
+                'languages'     => ['HTML', 'CSS', 'Laravel', 'React']
             ],
             [
                 'user_id'       => $user,

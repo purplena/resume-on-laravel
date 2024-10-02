@@ -1,5 +1,5 @@
 <header id="home">
-    <nav class="navbar fixed z-10 bg-main-500 rounded-3xl px-6 py-2 top-2 left-1/2 transform -translate-x-1/2 w-[calc(100%_-_2rem)] max-w-maxScreenWidth"
+    <nav class="navbar fixed bg-main-500 rounded-3xl px-6 py-2 top-2 left-1/2 transform -translate-x-1/2 w-[calc(100%_-_2rem)] max-w-maxScreenWidth"
         id="navbar">
         <div class="nav-center md:flex md:justify-between md:items-center flex-wrap">
             <div class="nav-header flex flex-row justify-between items-center">
