@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center md:flex-row-reverse md:justify-between md:gap-10">
         <div class="relative">
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10">
-                <div class="pulse simple h-[180px] w-[180px] bg-main-200 rounded-full"></div>
+                <div class="pulse-cirle pulse simple h-[180px] w-[180px] rounded-full"></div>
             </div>
             <img src="{{ asset('/images/assets/photo-bg-empty.png') }}" alt="image of Lena"
                 class="w-[100%] max-w-heroImage" />

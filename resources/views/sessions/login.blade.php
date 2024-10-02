@@ -1,8 +1,7 @@
 <x-layout>
     <section class="login-section mt-navbarMargin py-12 px-4">
-        <main class="max-w-lg mx-auto mt-10 bg-gray-100 border border-gray-200 rounded-xl p-6">
-            <h1 class="text-center font-bold text-xl">{{ __('auth.session.login') }}</h1>
-
+        <main class="max-w-lg mx-auto mt-10 bg-main-200 border border-gray-200 rounded-xl p-6">
+            <h1 class="text-center text-h3">{{ __('auth.session.login') }}</h1>
             <form method="POST" class="mt-4 relative" action="{{ route('session.store') }}" id="loginForm">
                 @csrf
                 <div class="flex flex-col gap-2">

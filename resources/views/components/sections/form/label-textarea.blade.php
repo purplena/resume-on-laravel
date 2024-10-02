@@ -1,6 +1,5 @@
 <div class="col-span-full">
-    <label for="{{ $inputName }}"
-        class="block text-sm font-bold leading-6 text-gray-900">{{ __("form.label.$inputName") }}</label>
+    <label for="{{ $inputName }}" class="block text-sm font-bold leading-6">{{ __("form.label.$inputName") }}</label>
     <div data-inputName="{{ $inputName }}"></div>
     <div class="mt-2">
         <textarea id="{{ $inputName }}" type="text" name="{{ $inputName }}" rows=3

@@ -20,7 +20,8 @@ class StoreWebProjectRequest extends FormRequest
             'path.*' => ['image', File::image()->max('2mb')],
             'description' => 'required',
             'github' => 'required',
-            'link' => 'nullable'
+            'link' => 'nullable',
+            'project_language' => ['required', 'array']
         ];
     }
 }

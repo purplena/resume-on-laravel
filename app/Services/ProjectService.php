@@ -72,6 +72,10 @@ class ProjectService
             $projectData->toArray()
         );
 
+        foreach ($projectData->toArray()['project_language'] as $language) {
+            $project->languages()->attach($language);
+        }
+
         foreach ($projectData->toArray()['files'] as $file) {
             Media::create([
                 'project_id'    => $project->id,
@@ -82,6 +86,11 @@ class ProjectService
 
     public function updateProject(Project $project, ProjectDataDTO $projectData): void
     {
+        $project->languages()->detach();
+        foreach ($projectData->toArray()['project_language'] as $language) {
+            $project->languages()->attach($language);
+        }
+
         if ($projectData->toArray()['files']) {
             if($project->category == Project::CATEGORY_WEB) {
                 foreach ($projectData->toArray()['files'] as $file) {

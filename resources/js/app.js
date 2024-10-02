@@ -53,10 +53,18 @@ document.addEventListener("click", function (event) {
 // ********** DOMContentLoaded ************
 
 document.addEventListener("DOMContentLoaded", function () {
+    // console.log(window.matchMedia("(prefers-color-scheme: dark)"));
+
     window.addEventListener("scroll", function () {
-        if (document.querySelector(".svg-dark")) {
-            document.querySelector(".svg-dark").style.top = -(
+        if (document.querySelector(".svg-dark-1")) {
+            document.querySelector(".svg-dark-1").style.top = -(
                 window.scrollY * 0.05
+            );
+        }
+
+        if (document.querySelector(".svg-dark-2")) {
+            document.querySelector(".svg-dark-2").style.top = -(
+                window.scrollY * 0.01
             );
         }
 

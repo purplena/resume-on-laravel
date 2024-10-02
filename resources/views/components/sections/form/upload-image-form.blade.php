@@ -1,7 +1,13 @@
 @php
     use App\Models\Project;
+    use App\Models\Language;
 
     $category = Project::CATEGORY_WEB;
+    $languages = Language::all();
+
+    if ($illustration) {
+        $languageIds = $illustration->languages->pluck('id');
+    }
 @endphp
 
 <form method='POST' class="bg-egg drop-shadow-sm hover:drop-shadow-lg px-8 py-6 rounded-3xl mb-14"
@@ -40,6 +46,25 @@
                 <p class="mt-2 text-xs leading-6 text-gray-600">{{ __('form.input.description') }}</p>
             </div>
 
+            {{-- Languages --}}
+            <div class="col-span-full">
+                <legend class="text-sm font-semibold leading-6 text-gray-900">Languages</legend>
+                <div class="flex flex-row gap-2 flex-wrap">
+                    @foreach ($languages as $language)
+                        <div class="relative flex gap-x-3">
+                            <div class="flex h-6 items-center">
+                                <input value="{{ $language->id }}" name="project_language[]" type="checkbox"
+                                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                                    {{ $illustration ? (collect($languageIds)->contains($language->id) ? 'checked' : '') : '' }}>
+                            </div>
+                            <div class="text-sm leading-6">
+                                <label for="project_language"
+                                    class="font-medium text-gray-900">{{ $language->name }}</label>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
 
             <div class="sm:col-span-4">
                 <label for="github"
@@ -120,6 +145,16 @@
                         <p class="pl-1">{{ __('form.label.image.drag') }}</p>
                     </div>
                     <p class="text-xs leading-5 text-gray-600">{{ __('form.label.image.formats') }}</p>
+
+                    @if (session()->has('temp_files'))
+                        <div class="mt-4">
+                            @foreach (session('temp_files') as $tempFile)
+                                <img src="{{ Storage::url($tempFile) }}" alt="Uploaded Image"
+                                    class="w-32 h-32 object-cover mr-2">
+                                <input type="hidden" name="existing_paths[]" value="{{ $tempFile }}">
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
