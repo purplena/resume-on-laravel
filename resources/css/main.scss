@@ -15,6 +15,7 @@
         --main-600: 143,130,153;
         --main-700: 107,97,115;
         --main-800: 71,65,76;
+        --main-900: 42, 30, 53;
     }
 
     body{
@@ -82,21 +83,25 @@
     }
 
     .opacity-screen {
-        background-color: rgba(254, 254, 254, 0.63); 
+        background-color: rgba(254, 254, 254, 0.63);
+    } 
+
+    #theme-switcher-icon  {
+        color: theme('colors.main-700');
     }
+    
 }
 
-@media (prefers-color-scheme: dark) {
-
-    :root{
-        --main-200: 71,65,76;
-        --main-600: 224,218,229;
-    }
-
-    body{
-        color: theme("colors.egg");
-    }
-
+.dark {
+    --white: 254,254,254;
+    --black: 34,34,34;
+    --egg: 253,246,213;
+    --main-200: 71,65,76;
+    --main-600: 224,218,229;
+    --main-700: 107,97,115;
+    --main-800: 71,65,76;
+    
+    color: theme('colors.white');
     .top-bottom-wave path {
         fill: theme('colors.main-200');
     }
@@ -162,83 +167,12 @@
         background-color: rgba(107,97,115, 0.63); 
     }
 
+    #theme-switcher-icon  {
+        color: theme('colors.egg');
+    }
+
 }
 
-// @media(prefers-color-scheme: dark){
-//     :root{
-//         --main-200: 71,65,76;
-//         --main-600: 224,218,229;
-//     }
-
-//     body{
-//         color: theme("colors.egg");
-//     }
-
-//     .top-bottom-wave path {
-//         fill: theme('colors.main-200');
-//     }
-
-//     #background
-//     {
-//         background-image: url('/images/assets/____background_dark.png');
-//     }
-
-//     h1,
-//     h2,
-//     h3,
-//     h4,
-//     h5 
-//     {
-//         color: theme("colors.egg");
-//     }
-
-//     .btn-transition:hover {
-//         background-color: theme('colors.main-800');
-//         color: theme("colors.egg");
-//     }
-
-//     .pulse-cirle {
-//         background-color: rgba(224,218,229);
-//     }
-
-//     .work-div {
-//         color: theme("colors.black");
-//     }
-
-//     .tech-icon path {
-//         fill: theme('colors.main-600');
-//     }
-
-//     .typescript-icon .st0{
-//         fill: theme('colors.main-600');
-//     }
-
-//     .typescript-icon .st1{
-//         fill: theme('colors.main-800');
-//     }
-
-//     .blob-div-projects {
-//         display: none;
-//     }
-
-//     .contact-form-container {
-//         background-color: rgba(143,130,153);
-//     }
-
-//     .btn-transition-contact{
-//         background-color: theme('colors.main-800');
-//         transition: background-color 0.3s ease-out, color 0.3s ease-out;
-//     }
-
-//     .btn-transition-contact:hover {
-//         background-color: theme('colors.main-700');
-//         color: theme("colors.egg");
-//     }
-
-//     .opacity-screen {
-//         background-color: rgba(107,97,115, 0.63); 
-//     }
-// }
 
 * {
     margin: 0;

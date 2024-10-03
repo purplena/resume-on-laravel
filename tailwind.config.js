@@ -52,10 +52,7 @@ export default {
                 "main-600": "rgba(var(--main-600))",
                 "main-700": "rgba(var(--main-700))",
                 "main-800": "rgba(var(--main-800))",
-                "main-900": "#2A1E35",
-                "pink-active": "#D197C3",
-                "pink-pastel": "#FDE9FF",
-                "peach-pastel": "#E5957E",
+                "main-900": "rgba(var(--main-900))",
             },
             transitionProperty: {
                 all: "all",

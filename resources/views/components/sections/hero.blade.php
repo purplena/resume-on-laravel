@@ -1,6 +1,6 @@
 <section class="mb-12 pt-12 px-4 max-w-maxScreenWidth mx-auto mt-navbarMargin" id="home">
     <div class="flex flex-col items-center md:flex-row-reverse md:justify-between md:gap-10">
-        <div class="relative">
+        <div class="relative z-0">
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10">
                 <div class="pulse-cirle pulse simple h-[180px] w-[180px] rounded-full"></div>
             </div>

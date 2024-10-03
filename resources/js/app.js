@@ -53,8 +53,37 @@ document.addEventListener("click", function (event) {
 // ********** DOMContentLoaded ************
 
 document.addEventListener("DOMContentLoaded", function () {
-    // console.log(window.matchMedia("(prefers-color-scheme: dark)"));
+    const darkModeMediaQuery = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+    );
 
+    if (darkModeMediaQuery.matches) {
+        document.body.classList.add("dark");
+    } else {
+        document.body.classList.remove("dark");
+    }
+
+    // ======== Detection of theme change with devtools ======== //
+    function handleThemeChange(event) {
+        if (event.matches) {
+            document.body.className = "";
+            document.body.classList.add("dark");
+        } else {
+            document.body.className = "";
+            document.body.classList.remove("dark");
+        }
+    }
+    darkModeMediaQuery.addEventListener("change", handleThemeChange);
+    handleThemeChange(darkModeMediaQuery);
+
+    // Theme change with theme-switcher
+    document
+        .querySelector(".theme-switcher")
+        .addEventListener("click", function () {
+            document.body.classList.toggle("dark");
+        });
+
+    // Scroll
     window.addEventListener("scroll", function () {
         if (document.querySelector(".svg-dark-1")) {
             document.querySelector(".svg-dark-1").style.top = -(
