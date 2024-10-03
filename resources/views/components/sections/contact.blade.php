@@ -1,4 +1,4 @@
-<section class="relative ">
+<section class="relative z-0">
     <x-svg.shadow-wave-2 />
     <x-svg.top-wave />
     <div class="bg-main-200 -mt-[5px] -mb-[1px]">

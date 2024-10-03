@@ -5,12 +5,12 @@
 
         <div class="flex flex-col gap-8 md:grid md:grid-cols-3 md:gap-4">
             {{-- Illustration --}}
-            <div class="relative md:col-span-1">
-                <div class="absolute h-full w-full -z-50">
+            <div class="relative md:col-span-1 z-0">
+                <div class="absolute h-full w-full -z-1">
                     @include('components/svg')
                 </div>
                 <img src={{ asset('/images/assets/illustration-no-bg.png') }} alt="vector-illustration"
-                    class="object-contain mx-auto w-[200px] max-w-[400px]">
+                    class="object-contain mx-auto w-[200px] max-w-[400px] relative z-1">
             </div>
 
             {{-- Swiper --}}

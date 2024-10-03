@@ -15,21 +15,23 @@
     <title>Elena Molano</title>
 </head>
 
-<body class="h-full relative overflow-x-hidden" id="background">
-    <div class="flex justify-center">
-        <button id="back-to-top-btn" class="hidden fixed top-[40px] p-5" style="z-index: 5;">
-            <i class="fa-solid fa-chevron-up text-[32px]" id="chevron-up-icon"></i>
-        </button>
-    </div>
-    <div class="flex flex-col min-h-screen">
-        <x-navbar />
-        <div class="flex-grow">
-            {{ $slot }}
+<body>
+    <div class="h-full relative overflow-x-hidden" id="background">
+        <div class="flex justify-center">
+            <button id="back-to-top-btn" class="hidden fixed top-[40px] p-5" style="z-index: 5;">
+                <i class="fa-solid fa-chevron-up text-[32px]" id="chevron-up-icon"></i>
+            </button>
         </div>
-        <x-footer />
+        <div class="flex flex-col min-h-screen">
+            <x-navbar />
+            <div class="flex-grow">
+                {{ $slot }}
+            </div>
+            <x-footer />
+        </div>
+        <x-sections.components.flashed-session />
+        <x-sections.components.axios-status-message />
     </div>
-    <x-sections.components.flashed-session />
-    <x-sections.components.axios-status-message />
 </body>
 
 </html>
