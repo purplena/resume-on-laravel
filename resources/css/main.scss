@@ -89,6 +89,12 @@
     #theme-switcher-icon  {
         color: theme('colors.main-700');
     }
+
+    .genre-active 
+    {
+        background-color: theme('colors.main-600');
+        color: theme('colors.white');;
+    }
     
 }
 

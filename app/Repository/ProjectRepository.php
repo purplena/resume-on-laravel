@@ -51,9 +51,15 @@ class ProjectRepository
 
     public function search(?string $search, ?int $paginate, int $projectCategory): LengthAwarePaginator
     {
-        return Project::where('title', 'like', "%{$search}%")
+        return
+            Project::where(function ($query) use ($search) {
+                $query->where('title', 'like', "%{$search}%")
+                ->orWhereNull('title');
+            })
                 ->where('category', '=', $projectCategory)
                 ->with('medias')
+                ->with('genre')
+                ->with('languages')
                 ->latest()
                 ->paginate($paginate)
                 ->withQueryString();

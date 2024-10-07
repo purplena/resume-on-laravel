@@ -15,10 +15,10 @@ class EditIllustrationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
             'path' => ['array'],
             'path.*' => ['image', File::image()->max('2mb')],
-            'project_data' => 'nullable'
+            'project_data' => 'nullable',
+            'genre' => 'required'
         ];
     }
 

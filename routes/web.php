@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IllustrationController;
 use App\Http\Controllers\MediaController;
@@ -35,6 +36,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('project');
 Route::get('/projects', [ProjectController::class, 'showAll'])->name('projects');
 Route::get('/illustrations', [IllustrationController::class, 'showAll'])->name('gallery');
+Route::get('/illustrations/{genre}', [GenreController::class, 'showAllByGenre']);
 Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.us.store');
 Route::get('/login', [SessionsController::class, 'login'])->name('login');
 Route::post('/sessions', [SessionsController::class, 'store'])->name('session.store');
