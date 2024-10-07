@@ -1,13 +1,20 @@
 @php
     use App\Models\Project;
     use App\Models\Language;
+    use App\Models\Genre;
 
     $category = Project::CATEGORY_WEB;
     $languages = Language::all();
+    $genres = Genre::all();
 
     if ($illustration) {
         $languageIds = $illustration->languages->pluck('id');
     }
+
+    if ($illustration) {
+        $genreId = $illustration->genre->id;
+    }
+
 @endphp
 
 <form method='POST' class="bg-egg drop-shadow-sm hover:drop-shadow-lg px-8 py-6 rounded-3xl mb-14"
@@ -19,20 +26,37 @@
     @endif
     <input type="hidden" name="projectCategory" id="projectCategory" value="{{ $projectCategory }}">
     <div class="flex flex-col gap-2">
-        <div class="sm:col-span-4">
-            <label for="title"
-                class="block text-sm font-bold leading-6 text-gray-900">{{ __('form.label.title') }}</label>
-            @error('title')
-                <p class="text-red-500">{{ $message }}</p>
-            @enderror
-            <div class="mt-2">
-                <input type="text" name="title" id="title"
-                    class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 ring-inset placeholder:text-gray-400 placeholder:text-[14px] focus:ring-gray-300"
-                    placeholder="{{ __('form.input.title') }}" value="{{ old('title', $illustration->title ?? '') }}">
-            </div>
-        </div>
-
+        @if ($projectCategory !== $category)
+            <fieldset>
+                <legend class="text-sm font-semibold leading-6">Genres</legend>
+                <div class="mt-6 flex flex-row flex-wrap gap-4">
+                    @foreach ($genres as $genre)
+                        <div class="flex items-center">
+                            <input value="{{ $genre->id }}" name="genre" type="radio"
+                                class="h-4 w-4 border-gray-300 text-main-600 focus:ring-purple-600"
+                                {{ $illustration ? ($genre->id == $genreId ? 'checked' : '') : '' }}>
+                            <label for="genre"
+                                class="block text-sm font-medium leading-6 text-gray-900">{{ $genre->name }}</label>
+                        </div>
+                    @endforeach
+                </div>
+            </fieldset>
+        @endif
         @if ($projectCategory == $category)
+            <div class="sm:col-span-4">
+                <label for="title"
+                    class="block text-sm font-bold leading-6 text-gray-900">{{ __('form.label.title') }}</label>
+                @error('title')
+                    <p class="text-red-500">{{ $message }}</p>
+                @enderror
+                <div class="mt-2">
+                    <input type="text" name="title" id="title"
+                        class="block w-full rounded border-0 bg-white py-1.5 text-gray-900 ring-gray-300 ring-1 ring-inset placeholder:text-gray-400 placeholder:text-[14px] focus:ring-gray-300"
+                        placeholder="{{ __('form.input.title') }}"
+                        value="{{ old('title', $illustration->title ?? '') }}">
+                </div>
+            </div>
+
             <div class="col-span-full">
                 <label for="description"
                     class="block text-sm font-bold leading-6 text-gray-900">{{ __('form.label.description') }}</label>

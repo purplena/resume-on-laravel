@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\DTO\ProjectDataDTO;
 use App\Http\Requests\EditIllustrationRequest;
 use App\Http\Requests\StoreIllustrationRequest;
+use App\Models\Genre;
 use App\Models\Project;
 use App\Repository\ProjectRepository;
 use App\Services\ProjectService;
@@ -39,19 +40,28 @@ class IllustrationController extends Controller
     public function showAll(Request $request): View
     {
         $projects = $this->projectRepository->search($request->input('search'), 20, Project::CATEGORY_ART);
+        $genreIds = Project::where('category', '=', Project::CATEGORY_ART)->pluck('genre_id')->unique();
+        $genres = $genreIds->map(function (int $id) {
+            return [
+                'id' => $id,
+                'name' => Genre::find($id)->name
+            ];
+        });
+
         return view('projectsGallery', [
             'projects' => $projects,
-            'category' => Project::CATEGORY_ART
+            'category' => Project::CATEGORY_ART,
+            'genres'   => $genres
         ]);
     }
 
     private function getProjectData(FormRequest $request)
     {
         return [
-            'user_id'       => auth()->id(),
-            'title'         => $request->input('title'),
-            'category'      => $request->input('projectCategory'),
-            'files'          => $request->hasFile('path') ? $request->file('path') : null,
+            'user_id'           => auth()->id(),
+            'category'          => $request->input('projectCategory'),
+            'files'             => $request->hasFile('path') ? $request->file('path') : null,
+            'genre_id'          => $request->input('genre')
         ];
     }
 

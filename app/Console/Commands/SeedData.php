@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Genre;
 use App\Models\Language;
 use App\Models\Media;
 use App\Models\Project;
@@ -33,7 +34,9 @@ class SeedData extends Command
     {
         $this->seedAdmin();
         $this->seedLanguages();
+        $this->seedGenres();
         $this->seedProjects();
+        $this->seedIllustrations();
     }
 
     public function seedAdmin()
@@ -43,6 +46,11 @@ class SeedData extends Command
             'email'     => config('admin.email'),
             'password'  => config('admin.password'),
         ]);
+    }
+
+    private function getUser()
+    {
+        return User::all()->first()->id;
     }
 
     public function seedLanguages()
@@ -57,9 +65,20 @@ class SeedData extends Command
         });
     }
 
+    public function seedGenres()
+    {
+        $genres = ['watercolor', 'mixed-media', 'food', 'animals', 'botanical', 'sketch', 'ink', 'christmas', 'winter', 'autumn', 'summer', 'spring', 'cities', 'humans'];
+
+        collect($genres)->each(function (string $genre) {
+            Genre::create([
+                'name'       => $genre
+            ]);
+        });
+    }
+
     public function seedProjects()
     {
-        $user = User::all()->first()->id;
+        $user = $this->getUser();
 
         $projects = [
             [
@@ -114,20 +133,6 @@ class SeedData extends Command
                 'images'        => ['media/vending-machine-1.png'],
                 'languages'     => ['HTML', 'CSS', 'JavaScript']
             ],
-            [
-                'user_id'       => $user,
-                'category'      => Project::CATEGORY_ART,
-                'title'         => 'test illustration',
-                'project_data'  => [],
-                'images'        => ['media/test.jpg'],
-            ],
-            [
-                'user_id'       => $user,
-                'category'      => Project::CATEGORY_ART,
-                'title'         => 'purple',
-                'project_data'  => [],
-                'images'        => ['media/purple.jpg'],
-            ]
         ];
 
         collect($projects)->each(function ($project) {
@@ -151,6 +156,79 @@ class SeedData extends Command
                     'path'       => $image
                 ]);
             });
+        });
+    }
+
+    private function generateIllustrationNames($name, $counter)
+    {
+        $i = 1;
+        $illustrations = [];
+        for ($i; $i <= $counter; $i++) {
+            array_push($illustrations, 'media/' . $name . '_' . $i . '.jpg');
+        }
+
+        return $illustrations;
+    }
+
+    public function generateIllustrationArrays($genre, $nbr)
+    {
+        $nbrProjects = collect($this->generateIllustrationNames($genre, $nbr))->count();
+        $i = 0;
+        $illustrations = [];
+        for($i = 0; $i < $nbrProjects; $i++) {
+            array_push($illustrations, [
+                'user_id'       => $this->getUser(),
+                'category'      => Project::CATEGORY_ART,
+                'genre'         => $genre,
+                'images'        => $this->generateIllustrationNames($genre, $nbr)[$i]
+            ]);
+        }
+
+        return $illustrations;
+    }
+
+    public function seedIllustrations()
+    {
+        $data = [
+            [
+                'genre' => 'animals',
+                'nbr'   => 3
+            ],
+            [
+                'genre' => 'food',
+                'nbr'   => 2
+            ],
+            [
+                'genre' => 'botanical',
+                'nbr'   => 23
+            ],
+            [
+                'genre' => 'watercolor',
+                'nbr'   => 4
+            ]
+        ];
+
+        $result = [];
+
+        foreach($data as $i) {
+            array_push($result, $this->generateIllustrationArrays($i['genre'], $i['nbr']));
+        }
+
+        $finishedArray = collect($result)->flatten(1)->toArray();
+
+        collect($finishedArray)->each(function ($i) {
+            $genreId = Genre::where('name', $i['genre'])->first()->id;
+            $newIllustration = Project::create([
+                            'user_id'       => $i['user_id'],
+                            'category'      => $i['category'],
+                            'genre_id'      => $genreId
+
+                        ]);
+
+            Media::create([
+                                    'project_id' => $newIllustration->id,
+                                    'path'       => $i['images']
+                                ]);
         });
     }
 }

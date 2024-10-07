@@ -1,5 +1,7 @@
 @php
     use App\Models\Project;
+    use App\Models\Genre;
+
     $projectCategoryWeb = Project::CATEGORY_WEB;
 @endphp
 
@@ -9,18 +11,29 @@
             <div class="mx-auto max-w-maxScreenWidth px-4">
                 <h1 class="text-h1 mb-6">{{ $category == $projectCategoryWeb ? __('nav.projects') : __('nav.gallery') }}
                 </h1>
-                <x-sections.form.search-illustration
-                    route="{{ $category == $projectCategoryWeb ? 'projects' : 'gallery' }}" />
+                @if ($category == $projectCategoryWeb)
+                    <x-sections.form.search-illustration
+                        route="{{ $category == $projectCategoryWeb ? 'projects' : 'gallery' }}" />
+                @else
+                    <div class="flex flex-row gap-2 flex-wrap">
+                        @foreach ($genres as $genre)
+                            <button data-genre-id={{ $genre['id'] }}
+                                class="genreBtn px-4 py-1 border-[1px] rounded-2xl border-main-600 hover:bg-main-600 hover:text-white">#{{ $genre['name'] }}</button>
+                        @endforeach
+                    </div>
+                @endif
+
             </div>
             <x-svg.top-wave fill='#efecf2' />
             <div class="bg-main-200 px-4 pt-4 w-full -mt-[5px] -mb-[1px]">
-                <div class="max-w-maxScreenWidth mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div
+                    class="illustrationSection max-w-maxScreenWidth mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     @if ($projects->count())
                         @foreach ($projects as $project)
                             @php
                                 $projectCategory = $project->category;
                             @endphp
-                            <div class="flex flex-col gap-2 items-center">
+                            <div data-project-id={{ $project->id }} class="flex flex-col gap-2 items-center">
                                 <div class="{{ $projectCategory == 1 ? 'relative' : '' }}">
                                     @if ($projectCategory == 1)
                                         <a data-projectId={{ $project->id }}
@@ -46,7 +59,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="flex flex-row justify-center mt-6">
+                <div class="links-element flex flex-row justify-center mt-6">
                     {{ $projects->links() }}
                 </div>
             </div>
