@@ -59,19 +59,27 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     if (darkModeMediaQuery.matches) {
-        document.body.classList.add("dark");
+        localStorage.clear();
+        // document.body.classList.add("dark");
+        localStorage.setItem("theme", "dark");
     } else {
-        document.body.classList.remove("dark");
+        localStorage.clear();
+        // document.body.classList.remove("dark");
+        localStorage.setItem("theme", "light");
     }
 
     // ======== Detection of theme change with devtools ======== //
     function handleThemeChange(event) {
         if (event.matches) {
-            document.body.className = "";
-            document.body.classList.add("dark");
+            // document.body.className = "";
+            // document.body.classList.add("dark");
+            localStorage.clear();
+            localStorage.setItem("theme", "dark");
         } else {
-            document.body.className = "";
-            document.body.classList.remove("dark");
+            // document.body.className = "";
+            // document.body.classList.remove("dark");
+            localStorage.clear();
+            localStorage.setItem("theme", "light");
         }
     }
     darkModeMediaQuery.addEventListener("change", handleThemeChange);
@@ -83,6 +91,18 @@ document.addEventListener("DOMContentLoaded", function () {
         .addEventListener("click", function () {
             document.body.classList.toggle("dark");
         });
+
+    function handleThemeChangeWithLocalStorage() {
+        if (localStorage.getItem("theme") == "dark") {
+            document.body.className = "";
+            document.body.classList.add("dark");
+        } else if (localStorage.getItem("theme") == "light") {
+            document.body.className = "";
+            document.body.classList.remove("dark");
+        }
+    }
+
+    handleThemeChangeWithLocalStorage();
 
     // Scroll
     window.addEventListener("scroll", function () {
