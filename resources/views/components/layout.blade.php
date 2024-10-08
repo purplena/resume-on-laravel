@@ -15,7 +15,7 @@
     <title>Elena Molano</title>
 </head>
 
-<body>
+<body class="hidden">
     <div class="h-full relative overflow-x-hidden" id="background">
         <div class="flex justify-center">
             <button id="back-to-top-btn" class="hidden fixed top-[40px] p-5" style="z-index: 5;">

@@ -95,6 +95,16 @@
         background-color: theme('colors.main-600');
         color: theme('colors.white');;
     }
+
+    .btn-transition-swiper{
+        background-color: theme('colors.main-800');
+        transition: background-color 0.3s ease-out, color 0.3s ease-out;
+    }
+
+    .btn-transition-swiper:hover {
+        background-color: theme('colors.main-700');
+        color: theme("colors.egg");
+    }
     
 }
 
@@ -175,6 +185,10 @@
 
     #theme-switcher-icon  {
         color: theme('colors.egg');
+    }
+
+    .swiper-from-main-page {
+        background-color: theme('colors.main-200');
     }
 
 }
