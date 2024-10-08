@@ -21,7 +21,7 @@
                             <div class="swiper-wrapper">
                                 @for ($i = 0; $i < $webProjects->count(); $i++)
                                     <div
-                                        class="swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center bg-main-200 px-4 py-6">
+                                        class="swiper-from-main-page swiper-slide relative rounded-3xl text-center !flex flex-col items-center justify-center px-4 py-6">
                                         <div class="blob-div-projects absolute h-[99%]">
                                             <x-svg-project :coordinates="$coordinates[$i]" />
                                         </div>
@@ -37,9 +37,9 @@
                                             <div
                                                 class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
                                                 <a href="{{ $webProjects[$i]->project_data['github'] }}"
-                                                    class="btn-transition block w-[130px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg">{{ __('project.repo') }}</a>
+                                                    class="btn-transition-swiper block w-[130px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg">{{ __('project.repo') }}</a>
                                                 <a href="{{ route('project', ['project' => $webProjects[$i]->id]) }}"
-                                                    class="btn-transition openModalBtn block w-[130px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg">{{ __('project.see.more') }}
+                                                    class="btn-transition-swiper block w-[130px] py-2 bg-main-500 text-white uppercase rounded-3xl drop-shadow-lg">{{ __('project.see.more') }}
                                                 </a>
                                             </div>
                                         </div>
