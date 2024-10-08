@@ -65,6 +65,15 @@ class ProjectRepository
                 ->withQueryString();
     }
 
+    public function filterIllustrations(int $genreId, ?int $paginate, int $projectCategory): LengthAwarePaginator
+    {
+        return Project::where('genre_id', '=', $genreId)
+            ->where('category', '=', $projectCategory)
+            ->with('medias')->latest()
+            ->paginate($paginate)
+            ->withQueryString();
+    }
+
     public function getAllProjectsByCategory(int $projectCategory)
     {
         return Project::where('category', '=', $projectCategory)->get();
