@@ -15,6 +15,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
+use Illuminate\Support\Collection;
 
 class IllustrationController extends Controller
 {
@@ -40,19 +41,35 @@ class IllustrationController extends Controller
     public function showAll(Request $request): View
     {
         $projects = $this->projectRepository->search($request->input('search'), 20, Project::CATEGORY_ART);
+
+        return view('projectsGallery', [
+            'projects' => $projects,
+            'category' => Project::CATEGORY_ART,
+            'genres'   => $this->getCurrentGenres(),
+        ]);
+    }
+
+    public function showFilteredIllustrations(Genre $genre): View
+    {
+        $projects = $this->projectRepository->filterIllustrations($genre->id, 20, Project::CATEGORY_ART);
+
+        return view('projectsGallery', [
+            'projects' => $projects,
+            'category' => Project::CATEGORY_ART,
+            'genres'   => $this->getCurrentGenres(),
+        ]);
+    }
+
+    private function getCurrentGenres(): Collection
+    {
         $genreIds = Project::where('category', '=', Project::CATEGORY_ART)->pluck('genre_id')->unique();
-        $genres = $genreIds->map(function (int $id) {
+
+        return $genreIds->map(function (int $id) {
             return [
                 'id' => $id,
                 'name' => Genre::find($id)->name
             ];
         });
-
-        return view('projectsGallery', [
-            'projects' => $projects,
-            'category' => Project::CATEGORY_ART,
-            'genres'   => $genres
-        ]);
     }
 
     private function getProjectData(FormRequest $request)

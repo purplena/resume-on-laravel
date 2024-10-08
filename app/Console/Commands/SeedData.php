@@ -112,7 +112,10 @@ class SeedData extends Command
                 'category'      => Project::CATEGORY_WEB,
                 'title'         => 'MapBox JS Project',
                 'project_data'  => [
-                    'description'   => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>',
+                    'description'   => "<p>Mapbox Project was the first time I tried to work with the <strong>third-party library namely Mapbox GL JS</strong> to add a custom interactive map to my web page.</p>
+                    <p>The goal of this exercise was to create a simple web application that is connected with a user's local storage and keeps track of “events” that a user adds on a map in the form of markers. These <strong>markers interact with the local storage and change color</strong> when the event approaches. A marker stays green when we still have more than 1 week before the event. Once we have less than 7 days left, it changes its color to yellow. Finally, it becomes red once the event has started.</p>
+                    <p>When we talk about adding something to a map, it means that this something can be edited, deleted or simply consulted when needed. As you understand I talk about a CRUD executed in JavaScript and applied to the local storage.</p>
+                    <p>I really liked this project. Especially the part when I could create a custom interface for my map. So you can clearly see that we are not in the classic color scheme of Google Maps anymore :)</p>",
                     'github'        => 'https://github.com/purplena/Javascript-Mapbox-project',
                     'link'          => 'https://purplena.github.io/Javascript-Mapbox-project/'
                 ],

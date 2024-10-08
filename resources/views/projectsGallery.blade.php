@@ -3,6 +3,10 @@
     use App\Models\Genre;
 
     $projectCategoryWeb = Project::CATEGORY_WEB;
+
+    $urlPath = request()->path();
+    $segments = explode('/', $urlPath);
+    $genreInUrl = end($segments);
 @endphp
 
 <x-layout>
@@ -15,10 +19,13 @@
                     <x-sections.form.search-illustration
                         route="{{ $category == $projectCategoryWeb ? 'projects' : 'gallery' }}" />
                 @else
+                    <p class="mb-4">{{ __('gallery.p1') }}</p>
                     <div class="flex flex-row gap-2 flex-wrap">
+                        <a class="px-4 py-1 border-[1px] rounded-2xl border-main-600 hover:bg-main-600 hover:text-white {{ $genreInUrl == 'illustrations' ? 'genre-active' : '' }}"
+                            href="{{ route('gallery') }}">#{{ __('all') }}</a>
                         @foreach ($genres as $genre)
-                            <button data-genre-id={{ $genre['id'] }}
-                                class="genreBtn px-4 py-1 border-[1px] rounded-2xl border-main-600 hover:bg-main-600 hover:text-white">#{{ $genre['name'] }}</button>
+                            <a class="px-4 py-1 border-[1px] rounded-2xl border-main-600 hover:bg-main-600 hover:text-white {{ $genreInUrl == $genre['name'] ? 'genre-active' : '' }}"
+                                href="{{ route('filter.illustrations', ['genre' => $genre['name']]) }}">#{{ $genre['name'] }}</a>
                         @endforeach
                     </div>
                 @endif
