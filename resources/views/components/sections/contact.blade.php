@@ -1,4 +1,4 @@
-<section class="relative z-0">
+<section class="relative z-0" id="contact">
     <x-svg.shadow-wave-2 />
     <x-svg.top-wave />
     <div class="bg-main-200 -mt-[5px] -mb-[1px]">
@@ -27,7 +27,7 @@
                     </div>
                 </form>
                 <div id="overlay"
-                    class="hidden absolute inset-0 bg-black bg-opacity-10 transition-opacity duration-300 ease-in-out rounded-3xl">
+                    class="hidden absolute inset-0 bg-main-600 bg-opacity-90 transition-opacity duration-300 ease-in-out rounded-3xl">
                     <div class="flex justify-center items-center h-full ">
                         <span class="loader"></span>
                     </div>

@@ -1,10 +1,10 @@
 import "../css/main.scss";
 import "./bootstrap.js";
-import "./smoothScroll.js";
 import "./contactFormValidation.js";
 import "./loginFormValidation.js";
 import { imagePreview } from "./imagePreview.js";
 import "./deleteIllustration.js";
+import "./filterIllustrations.js";
 import "./deleteProjectMedia.js";
 import "./selectIllustrationCheckbox.js";
 import { toggleVisibility } from "./functions/toggleVisibilityIcons.js";
@@ -21,11 +21,8 @@ if (date) {
 
 // ********** nav toggle ************
 const navbarEl = document.getElementById("navbar");
-const navToggle = document.querySelector(".nav-toggle");
 const linksContainer = document.querySelector(".links-container");
 const links = document.querySelector(".links");
-const iconBars = document.querySelector(".fa-bars");
-const iconCross = document.querySelector(".fa-x");
 const flashMessage = document.getElementById("flash-message");
 const axiosFlashMessage = document.getElementById("axios-flash-message");
 
@@ -53,38 +50,98 @@ document.addEventListener("click", function (event) {
 // ********** DOMContentLoaded ************
 
 document.addEventListener("DOMContentLoaded", function () {
-    const darkModeMediaQuery = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-    );
-
-    if (darkModeMediaQuery.matches) {
-        document.body.classList.add("dark");
-    } else {
-        document.body.classList.remove("dark");
-    }
-
-    // ======== Detection of theme change with devtools ======== //
-    function handleThemeChange(event) {
-        if (event.matches) {
-            document.body.className = "";
-            document.body.classList.add("dark");
-        } else {
-            document.body.className = "";
-            document.body.classList.remove("dark");
+    //Remove 'hidden' from body to prevent a brief flickering effect
+    document.body.classList.remove("hidden");
+    // Dark Theme Management
+    function calculateSettingAsThemeString({
+        localStorageTheme,
+        systemSettingDark,
+    }) {
+        if (localStorageTheme !== null) {
+            return localStorageTheme;
         }
-    }
-    darkModeMediaQuery.addEventListener("change", handleThemeChange);
-    handleThemeChange(darkModeMediaQuery);
 
-    // Theme change with theme-switcher
-    document
-        .querySelector(".theme-switcher")
-        .addEventListener("click", function () {
-            document.body.classList.toggle("dark");
-        });
+        if (systemSettingDark.matches) {
+            return "dark";
+        }
+
+        return "light";
+    }
+
+    function updateThemeOnHtmlEl({ theme }) {
+        document.body.className = "";
+        document.body.classList.add(theme);
+    }
+
+    const button = document.querySelector(".theme-switcher");
+    const localStorageTheme = localStorage.getItem("theme");
+    const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+    let currentThemeSetting = calculateSettingAsThemeString({
+        localStorageTheme,
+        systemSettingDark,
+    });
+
+    updateThemeOnHtmlEl({ theme: currentThemeSetting });
+
+    button.addEventListener("click", (event) => {
+        const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
+
+        localStorage.setItem("theme", newTheme);
+        updateThemeOnHtmlEl({ theme: newTheme });
+
+        currentThemeSetting = newTheme;
+    });
 
     // Scroll
+    const backToTopArrow = document.getElementById("back-to-top-btn");
+    const navbar = document.getElementById("navbar");
+    const navbarHeight = navbar.getBoundingClientRect().height;
+    const navbarOffsetTop = navbar.offsetTop;
+
+    function smoothScroll(button, section) {
+        const targetPosition =
+            section.offsetTop - (navbarHeight + navbarOffsetTop);
+        if (!button) return;
+
+        button.addEventListener("click", function () {
+            window.scrollTo({
+                top: targetPosition,
+                behavior: "smooth",
+            });
+        });
+    }
+
+    function checkScrollPosition() {
+        const scrollPos = window.scrollY || document.documentElement.scrollTop;
+        if (scrollPos >= 300 && backToTopArrow.classList.contains("hidden")) {
+            backToTopArrow.classList.remove("hidden");
+        } else if (
+            scrollPos < 300 &&
+            !backToTopArrow.classList.contains("hidden")
+        ) {
+            backToTopArrow.classList.add("hidden");
+        }
+    }
+
+    function ifElementExists(selectorButton, selectorSection) {
+        const button = document.getElementById(selectorButton);
+        const section = document.getElementById(selectorSection);
+
+        if (button && section) {
+            smoothScroll(button, section);
+        }
+    }
+
+    ifElementExists("back-to-top-btn", "home");
+    ifElementExists("scroll-to-projects-btn", "projects");
+    ifElementExists("scroll-to-contact-btn", "contact");
+
     window.addEventListener("scroll", function () {
+        // Show/hide the button based on scroll position
+        checkScrollPosition();
+
+        //Management of waves
         if (document.querySelector(".svg-dark-1")) {
             document.querySelector(".svg-dark-1").style.top = -(
                 window.scrollY * 0.05
