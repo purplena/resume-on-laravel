@@ -15,7 +15,7 @@ import "swiper/css/pagination";
 // ********** DOMContentLoaded ************
 document.addEventListener("DOMContentLoaded", function () {
     //Remove 'hidden' from body to prevent a brief flickering effect
-    document.body.classList.remove("hidden");
+
     // Dark Theme Management
     function calculateSettingAsThemeString({
         localStorageTheme,
@@ -33,10 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateThemeOnHtmlEl({ theme }) {
-        // document.body.className = "";
-        // document.body.classList.add(theme);
-        document.documentElement.className = "";
-        document.documentElement.classList.add(theme);
+        document.body.className = "";
+        document.body.classList.add(theme);
+        // document.documentElement.className = "";
+        // document.documentElement.classList.add(theme);
     }
 
     const button = document.querySelector(".theme-switcher");
@@ -309,5 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imagePreview(file);
     });
 
-    document.getElementById("kind-of-loader").classList.remove("hidden");
+    // document.getElementById("kind-of-loader").classList.remove("hidden");
+
+    document.body.classList.remove("hidden");
 });
