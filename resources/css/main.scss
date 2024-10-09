@@ -5,7 +5,16 @@
 @import "swiper";
 @import "animations";
 
-@layer base {
+// @layer base {
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+
 :root {
     --main-500: 179, 163, 192;
     --main-700: 107,97,115;
@@ -14,7 +23,7 @@
     --white: 254,254,254;
     --black: 34,34,34;
 }
-}
+// }
 
 .light{
 // @layer base {
@@ -135,6 +144,16 @@
         color: theme('colors.main-700');
         border: 1px solid theme('colors.main-700');
     }
+
+    .language-switcher-link{
+        background-color: theme("colors.white");
+    }
+
+    .hamburger {
+        span {
+          background-color: theme('colors.white');
+        }
+    }
     
 // }
 }
@@ -239,14 +258,19 @@
         color: theme('colors.main-700');
         border: 1px solid theme('colors.main-700');
     }
+
+    .language-switcher-link{
+        background-color: theme("colors.white");
+    }
+
+    .hamburger {
+        span {
+          background-color: theme('colors.white');
+        }
+    }
 }
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 
 
@@ -397,7 +421,7 @@ a {
     span {
       display: block;
       margin: 5px auto;
-      background-color: theme('colors.white');
+    //   background-color: theme('colors.white');
       width: 100%;
       height: 3px;
       border-radius: 5px;
