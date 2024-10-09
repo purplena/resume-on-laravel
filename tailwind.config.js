@@ -48,7 +48,7 @@ export default {
                 "main-100": "#efecf2",
                 "main-300": "#d1c7d9",
                 "main-400": "#c2b5cc",
-                "main-500": "#B3A3C0",
+                "main-500": "rgba(var(--main-500))",
                 "main-600": "rgba(var(--main-600))",
                 "main-700": "rgba(var(--main-700))",
                 "main-800": "rgba(var(--main-800))",
