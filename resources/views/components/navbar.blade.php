@@ -6,8 +6,8 @@
                 <div class="flex flex-row aligh-center items-center">
                     <x-sections.components.language-switcher />
                     <div class="h-[28px] w-[28px] relative theme-switcher">
-                        <i id="theme-switcher-icon"
-                            class="fa-solid fa-lightbulb fa-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"></i>
+                        <i
+                            class="fa-solid fa-lightbulb fa-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer text-egg"></i>
                     </div>
                 </div>
                 <div class="hamburger md:hidden">

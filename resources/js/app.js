@@ -33,8 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateThemeOnHtmlEl({ theme }) {
-        document.body.className = "";
-        document.body.classList.add(theme);
+        // document.body.className = "";
+        // document.body.classList.add(theme);
+        document.documentElement.className = "";
+        document.documentElement.classList.add(theme);
     }
 
     const button = document.querySelector(".theme-switcher");
@@ -306,4 +308,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const file = e.target.files;
         imagePreview(file);
     });
+
+    document.getElementById("kind-of-loader").classList.remove("hidden");
 });

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: ["dark", "&:not(.light *)"],
+    // darkMode: "selector",
     content: ["./resources/views/**/*.blade.php", "./resources/js/**/*.js"],
     theme: {
         screens: {
@@ -40,19 +40,20 @@ export default {
                 heroParagraph: "600px",
             },
             colors: {
-                white: "rgba(var(--white))",
-                black: "rgba(var(--black))",
+                "main-text": "rgba(var(--black), 1)",
+                white: "rgba(var(--white), 1)",
+                black: "rgba(var(--black), 1)",
                 egg: "rgba(var(--egg))",
                 grape: "rgba(var(--grape))",
-                "main-200": "rgba(var(--main-200))",
+                "main-200": "rgba(var(--main-200), 1)",
                 "main-100": "#efecf2",
                 "main-300": "#d1c7d9",
                 "main-400": "#c2b5cc",
-                "main-500": "rgba(var(--main-500))",
-                "main-600": "rgba(var(--main-600))",
-                "main-700": "rgba(var(--main-700))",
-                "main-800": "rgba(var(--main-800))",
-                "main-900": "rgba(var(--main-900))",
+                "main-500": "rgba(var(--main-500), 1)",
+                "main-600": "rgba(var(--main-600), 1)",
+                "main-700": "rgba(var(--main-700), 1)",
+                "main-800": "rgba(var(--main-800), 1)",
+                "main-900": "rgba(var(--main-900), 1)",
             },
             transitionProperty: {
                 all: "all",
