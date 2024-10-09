@@ -6,8 +6,9 @@
 @import "animations";
 
 
-@layer base {
-    :root {
+.light{
+// @layer base {
+    // :root {
         --white: 254,254,254;
         --black: 34,34,34;
         --main-200: 224,218,229;
@@ -16,7 +17,7 @@
         --main-700: 107,97,115;
         --main-800: 71,65,76;
         --main-900: 42, 30, 53;
-    }
+    // }
 
     body{
         color: theme("colors.black");
@@ -106,6 +107,7 @@
         color: theme("colors.egg");
     }
     
+// }
 }
 
 .dark {

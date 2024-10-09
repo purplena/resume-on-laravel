@@ -12,42 +12,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// ********** set date ************
-var date = document.getElementById("date");
-if (date) {
-    date.innerHTML = new Date().getFullYear();
-}
-
-// ********** nav toggle ************
-const navbarEl = document.getElementById("navbar");
-const linksContainer = document.querySelector(".links-container");
-const links = document.querySelector(".links");
-const flashMessage = document.getElementById("flash-message");
-const axiosFlashMessage = document.getElementById("axios-flash-message");
-
-const hamburger = document.querySelector(".hamburger");
-hamburger.addEventListener("click", function () {
-    const containerHeight = linksContainer.getBoundingClientRect().height;
-    const linksHeight = links.getBoundingClientRect().height;
-    if (containerHeight === 0) {
-        linksContainer.style.height = `${linksHeight}px`;
-        hamburger.classList.add("is-opened");
-    } else {
-        linksContainer.style.height = 0;
-        hamburger.classList.remove("is-opened");
-    }
-});
-
-// ********** close menu on click outside ************
-document.addEventListener("click", function (event) {
-    if (event.target !== navbarEl && !navbarEl.contains(event.target)) {
-        linksContainer.style.height = 0;
-        hamburger.classList.remove("is-opened");
-    }
-});
-
 // ********** DOMContentLoaded ************
-
 document.addEventListener("DOMContentLoaded", function () {
     //Remove 'hidden' from body to prevent a brief flickering effect
     document.body.classList.remove("hidden");
@@ -231,6 +196,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ********** Flash Session Message  ************
+    const flashMessage = document.getElementById("flash-message");
+    const axiosFlashMessage = document.getElementById("axios-flash-message");
+
     if (flashMessage) {
         setTimeout(function () {
             flashMessage.style.display = "none";
@@ -260,46 +228,82 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleContent();
 
     window.addEventListener("resize", toggleContent);
-});
 
-// ********** Upload Image with Drag and Drop ************
-const dragAndDropArea = document.getElementById("dragAndDropArea");
-
-dragAndDropArea?.addEventListener("dragover", function (event) {
-    event.preventDefault();
-});
-
-dragAndDropArea?.addEventListener("drop", function (event) {
-    event.preventDefault();
-    document.getElementById("dragAndDropSvg").classList.add("hidden");
-    document.getElementById("previewExistingMedia")?.classList.add("hidden");
-
-    if (window.location.href.includes("illustrations")) {
-        document.getElementById("existingIllustrationsContainer")?.remove();
+    // ********** set date ************
+    const date = document.getElementById("date");
+    if (date) {
+        date.innerHTML = new Date().getFullYear();
     }
 
-    const files = event.dataTransfer.files;
-    imagePreview(files);
+    // ********** nav toggle ************
+    const navbarEl = document.getElementById("navbar");
+    const linksContainer = document.querySelector(".links-container");
+    const links = document.querySelector(".links");
 
-    const input = document.getElementById("path");
-    const dataTransfer = new DataTransfer();
+    const hamburger = document.querySelector(".hamburger");
+    hamburger.addEventListener("click", function () {
+        const containerHeight = linksContainer.getBoundingClientRect().height;
+        const linksHeight = links.getBoundingClientRect().height;
+        if (containerHeight === 0) {
+            linksContainer.style.height = `${linksHeight}px`;
+            hamburger.classList.add("is-opened");
+        } else {
+            linksContainer.style.height = 0;
+            hamburger.classList.remove("is-opened");
+        }
+    });
 
-    for (let i = 0; i < files.length; i++) {
-        dataTransfer.items.add(files[i]);
-    }
+    // ********** close menu on click outside ************
+    document.addEventListener("click", function (event) {
+        if (event.target !== navbarEl && !navbarEl.contains(event.target)) {
+            linksContainer.style.height = 0;
+            hamburger.classList.remove("is-opened");
+        }
+    });
 
-    input.files = dataTransfer.files;
-});
+    // ********** Upload Image with Drag and Drop ************
+    const dragAndDropArea = document.getElementById("dragAndDropArea");
 
-// ********** Upload Image with Classic Form Submission ************
-document.getElementById("path")?.addEventListener("change", function (e) {
-    document.getElementById("dragAndDropSvg").classList.add("hidden");
-    document.getElementById("previewExistingMedia")?.classList.add("hidden");
+    dragAndDropArea?.addEventListener("dragover", function (event) {
+        event.preventDefault();
+    });
 
-    if (window.location.href.includes("illustrations")) {
-        document.getElementById("existingIllustrationsContainer")?.remove();
-    }
+    dragAndDropArea?.addEventListener("drop", function (event) {
+        event.preventDefault();
+        document.getElementById("dragAndDropSvg").classList.add("hidden");
+        document
+            .getElementById("previewExistingMedia")
+            ?.classList.add("hidden");
 
-    const file = e.target.files;
-    imagePreview(file);
+        if (window.location.href.includes("illustrations")) {
+            document.getElementById("existingIllustrationsContainer")?.remove();
+        }
+
+        const files = event.dataTransfer.files;
+        imagePreview(files);
+
+        const input = document.getElementById("path");
+        const dataTransfer = new DataTransfer();
+
+        for (let i = 0; i < files.length; i++) {
+            dataTransfer.items.add(files[i]);
+        }
+
+        input.files = dataTransfer.files;
+    });
+
+    // ********** Upload Image with Classic Form Submission ************
+    document.getElementById("path")?.addEventListener("change", function (e) {
+        document.getElementById("dragAndDropSvg").classList.add("hidden");
+        document
+            .getElementById("previewExistingMedia")
+            ?.classList.add("hidden");
+
+        if (window.location.href.includes("illustrations")) {
+            document.getElementById("existingIllustrationsContainer")?.remove();
+        }
+
+        const file = e.target.files;
+        imagePreview(file);
+    });
 });
