@@ -170,8 +170,10 @@
     --egg: 253,246,213;
     --main-200: 71,65,76;
     --main-600: 224,218,229;
+    body{
+        color: theme('colors.white');
+    }
     
-    color: theme('colors.white');
     .top-bottom-wave path {
         fill: theme('colors.main-200');
     }
