@@ -40,7 +40,6 @@ export default {
                 heroParagraph: "600px",
             },
             colors: {
-                "main-text": "rgba(var(--black), 1)",
                 white: "rgba(var(--white), 1)",
                 black: "rgba(var(--black), 1)",
                 egg: "rgba(var(--egg))",
