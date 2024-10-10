@@ -20,6 +20,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/set-theme', function () {
+    $request = request();
+    $newColor = $request->input('color');
+    $request->session()->put('theme_color', $newColor);
+
+    return response()->json(['success' => true, 'color' => $newColor]);
+});
+
+Route::get('/get-theme', function () {
+    $request = request();
+    $themeColor = session()->get('theme_color');
+    $userTheme = $request->query('userTheme');
+
+    return response()->json(['color' => $themeColor ?? $userTheme]);
+});
+
 Route::get('/language/{locale}', function ($locale) {
     app()->setLocale($locale);
     session()->put('locale', $locale);

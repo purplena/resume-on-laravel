@@ -6,17 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-        const localStorageTheme = localStorage.getItem("theme");
+        // const localStorageTheme = localStorage.getItem("theme");
+        // const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+        // function calculateSettingAsThemeString({
+        //     localStorageTheme,
+        //     systemSettingDark,
+        // }) {
+        //     if (localStorageTheme !== null) {
+        //         return localStorageTheme;
+        //     }
+
+        //     if (systemSettingDark.matches) {
+        //         return "dark";
+        //     }
+
+        //     return "light";
+        // }
+
+        // const theme = calculateSettingAsThemeString({
+        //     localStorageTheme,
+        //     systemSettingDark
+        // })
+
+        // document.documentElement.classList.add(theme);
+
+
         const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
 
         function calculateSettingAsThemeString({
-            localStorageTheme,
-            systemSettingDark,
+            systemSettingDark
         }) {
-            if (localStorageTheme !== null) {
-                return localStorageTheme;
-            }
-
             if (systemSettingDark.matches) {
                 return "dark";
             }
@@ -24,12 +44,22 @@
             return "light";
         }
 
-        const theme = calculateSettingAsThemeString({
-            localStorageTheme,
-            systemSettingDark
-        })
+        const url = new URL('/get-theme', window.location.origin);
+        url.searchParams.append('userTheme', calculateSettingAsThemeString({
+            systemSettingDark,
+        }));
 
-        document.documentElement.classList.add(theme);
+        fetch(url.toString(), {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.documentElement.classList.add(data.color);
+                document.body.classList.remove("hidden");
+            })
+            .catch(error => {
+                console.error('Error fetching theme color:', error);
+            });
     </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet" />
     @vite(['resources/css/main.scss', 'resources/js/app.js'])

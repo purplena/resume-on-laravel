@@ -14,49 +14,84 @@ import "swiper/css/pagination";
 
 // ********** DOMContentLoaded ************
 document.addEventListener("DOMContentLoaded", function () {
-    //Remove 'hidden' from body to prevent a brief flickering effect
-
     // Dark Theme Management
-    function calculateSettingAsThemeString({
-        localStorageTheme,
-        systemSettingDark,
-    }) {
-        if (localStorageTheme !== null) {
-            return localStorageTheme;
-        }
+    // function calculateSettingAsThemeString({
+    //     localStorageTheme,
+    //     systemSettingDark,
+    // }) {
+    //     if (localStorageTheme !== null) {
+    //         return localStorageTheme;
+    //     }
 
-        if (systemSettingDark.matches) {
-            return "dark";
-        }
+    //     if (systemSettingDark.matches) {
+    //         return "dark";
+    //     }
 
-        return "light";
-    }
+    //     return "light";
+    // }
 
-    function updateThemeOnHtmlEl({ theme }) {
-        // document.body.className = "";
-        // document.body.classList.add(theme);
-        document.documentElement.className = "";
-        document.documentElement.classList.add(theme);
-    }
+    // function updateThemeOnHtmlEl({ theme }) {
+    //     // document.body.className = "";
+    //     // document.body.classList.add(theme);
+    //     document.documentElement.className = "";
+    //     document.documentElement.classList.add(theme);
+    // }
+
+    // const button = document.querySelector(".theme-switcher");
+    // const localStorageTheme = localStorage.getItem("theme");
+    // const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+    // let currentThemeSetting = calculateSettingAsThemeString({
+    //     localStorageTheme,
+    //     systemSettingDark,
+    // });
+
+    // updateThemeOnHtmlEl({ theme: currentThemeSetting });
+
+    // button.addEventListener("click", (event) => {
+    //     const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
+
+    //     localStorage.setItem("theme", newTheme);
+    //     updateThemeOnHtmlEl({ theme: newTheme });
+
+    //     currentThemeSetting = newTheme;
+    // });
 
     const button = document.querySelector(".theme-switcher");
-    const localStorageTheme = localStorage.getItem("theme");
-    const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
+    button.addEventListener("click", () => {
+        axios
+            .get("/get-theme", {
+                params: {
+                    userTheme: calculateSettingAsThemeString({
+                        systemSettingDark,
+                    }),
+                },
+            })
+            .then((response) => {
+                const userThemeCurrent = response.data.color;
 
-    let currentThemeSetting = calculateSettingAsThemeString({
-        localStorageTheme,
-        systemSettingDark,
-    });
+                const newTheme = userThemeCurrent === "dark" ? "light" : "dark";
+                console.log(newTheme);
 
-    updateThemeOnHtmlEl({ theme: currentThemeSetting });
-
-    button.addEventListener("click", (event) => {
-        const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
-
-        localStorage.setItem("theme", newTheme);
-        updateThemeOnHtmlEl({ theme: newTheme });
-
-        currentThemeSetting = newTheme;
+                axios
+                    .post("/set-theme", { color: newTheme })
+                    .then((response) => {
+                        if (response.data.success) {
+                            document.documentElement.className = "";
+                            document.documentElement.classList.add(
+                                response.data.color
+                            );
+                        } else {
+                            console.error("Failed to set theme color");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error setting theme color:", error);
+                    });
+            })
+            .catch((error) => {
+                console.error("Error fetching theme color:", error);
+            });
     });
 
     // Scroll
@@ -311,5 +346,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // document.getElementById("kind-of-loader").classList.remove("hidden");
 
-    document.body.classList.remove("hidden");
+    // document.body.classList.remove("hidden");
 });
