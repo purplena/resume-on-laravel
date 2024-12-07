@@ -10,7 +10,7 @@
                 </p>
             </div>
             <div
-                class="contact-form-container w-full md:w-1/2 drop-shadow-sm hover:drop-shadow-lg px-8 py-6 rounded-3xl">
+                class="contact-form-container w-full md:w-1/2 drop-shadow-sm hover:drop-shadow-lg px-8 py-6 rounded-3xl h-[469px]">
                 <h2 class="text-h3">{{ __('contact.contact.me') }}</h2>
                 <div class="mt-4 font-bold text-main-700 text-[16px]" id="success-message"></div>
                 <form method="POST" class="mt-4 relative" action="{{ route('contact.us.store') }}" id="contactUSForm">
@@ -27,7 +27,7 @@
                     </div>
                 </form>
                 <div id="overlay"
-                    class="hidden absolute inset-0 bg-main-600 bg-opacity-90 transition-opacity duration-300 ease-in-out rounded-3xl">
+                    class="hidden absolute inset-0 bg-main-600 bg-opacity-90 transition-opacity duration-300 ease-in-out rounded-3xl h-[469px]">
                     <div class="flex justify-center items-center h-full ">
                         <span class="loader"></span>
                     </div>

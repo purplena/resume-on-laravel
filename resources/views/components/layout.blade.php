@@ -6,32 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-        // const localStorageTheme = localStorage.getItem("theme");
-        // const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
-
-        // function calculateSettingAsThemeString({
-        //     localStorageTheme,
-        //     systemSettingDark,
-        // }) {
-        //     if (localStorageTheme !== null) {
-        //         return localStorageTheme;
-        //     }
-
-        //     if (systemSettingDark.matches) {
-        //         return "dark";
-        //     }
-
-        //     return "light";
-        // }
-
-        // const theme = calculateSettingAsThemeString({
-        //     localStorageTheme,
-        //     systemSettingDark
-        // })
-
-        // document.documentElement.classList.add(theme);
-
-
         const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
 
         function calculateSettingAsThemeString({

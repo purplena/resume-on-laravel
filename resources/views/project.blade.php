@@ -1,6 +1,10 @@
 <x-layout>
     <div class="mt-navbarMargin">
         <section class="pt-12 px-4 max-w-maxScreenWidth mx-auto">
+            <div class="mb-2">
+                <a href='{{ route('projects') }}' class="italic"><i class="fa-solid fa-arrow-left"></i>
+                    {{ __('btn.back.to.projects') }}</a>
+            </div>
             <h1 class="text-h1 mb-4 md:mt-0">
                 {{ $project->title }}
             </h1>

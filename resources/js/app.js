@@ -8,6 +8,7 @@ import "./deleteProjectMedia.js";
 import "./selectIllustrationCheckbox.js";
 import { toggleVisibility } from "./functions/toggleVisibilityIcons.js";
 import Swiper from "swiper/bundle";
+import "swiper/css/bundle";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -15,48 +16,6 @@ import "swiper/css/pagination";
 // ********** DOMContentLoaded ************
 document.addEventListener("DOMContentLoaded", function () {
     // Dark Theme Management
-    // function calculateSettingAsThemeString({
-    //     localStorageTheme,
-    //     systemSettingDark,
-    // }) {
-    //     if (localStorageTheme !== null) {
-    //         return localStorageTheme;
-    //     }
-
-    //     if (systemSettingDark.matches) {
-    //         return "dark";
-    //     }
-
-    //     return "light";
-    // }
-
-    // function updateThemeOnHtmlEl({ theme }) {
-    //     // document.body.className = "";
-    //     // document.body.classList.add(theme);
-    //     document.documentElement.className = "";
-    //     document.documentElement.classList.add(theme);
-    // }
-
-    // const button = document.querySelector(".theme-switcher");
-    // const localStorageTheme = localStorage.getItem("theme");
-    // const systemSettingDark = window.matchMedia("(prefers-color-scheme: dark)");
-
-    // let currentThemeSetting = calculateSettingAsThemeString({
-    //     localStorageTheme,
-    //     systemSettingDark,
-    // });
-
-    // updateThemeOnHtmlEl({ theme: currentThemeSetting });
-
-    // button.addEventListener("click", (event) => {
-    //     const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
-
-    //     localStorage.setItem("theme", newTheme);
-    //     updateThemeOnHtmlEl({ theme: newTheme });
-
-    //     currentThemeSetting = newTheme;
-    // });
-
     const button = document.querySelector(".theme-switcher");
     button.addEventListener("click", () => {
         axios
@@ -103,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function smoothScroll(button, section) {
         const targetPosition =
             section.offsetTop - (navbarHeight + navbarOffsetTop);
-        if (!button) return;
 
         button.addEventListener("click", function () {
             window.scrollTo({
@@ -111,6 +69,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 behavior: "smooth",
             });
         });
+    }
+
+    if (backToTopArrow) {
+        smoothScroll(backToTopArrow, document.getElementById("home"));
     }
 
     function checkScrollPosition() {
@@ -125,19 +87,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function ifElementExists(selectorButton, selectorSection) {
-        const button = document.getElementById(selectorButton);
-        const section = document.getElementById(selectorSection);
-
-        if (button && section) {
-            smoothScroll(button, section);
+    // Scroll for projects and contact btns
+    function scrollToSection(btnId, sectionId) {
+        if (document.getElementById(btnId)) {
+            document.getElementById(btnId).addEventListener("click", () => {
+                // Smoothly scroll to the projects section
+                document
+                    .getElementById(sectionId)
+                    .scrollIntoView({ behavior: "smooth" });
+            });
         }
     }
+    scrollToSection("scroll-to-projects-btn", "projects");
+    scrollToSection("scroll-to-contact-btn", "contact");
 
-    ifElementExists("back-to-top-btn", "home");
-    ifElementExists("scroll-to-projects-btn", "projects");
-    ifElementExists("scroll-to-contact-btn", "contact");
-
+    //svgs scroll behavior
     window.addEventListener("scroll", function () {
         // Show/hide the button based on scroll position
         checkScrollPosition();
@@ -189,35 +153,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    const swiper1 = new Swiper(".mySwiperInit", {
-        loop: true,
-
-        pagination: {
-            el: ".swiper-pagination",
-            dynamicBullets: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
-
-    const swiper3 = new Swiper(".mySwiper", {
-        loop: true,
-        spaceBetween: 10,
-        slidesPerView: 3,
-        freeMode: true,
-        watchSlidesProgress: true,
-    });
-
-    const swiperSlides = document
-        .querySelector(".mySwiper2")
-        ?.querySelectorAll(".swiper-slide");
-
-    if (swiperSlides?.length > 1) {
-        const swiper2 = new Swiper(".mySwiper2", {
+    if (document.getElementsByClassName(".mySwiperInit")) {
+        const swiper1 = new Swiper(".mySwiperInit", {
             loop: true,
-            spaceBetween: 10,
             pagination: {
                 el: ".swiper-pagination",
                 dynamicBullets: true,
@@ -226,12 +164,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
             },
-            thumbs: {
-                swiper: swiper3,
-            },
         });
     }
 
+    if (document.getElementsByClassName(".mySwiper")) {
+        const swiper3 = new Swiper(".mySwiper", {
+            loop: true,
+            spaceBetween: 10,
+            slidesPerView: 3,
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+
+        const swiperSlides = document
+            .querySelector(".mySwiper2")
+            ?.querySelectorAll(".swiper-slide");
+
+        if (swiperSlides?.length > 1) {
+            const swiper2 = new Swiper(".mySwiper2", {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 10,
+                pagination: {
+                    el: ".swiper-pagination",
+                    dynamicBullets: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                thumbs: {
+                    swiper: swiper3,
+                },
+            });
+        }
+    }
     // ********** Flash Session Message  ************
     const flashMessage = document.getElementById("flash-message");
     const axiosFlashMessage = document.getElementById("axios-flash-message");
@@ -343,8 +310,4 @@ document.addEventListener("DOMContentLoaded", function () {
         const file = e.target.files;
         imagePreview(file);
     });
-
-    // document.getElementById("kind-of-loader").classList.remove("hidden");
-
-    // document.body.classList.remove("hidden");
 });
